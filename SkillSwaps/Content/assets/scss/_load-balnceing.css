@@ -1,0 +1,19 @@
+﻿.single-features {
+  display: flex;
+}
+.single-features .features-icon img {
+  display: block;
+}
+.single-features .features-caption {
+  padding-left: 19px;
+}
+.single-features .features-caption h3 {
+  font-size: 25px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.single-features .features-caption p {
+  font-size: 15px;
+  line-height: 1.8;
+}

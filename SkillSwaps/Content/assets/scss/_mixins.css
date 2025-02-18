@@ -1,0 +1,118 @@
+﻿.flex-center-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+
+.theme-colors {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#c054ff+0,5274ff+100 */
+  background: #c054ff; /* Old browsers */
+  background: -moz-linear-gradient(top, #c054ff 0%, #5274ff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #c054ff 0%, #5274ff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#c054ff", endColorstr="#5274ff",GradientType=0 ); /* IE6-9 */
+}
+
+/*--------------- ---- Responsive --------------------------*/
+/*-------------   Color Variable  --------------*/
+.flex-center-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+
+.theme-colors {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#c054ff+0,5274ff+100 */
+  background: #c054ff; /* Old browsers */
+  background: -moz-linear-gradient(top, #c054ff 0%, #5274ff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #c054ff 0%, #5274ff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#c054ff", endColorstr="#5274ff",GradientType=0 ); /* IE6-9 */
+}
+
+.white-bg {
+  background: #ffffff;
+}
+
+.gray-bg {
+  background: #f5f5f5;
+}
+
+/*-------------Color include--------------*/
+/*-- Background color---*/
+.gray-bg {
+  background: #f7f7fd;
+}
+
+.white-bg {
+  background: #ffffff;
+}
+
+.black-bg {
+  background: #16161a;
+}
+
+.theme-bg {
+  background: #C86FFF;
+}
+
+.brand-bg {
+  background: #f1f4fa;
+}
+
+.testimonial-bg {
+  background: #f9fafc;
+}
+
+/*--- color------*/
+.white-color {
+  color: #ffffff;
+}
+
+.black-color {
+  color: #16161a;
+}
+
+.theme-color {
+  color: #C86FFF;
+}
+
+.boxed-btn {
+  background: #fff;
+  color: #C86FFF !important;
+  display: inline-block;
+  padding: 18px 44px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border: 0;
+  border: 1px solid #C86FFF;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #C86FFF;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.boxed-btn:hover {
+  background: #C86FFF;
+  color: #fff !important;
+  border: 1px solid #C86FFF;
+}
+.boxed-btn:focus {
+  outline: none;
+}
+.boxed-btn.large-width {
+  width: 220px;
+}

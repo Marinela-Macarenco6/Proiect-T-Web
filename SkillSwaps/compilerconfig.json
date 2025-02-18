@@ -1,0 +1,106 @@
+﻿[
+  {
+    "outputFile": "Content/assets/scss/_about.css",
+    "inputFile": "Content/assets/scss/_about.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_blog_page.css",
+    "inputFile": "Content/assets/scss/_blog_page.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_variables.css",
+    "inputFile": "Content/assets/scss/_variables.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_mixins.css",
+    "inputFile": "Content/assets/scss/_mixins.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_headerMenu.css",
+    "inputFile": "Content/assets/scss/_headerMenu.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_services.css",
+    "inputFile": "Content/assets/scss/_services.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_top-sub.css",
+    "inputFile": "Content/assets/scss/_top-sub.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_testimonial.css",
+    "inputFile": "Content/assets/scss/_testimonial.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_bradcam.css",
+    "inputFile": "Content/assets/scss/_bradcam.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_collaps.css",
+    "inputFile": "Content/assets/scss/_collaps.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_color.css",
+    "inputFile": "Content/assets/scss/_color.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_common.css",
+    "inputFile": "Content/assets/scss/_common.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_contact.css",
+    "inputFile": "Content/assets/scss/_contact.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_contact_form.css",
+    "inputFile": "Content/assets/scss/_contact_form.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_courses.css",
+    "inputFile": "Content/assets/scss/_courses.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_elements.css",
+    "inputFile": "Content/assets/scss/_elements.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_extend.css",
+    "inputFile": "Content/assets/scss/_extend.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_footer.css",
+    "inputFile": "Content/assets/scss/_footer.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_h1-hero.css",
+    "inputFile": "Content/assets/scss/_h1-hero.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_load-balnceing.css",
+    "inputFile": "Content/assets/scss/_load-balnceing.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_login.css",
+    "inputFile": "Content/assets/scss/_login.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_overlay.css",
+    "inputFile": "Content/assets/scss/_overlay.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_services_section.css",
+    "inputFile": "Content/assets/scss/_services_section.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_team.css",
+    "inputFile": "Content/assets/scss/_team.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/_wantTowork.css",
+    "inputFile": "Content/assets/scss/_wantTowork.scss"
+  },
+  {
+    "outputFile": "Content/assets/scss/style.css",
+    "inputFile": "Content/assets/scss/style.scss"
+  }
+]
