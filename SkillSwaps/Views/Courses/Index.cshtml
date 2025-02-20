@@ -1,5 +1,4 @@
-﻿
-@{ Layout = null;
+﻿@{ Layout = null;
     ViewBag.Title = "Index";
 }
 
@@ -14,25 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="~/Content/site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
-    @Styles.Render("~/Content/assets/css")
     @Styles.Render("~/Content/assets/scss")
-
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/slicknav.css">
-    <link rel="stylesheet" href="~/Content/assets/css/flaticon.css">
-    <link rel="stylesheet" href="~/Content/assets/css/progressbar_barfiller.css">
-    <link rel="stylesheet" href="~/Content/assets/css/gijgo.css">
-    <link rel="stylesheet" href="~/Content/assets/css/animate.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/animated-headline.css">
-    <link rel="stylesheet" href="~/Content/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/Content/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="~/Content/assets/css/slick.css">
-    <link rel="stylesheet" href="~/Content/assets/css/nice-select.css">
-    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    @Styles.Render("~/Content/assets/css")
 
 </head>
 
@@ -58,7 +40,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="~/Home/Index"><img src="~/Content/img/logo/logo.png" alt="logo"></a>
+                                <a href="/Home/Index"><img src="~/Content/assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -67,21 +49,21 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li class="active"><a href="~/Home/Index">Home</a></li>
-                                            <li class="active"><a href="~/Courses/Index">Courses</a></li>
-                                            <li class="active"><a href="~/About/Index">About</a></li>
+                                            <li class="active"><a href="~/Home/Index">Acasă</a></li>
+                                            <li class="active"><a href="~/Courses/Index">Cursuri</a></li>
+                                            <li class="active"><a href="~/About/Index">Despre Noi</a></li>
                                             <li>
                                                 <a href="#">Blog</a>
                                                 <ul class="submenu">
                                                     <li class="active"><a href="~/Blog/Index">Blog</a></li>
-                                                    <li class="active"><a href="~/BlogDetails/Index">Blog Details</a></li>
-                                                    <li class="active"><a href="~/Element/Index">Element</a></li>
+                                                    <li class="active"><a href="~/BlogDetails/Index">Detalii despre blog</a></li>
+                                                    <li class="active"><a href="~/Element/Index">Elemente</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="active"><a href="~/Contact/Index">Contact</a></li>
+                                            <li class="active"><a href="~/Contact/Index">Contacte</a></li>
                                             <!-- Button -->
-                                            <li class="button-header margin-left "><a href="~/Register/Index" class="btn">Join</a></li>
-                                            <li class="button-header"><a href="~/Login/Index" class="btn btn3">Log in</a></li>
+                                            <li class="button-header margin-left "><a href="~/Register/Index" class="btn">Înregistrare</a></li>
+                                            <li class="button-header"><a href="~/Login/Index" class="btn btn3">Conectează-te</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -97,6 +79,8 @@
         </div>
     </div>
     <!-- Header End -->
+    </header>
+    <!-- Header End -->
     <main>
         <!--? slider Area Start-->
         <section class="slider-area slider-area2">
@@ -107,12 +91,12 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="bounceIn" data-delay="0.2s">Our courses</h1>
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">Cursuri</h1>
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Services</a></li>
+                                            <li class="breadcrumb-item"><a href="~/Home/Index">Acasă</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Servicii</a></li>
                                         </ol>
                                     </nav>
                                     <!-- breadcrumb End -->
@@ -129,22 +113,23 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Our featured courses</h2>
+                            <h2>Cele mai apreciate cursuri ale noastre</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <!-- Croitorie -->
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="~/Content/assets/img/gallery/featured1.png" alt=""></a>
+                                    <a href="#"><img src="~/Content/assets/img/gallery/test3.JFIF" alt=""></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
+                                    <p>CROITORIE</p>
+                                    <h3><a href="~/Courses/Index">Bazele croitoriei pentru începători</a></h3>
                                     <p>
-                                        The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
+                                        Visezi să înveți să coși? Acest curs te va ghida pas cu pas, învățându-te cum să iei măsurători corecte, să folosești mașina de cusut și să creezi piese vestimentare profesionale. Indiferent de nivelul tău, vei învăța tehnici esențiale pentru a transforma pasiunea în abilitate!
                                     </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -155,29 +140,30 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half"></i>
                                             </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                            <p><span>(4.5)</span> 75 de recenzii</p>
                                         </div>
                                         <div class="price">
                                             <span>$135</span>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="~/Courses/Index" class="border-btn border-btn2">Află mai multe!</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Matematica -->
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="~/Content/assets/img/gallery/featured2.png" alt=""></a>
+                                    <a href="#"><img src="~/Content/assets/img/gallery/test4.jfif" alt=""></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
+                                    <p>MATEMATICĂ</p>
+                                    <h3><a href="~/Courses/Index">Lecții de matematică pentru elevi și liceeni</a></h3>
                                     <p>
-                                        The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
+                                        Sunt un student olimpic în matematică și sunt gata să te ajut să înțelegi concepte complicate! Lecțiile sunt personalizate, adaptându-se nivelului tău de înțelegere, fie pentru examene, fie pentru performanțe mai bune. Îți voi oferi metode eficiente și explicații detaliate pentru a-ți îmbunătăți înțelegerea matematicii!
                                     </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -188,30 +174,30 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half"></i>
                                             </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                            <p><span>(4.5)</span> 125 de recenzii</p>
                                         </div>
                                         <div class="price">
                                             <span>$135</span>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="~/Courses/Index" class="border-btn border-btn2">Află mai multe</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
+                    <!-- Șah -->
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="~/Content/assets/img/gallery/featured3.png" alt=""></a>
+                                    <a href="#"><img src="~/Content/assets/img/gallery/test1.JFIF" alt=""></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
+                                    <p>ȘAH</p>
+                                    <h3><a href="~/Courses/Index">Mentorat în șah de la un fost campion</a></h3>
                                     <p>
-                                        The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
+                                        Dacă îți dorești să devii un jucător de șah mai bun, sunt aici pentru a-ți împărtăși din experiența mea de fost campion! Vom lucra la strategii avansate, tactici complexe și dezvoltarea unei gândiri strategice pentru a te ajuta să te pregătești pentru competiții și să îți îmbunătățești jocul.
                                     </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -222,30 +208,30 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half"></i>
                                             </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                            <p><span>(4.5)</span> 47 de recenzii</p>
                                         </div>
                                         <div class="price">
                                             <span>$135</span>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="~/Courses/Index" class="border-btn border-btn2">Află mai multe</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
+                    <!-- Limba engleză -->
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="~/Content/assets/img/gallery/featured4.png" alt=""></a>
+                                    <a href="#"><img src="~/Content/assets/img/gallery/test5.jfif" alt=""></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
+                                    <p>LIMBA ENGLEZĂ</p>
+                                    <h3><a href="~/Courses/Index">Lecții de limba engleză pentru copii (4-10 ani)</a></h3>
                                     <p>
-                                        The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
+                                        Învață limba engleză într-un mod jucăuș și interactiv! Lecțiile sunt concepute pentru copii între 4 și 10 ani, folosind jocuri, cântece și activități creative pentru a învăța vocabularul și a dezvolta încrederea în vorbirea limbii engleze. Lecțiile sunt structurate pentru a face învățarea amuzantă și ușor de înțeles.
                                     </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -256,30 +242,30 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half"></i>
                                             </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                            <p><span>(4.5)</span> 32 de recenzii</p>
                                         </div>
                                         <div class="price">
                                             <span>$135</span>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="~/Courses/Index" class="border-btn border-btn2">Află mai multe!</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
+                    <!-- UI/UX Design -->
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="~/Content/assets/img/gallery/featured5.png" alt=""></a>
+                                    <a href="#"><img src="~/Content/assets/img/gallery/featured6.png" alt="UI/UX Design"></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
+                                    <p>UI/UX DESIGN</p>
+                                    <h3><a href="~/Courses/Index">Curs de UI/UX Design pentru Începători</a></h3>
                                     <p>
-                                        The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
+                                        Începe să înveți despre designul de interfețe și experiența utilizatorului! Acest curs oferă un ghid complet pentru începători, unde vei învăța despre culori, tipografie, wireframing și prototipurile interactive. Lecțiile sunt focusate pe aplicarea imediată a noțiunilor de design pentru a crea interfețe intuitive și eficiente.
                                     </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -290,29 +276,30 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half"></i>
                                             </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                            <p><span>(4.7)</span> 45 de recenzii</p>
                                         </div>
                                         <div class="price">
-                                            <span>$135</span>
+                                            <span>$150</span>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="~/Courses/Index" class="border-btn border-btn2">Află mai multe!</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
+                    <!-- Python -->
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="~/Content/assets/img/gallery/featured6.png" alt=""></a>
+                                    <a href="#"><img src="~/Content/assets/img/gallery/python.jpg" alt="Python"></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
+                                    <p>PYTHON PROGRAMMING</p>
+                                    <h3><a href="~/Courses/Index">Curs de Python pentru Începători</a></h3>
                                     <p>
-                                        The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
+                                        Învață să programezi în Python, unul dintre cele mai populare și accesibile limbaje! Acest curs este destinat celor care doresc să învețe sintaxa Python, să înțeleagă structurile de date și să aplice principiile programării orientate pe obiecte. Lecțiile sunt interactive, astfel încât să poți aplica cunoștințele în proiecte reale.
                                     </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -323,13 +310,13 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half"></i>
                                             </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                            <p><span>(4.8)</span> 60 de recenzii</p>
                                         </div>
                                         <div class="price">
-                                            <span>$135</span>
+                                            <span>$120</span>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="~/Courses/Index" class="border-btn border-btn2">Află mai multe!</a>
                                 </div>
                             </div>
                         </div>
@@ -344,6 +331,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Courses area End -->
         <!--? top subjects Area Start -->
         <div class="topic-area">
@@ -351,7 +339,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Explore top subjects</h2>
+                            <h2>Subiecte de top</h2>
                         </div>
                     </div>
                 </div>
@@ -359,10 +347,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic1.png" alt="">
+                                <img class="top-subjects-images" src="/Content/assets/img/gallery/test6.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Olărit</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -371,10 +359,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic2.png" alt="">
+                                <img class="top-subjects-images" src="/Content/assets/img/gallery/test7.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Limbi străine</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -383,10 +371,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic3.png" alt="">
+                                <img class="top-subjects-images" src="/Content/assets/img/gallery/test8.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Matematică</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -395,10 +383,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic4.png" alt="">
+                                <img class="top-subjects-images" src="~/Content/assets/img/gallery/test9.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Ore de muzică</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -407,10 +395,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic5.png" alt="">
+                                <img class="top-subjects-images" src="~/Content/assets/img/gallery/topic5.png" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Programare</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -419,10 +407,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic6.png" alt="">
+                                <img class="top-subjects-images" src="~/Content/assets/img/gallery/test10.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Gătit</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -431,10 +419,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic7.png" alt="">
+                                <img class="top-subjects-images" src="~/Content/assets/img/gallery/test11.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Ore de dans</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -443,10 +431,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="~/Content/assets/img/gallery/topic8.png" alt="">
+                                <img class="top-subjects-images" src="~/Content/assets/img/gallery/test12.jfif" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">Grădinărit</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -456,7 +444,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-12">
                         <div class="section-tittle text-center mt-20">
-                            <a href="courses.html" class="border-btn">View More Subjects</a>
+                            <a href="courses.html" class="border-btn">Vezi mai multe subiecte</a>
                         </div>
                     </div>
                 </div>
@@ -473,8 +461,8 @@
                                 <img src="~/Content/assets/img/icon/icon1.svg" alt="">
                             </div>
                             <div class="features-caption">
-                                <h3>60+ UX courses</h3>
-                                <p>The automated process all your website tasks.</p>
+                                <h3>Diversitate de skilluri</h3>
+                                <p>Zeci de domenii, o singură platformă.</p>
                             </div>
                         </div>
                     </div>
@@ -484,8 +472,8 @@
                                 <img src="~/Content/assets/img/icon/icon2.svg" alt="">
                             </div>
                             <div class="features-caption">
-                                <h3>Expert instructors</h3>
-                                <p>The automated process all your website tasks.</p>
+                                <h3>Conectează-te cu experți</h3>
+                                <p>Colaborează cu persoane talentate și cu experiență.</p>
                             </div>
                         </div>
                     </div>
@@ -495,8 +483,8 @@
                                 <img src="~/Content/assets/img/icon/icon3.svg" alt="">
                             </div>
                             <div class="features-caption">
-                                <h3>Life time access</h3>
-                                <p>The automated process all your website tasks.</p>
+                                <h3>Acces nelimitat</h3>
+                                <p>Rămâi conectat oricând la oportunități.</p>
                             </div>
                         </div>
                     </div>
@@ -505,7 +493,7 @@
         </div>
     </main>
     <footer>
-        <div class="footer-wrappper footer-bg">
+        <div class="footer-wrapper footer-bg">
             <!-- Footer Start-->
             <div class="footer-area footer-padding">
                 <div class="container">
@@ -513,16 +501,16 @@
                         <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="single-footer-caption mb-30">
-                                    <!-- logo -->
+                                    <!-- Logo -->
                                     <div class="footer-logo mb-25">
-                                        <a href="index.html"><img src="~/Content/assets/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="index.html"><img src="~/Content/assets/img/logo/logo2_footer.png" alt="Logo Trade Your Skill"></a>
                                     </div>
                                     <div class="footer-tittle">
                                         <div class="footer-pera">
-                                            <p>The automated process starts as soon as your clothes go into the machine.</p>
+                                            <p>Oferim oamenilor posibilitatea de a-și tranzacționa și dezvolta abilitățile împreună.</p>
                                         </div>
                                     </div>
-                                    <!-- social -->
+                                    <!-- Social Links -->
                                     <div class="footer-social">
                                         <a href="#"><i class="fab fa-twitter"></i></a>
                                         <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
@@ -534,13 +522,13 @@
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Our solutions</h4>
+                                    <h4>Solutiile noastre</h4>
                                     <ul>
-                                        <li><a href="#">Design & creatives</a></li>
-                                        <li><a href="#">Telecommunication</a></li>
-                                        <li><a href="#">Restaurant</a></li>
-                                        <li><a href="#">Programing</a></li>
-                                        <li><a href="#">Architecture</a></li>
+                                        <li><a href="#">Design & Creativitate</a></li>
+                                        <li><a href="#">Telecomunicații</a></li>
+                                        <li><a href="#">Consultanță</a></li>
+                                        <li><a href="#">Programare</a></li>
+                                        <li><a href="#">Marketing</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -548,13 +536,13 @@
                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Support</h4>
+                                    <h4>Suport</h4>
                                     <ul>
-                                        <li><a href="#">Design & creatives</a></li>
-                                        <li><a href="#">Telecommunication</a></li>
-                                        <li><a href="#">Restaurant</a></li>
-                                        <li><a href="#">Programing</a></li>
-                                        <li><a href="#">Architecture</a></li>
+                                        <li><a href="#">Întrebări frecvente</a></li>
+                                        <li><a href="#">Centru de ajutor</a></li>
+                                        <li><a href="#">Contactează-ne</a></li>
+                                        <li><a href="#">Prețuri</a></li>
+                                        <li><a href="#">Termeni & Condiții</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -562,13 +550,13 @@
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Company</h4>
+                                    <h4>Compania</h4>
                                     <ul>
-                                        <li><a href="#">Design & creatives</a></li>
-                                        <li><a href="#">Telecommunication</a></li>
-                                        <li><a href="#">Restaurant</a></li>
-                                        <li><a href="#">Programing</a></li>
-                                        <li><a href="#">Architecture</a></li>
+                                        <li><a href="#">Despre noi</a></li>
+                                        <li><a href="#">Cariere</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Politica de confidențialitate</a></li>
+                                        <li><a href="#">Parteneri</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -581,13 +569,12 @@
                 <div class="container">
                     <div class="footer-border">
                         <div class="row d-flex align-items-center">
-                            <div class="col-xl-12 ">
-                                <div class="footer-copy-right text-center">
+                            <div class="col-xl-12 text-center">
+                                <div class="footer-copy-right">
                                     <p>
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        <!-- Copyright Notice -->
                                         Copyright &copy;
-                                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        <script>document.write(new Date().getFullYear());</script> Toate drepturile rezervate <i class="fa fa-heart" aria-hidden="true"></i>  <a href="#" target="_blank">Trade Your Skill</a>
                                     </p>
                                 </div>
                             </div>
@@ -598,6 +585,7 @@
             <!-- Footer End-->
         </div>
     </footer>
+    <!-- Scroll Up -->
     <!-- Scroll Up -->
     <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
