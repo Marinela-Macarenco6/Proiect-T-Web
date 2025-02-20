@@ -274,7 +274,12 @@
     <Content Include="Content\assets\img\blog\comment_1.png" />
     <Content Include="Content\assets\img\blog\comment_2.png" />
     <Content Include="Content\assets\img\blog\comment_3.png" />
+    <Content Include="Content\assets\img\blog\Concurs-sah.jpg" />
+    <Content Include="Content\assets\img\blog\design-grafic.jpg" />
+    <Content Include="Content\assets\img\blog\Hackathon-01-1.png" />
+    <Content Include="Content\assets\img\blog\inteligenta artificiala.jpg" />
     <Content Include="Content\assets\img\blog\learn_about_bg.png" />
+    <Content Include="Content\assets\img\blog\mathc.jpg" />
     <Content Include="Content\assets\img\blog\single_blog_1.png" />
     <Content Include="Content\assets\img\blog\single_blog_2.png" />
     <Content Include="Content\assets\img\blog\single_blog_3.png" />
@@ -355,6 +360,7 @@
     <Content Include="Content\assets\img\logo\loder.svg" />
     <Content Include="Content\assets\img\logo\logo.png" />
     <Content Include="Content\assets\img\logo\logo2_footer.png" />
+    <Content Include="Content\assets\img\post\eradigitala.png" />
     <Content Include="Content\assets\img\post\next.png" />
     <Content Include="Content\assets\img\post\post_1.png" />
     <Content Include="Content\assets\img\post\post_10.png" />
@@ -367,6 +373,8 @@
     <Content Include="Content\assets\img\post\post_8.png" />
     <Content Include="Content\assets\img\post\post_9.png" />
     <Content Include="Content\assets\img\post\preview.png" />
+    <Content Include="Content\assets\img\post\profesori.jpg" />
+    <Content Include="Content\assets\img\post\romold.jpg" />
     <Content Include="Content\assets\scss\style.css">
       <DependentUpon>style.scss</DependentUpon>
     </Content>
