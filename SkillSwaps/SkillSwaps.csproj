@@ -647,8 +647,6 @@
     <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\BlogDetails\Index.cshtml" />
-    <Content Include="Views\Element\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
