@@ -44,6 +44,13 @@
     color: #C86FFF
 }
 
+.webkit-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:8;
+    overflow: hidden;
+}
+
 .boxed-btn {
     background: #fff;
     color: #C86FFF !important;
@@ -4043,7 +4050,8 @@ hr {
     -webkit-transition: .4s;
     -moz-transition: .4s;
     -o-transition: .4s;
-    transition: .4s
+    transition: .4s;
+    max-height:55em;
 }
 
     .courses-area .properties__card:hover {
@@ -4303,7 +4311,7 @@ hr {
 
     .services-area .single-services {
         display: flex;
-        box-shadow: 0px 25px 60px rgba(66,85,164,0.06);
+        box-shadow: 0px 25px 60px rgba(66,85,164,0.60);
         padding: 29px 24px;
         border-radius: 20px;
         background: #fff

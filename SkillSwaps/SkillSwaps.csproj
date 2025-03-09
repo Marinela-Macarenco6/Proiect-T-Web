@@ -327,6 +327,7 @@
     <Content Include="Content\assets\img\gallery\h1_hero2.png" />
     <Content Include="Content\assets\img\gallery\heart1.png" />
     <Content Include="Content\assets\img\gallery\logo2_footer.png" />
+    <Content Include="Content\assets\img\gallery\python.jpg" />
     <Content Include="Content\assets\img\gallery\qutaion.png" />
     <Content Include="Content\assets\img\gallery\screen.png" />
     <Content Include="Content\assets\img\gallery\section-bg3.png" />
@@ -337,6 +338,18 @@
     <Content Include="Content\assets\img\gallery\team2.png" />
     <Content Include="Content\assets\img\gallery\team3.png" />
     <Content Include="Content\assets\img\gallery\team4.png" />
+    <Content Include="Content\assets\img\gallery\test1.jfif" />
+    <Content Include="Content\assets\img\gallery\test10.jfif" />
+    <Content Include="Content\assets\img\gallery\test11.jfif" />
+    <Content Include="Content\assets\img\gallery\test12.jfif" />
+    <Content Include="Content\assets\img\gallery\test2.jfif" />
+    <Content Include="Content\assets\img\gallery\test3.jfif" />
+    <Content Include="Content\assets\img\gallery\test4.jfif" />
+    <Content Include="Content\assets\img\gallery\test5.jfif" />
+    <Content Include="Content\assets\img\gallery\test6.jfif" />
+    <Content Include="Content\assets\img\gallery\test7.jfif" />
+    <Content Include="Content\assets\img\gallery\test8.jfif" />
+    <Content Include="Content\assets\img\gallery\test9.jfif" />
     <Content Include="Content\assets\img\gallery\testimonail.png" />
     <Content Include="Content\assets\img\gallery\testimonial.png" />
     <Content Include="Content\assets\img\gallery\topic1.png" />
