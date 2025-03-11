@@ -7325,10 +7325,24 @@ b, sup, sub, u, del {
     font-size: 20px;
     font-weight: bold;
     color: rgb(66, 85, 164);
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .pasi {
     margin-bottom: 0px;
     margin-top: 0px;
 }
+
+
+
+
+.right-img {
+    width: 105%; /* Redimensionează imaginea la 50% din dimensiunea inițială */
+    height: auto; /* Menține proporțiile */
+    display: block; /* Evită spații goale în jurul imaginii */
+    margin: 0 auto; /* Centrează imaginea */
+}
+
+
 
