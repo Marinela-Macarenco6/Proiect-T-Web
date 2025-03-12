@@ -280,6 +280,7 @@
     <Content Include="Content\assets\img\blog\inteligenta artificiala.jpg" />
     <Content Include="Content\assets\img\blog\learn_about_bg.png" />
     <Content Include="Content\assets\img\blog\mathc.jpg" />
+    <Content Include="Content\assets\img\blog\psih-foto.jpg" />
     <Content Include="Content\assets\img\blog\single_blog_1.png" />
     <Content Include="Content\assets\img\blog\single_blog_2.png" />
     <Content Include="Content\assets\img\blog\single_blog_3.png" />
@@ -588,6 +589,12 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\ElementController.cs" />
+    <Compile Include="Controllers\Ev1Controller.cs" />
+    <Compile Include="Controllers\Ev2Controller.cs" />
+    <Compile Include="Controllers\Ev3Controller.cs" />
+    <Compile Include="Controllers\Ev4Controller.cs" />
+    <Compile Include="Controllers\Ev5Controller.cs" />
+    <Compile Include="Controllers\Evpag2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -663,6 +670,12 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Ev1\Index.cshtml" />
+    <Content Include="Views\Ev2\Index.cshtml" />
+    <Content Include="Views\Ev3\Index.cshtml" />
+    <Content Include="Views\Ev4\Index.cshtml" />
+    <Content Include="Views\Ev5\Index.cshtml" />
+    <Content Include="Views\Evpag2\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
