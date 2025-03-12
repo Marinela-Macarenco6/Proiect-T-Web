@@ -35,49 +35,7 @@
         </div>
     </div>
     <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparent">
-            <div class="main-header ">
-                <div class="header-bottom  header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="/Home/Index"><img src="~/Content/assets/img/logo/logo.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                                    <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">
-                                                <li class="active"><a href="~/Home/Index">Acasă</a></li>
-                                                <li class="active"><a href="~/Courses/Index">Cursuri</a></li>
-                                                <li class="active"><a href="~/About/Index">Despre Noi</a></li>
-                                                <li class="active"><a href="~/Blog/Index">Blog</a></li>
-                                                <li class="active"><a href="~/Contact/Index">Contacte</a></li>
-                                                <!-- Button -->
-                                                <li class="button-header margin-left "><a href="~/Register/Index" class="btn">Înregistrare</a></li>
-                                                <li class="button-header"><a href="~/Login/Index" class="btn btn3">Conectează-te</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
+    @Html.Partial("_Header")
     <main>
         <!--? slider Area Start-->
         <section class="slider-area ">
@@ -89,9 +47,11 @@
                             <div class="col-xl-6 col-lg-7 col-md-12">
                                 <div class="hero__caption">
                                     <h1 data-animation="fadeInLeft" data-delay="0.2s">Trade your <br>skills </h1>
-                                    <p data-animation="fadeInLeft" data-delay="0.4s">„Ai abilități valoroase? Pe Trade Your Skills, le poți transforma în oportunități! 
-                                    Fă schimb de competențe cu alți profesioniști sau monetizează-ți talentul oferind servicii contra cost. Înscrie-te și începe să-ți valorifici skill-urile cu un simplu click!”</p>
-                                    <a href="/Register/Index" class="btn hero-btn" data-animation="fadeInLeft"  data-delay="0.7s">Alătură-te</a>
+                                    <p data-animation="fadeInLeft" data-delay="0.4s">
+                                        „Ai abilități valoroase? Pe Trade Your Skills, le poți transforma în oportunități!
+                                        Fă schimb de competențe cu alți profesioniști sau monetizează-ți talentul oferind servicii contra cost. Înscrie-te și începe să-ți valorifici skill-urile cu un simplu click!”
+                                    </p>
+                                    <a href="/Register/Index" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Alătură-te</a>
                                 </div>
                             </div>
                         </div>
@@ -226,8 +186,8 @@
                                 <p>ȘAH</p>
                                 <h3><a href="~/Courses/Index">Mentorat în șah de la un fost campion</a></h3>
                                 <p class="webkit-line">
-                                    Ofer lecții și mentorat pentru cei care doresc să își perfecționeze abilitățile și să 
-                                    se pregătească pentru competiții. Fiind fost campion, îți voi transmite cunoștințele și 
+                                    Ofer lecții și mentorat pentru cei care doresc să își perfecționeze abilitățile și să
+                                    se pregătească pentru competiții. Fiind fost campion, îți voi transmite cunoștințele și
                                     experiența acumulată, ghidându-te prin strategii avansate, tactici complexe și dezvoltarea
                                     unei gândiri strategice de nivel înalt. Dacă vrei să îți duci jocul de șah la un alt nivel
                                     și să te pregătești pentru turnee, sunt aici să te ajut să atingi noi culmi!
@@ -305,7 +265,7 @@
                         <div class="front-text">
                             <h2 class="">Monetizează-ți skillurile cu un simplu click</h2>
                             <p>
-                                „Ai abilități valoroase? Pe Trade Your Skills, le poți transforma în oportunități! Fă schimb de competențe cu 
+                                „Ai abilități valoroase? Pe Trade Your Skills, le poți transforma în oportunități! Fă schimb de competențe cu
                                 alți profesioniști sau monetizează-ți talentul oferind servicii contra cost. Indiferent dacă vrei să înveți,
                                 să colaborezi sau să câștigi bani, aici găsești comunitatea potrivită. Înscrie-te și începe să-ți valorifici
                                 skill-urile cu un simplu click! Transformă-ți pasiunea într-o sursă de venit, descoperă noi oportunități de
@@ -493,9 +453,9 @@
                         </div>
                         <div class="features-caption">
                             <p>
-                            Credem că abilitățile sunt unul dintre cele mai valoroase atuuri ale unei persoane.
-                            Platforma noastră a fost creată pentru a ajuta oamenii să se conecteze, să colaboreze și să
-                            se dezvolte – fie prin schimbul de competențe, fie prin monetizarea acestora..
+                                Credem că abilitățile sunt unul dintre cele mai valoroase atuuri ale unei persoane.
+                                Platforma noastră a fost creată pentru a ajuta oamenii să se conecteze, să colaboreze și să
+                                se dezvolte – fie prin schimbul de competențe, fie prin monetizarea acestora..
                             </p>
                         </div>
                     </div>
@@ -505,10 +465,10 @@
                         </div>
                         <div class="features-caption">
                             <p>
-                                Trade Your Skills este mai mult decât un simplu marketplace; este o comunitate dinamică în 
+                                Trade Your Skills este mai mult decât un simplu marketplace; este o comunitate dinamică în
                                 care profesioniștii, freelancerii și pasionații își pot împărtăși cunoștințele, își pot
                                 extinde rețeaua și pot descoperi noi oportunități. Indiferent dacă vrei să faci schimb de
-                                skill-uri, să oferi servicii contra cost sau să găsești expertul potrivit pentru nevoile 
+                                skill-uri, să oferi servicii contra cost sau să găsești expertul potrivit pentru nevoile
                                 tale, platforma noastră îți oferă soluția ideală.
                             </p>
                         </div>
@@ -535,7 +495,8 @@
                         <div class="cat-cap">
                             <h5><a href="services.html">Mihai C.</a></h5>
                             <p class="profesie">Programator</p>
-                            <p>"Am oferit cursuri de Python în schimbul unor lecții de vorbit în public.
+                            <p>
+                                "Am oferit cursuri de Python în schimbul unor lecții de vorbit în public.
                                 Acum mă simt mult mai pregătit să susțin prezentări la conferințe!".
                             </p>
                         </div>
@@ -547,7 +508,8 @@
                         <div class="cat-cap">
                             <h5><a href="services.html">Elena R.</a></h5>
                             <p class="profesie">Profesoară de L. Engleză</p>
-                            <p>"Am oferit lecții de engleză în schimbul unor sesiuni de social media marketing.
+                            <p>
+                                "Am oferit lecții de engleză în schimbul unor sesiuni de social media marketing.
                                 Acum îmi gestionez mai bine promovarea și am învățat lucruri noi!".
                             </p>
                         </div>
@@ -559,7 +521,8 @@
                         <div class="cat-cap">
                             <h5><a href="services.html">Ionuț C.</a></h5>
                             <p class="profesie">Consultant Financiar</p>
-                            <p>"Este o platformă utilă, însă ar fi ideal să existe un filtru de căutare mai detaliat,
+                            <p>
+                                "Este o platformă utilă, însă ar fi ideal să existe un filtru de căutare mai detaliat,
                                 astfel încât să putem găsi anunțuri în funcție de locație sau nivelul de experiență al utilizatorilor.".
                             </p>
                         </div>
@@ -571,7 +534,8 @@
                         <div class="cat-cap">
                             <h5><a href="services.html">Corina A.</a></h5>
                             <p class="profesie">Casnică</p>
-                            <p>"Am învățat grădinărit de la un o doamnă mai în vârstă și sunt foarte mulțumită. Lecțiile au fost clare și utile,
+                            <p>
+                                "Am învățat grădinărit de la un o doamnă mai în vârstă și sunt foarte mulțumită. Lecțiile au fost clare și utile,
                                 iar grădina mea arată acum mult mai bine. Recomand cu încredere!".
                             </p>
                         </div>
@@ -583,7 +547,8 @@
                         <div class="cat-cap">
                             <h5><a href="services.html">Marius B.</a></h5>
                             <p class="profesie">Antrenor personal</p>
-                            <p>"Mi-a plăcut ideea de a face schimb de abilități, dar ar fi util să adăugați și opțiunea de a crea grupuri sau 
+                            <p>
+                                "Mi-a plăcut ideea de a face schimb de abilități, dar ar fi util să adăugați și opțiunea de a crea grupuri sau
                                 sesiuni de mentorat pentru mai mulți utilizatori în același timp.".
                             </p>
                         </div>
@@ -620,99 +585,7 @@
         </section>
         <!-- About Area End -->
     </main>
-    <footer>
-        <div class="footer-wrapper footer-bg">
-            <!-- Footer Start-->
-            <div class="footer-area footer-padding">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="single-footer-caption mb-30">
-                                    <!-- Logo -->
-                                    <div class="footer-logo mb-25">
-                                        <a href="~/Home/Index"><img src="~/Content/assets/img/logo/logo2_footer.png" alt="Logo Trade Your Skill"></a>
-                                    </div>
-                                    <div class="footer-tittle">
-                                        <div class="footer-pera">
-                                            <p>Oferim oamenilor posibilitatea de a-și tranzacționa și dezvolta abilitățile împreună.</p>
-                                        </div>
-                                    </div>
-                                    <!-- Social Links -->
-                                    <div class="footer-social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Solutiile noastre</h4>
-                                    <ul>
-                                        <li><a href="#">Design & Creativitate</a></li>
-                                        <li><a href="#">Telecomunicații</a></li>
-                                        <li><a href="#">Consultanță</a></li>
-                                        <li><a href="#">Programare</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Suport</h4>
-                                    <ul>
-                                        <li><a href="#">Întrebări frecvente</a></li>
-                                        <li><a href="#">Centru de ajutor</a></li>
-                                        <li><a href="#">Contactează-ne</a></li>
-                                        <li><a href="#">Prețuri</a></li>
-                                        <li><a href="#">Termeni & Condiții</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Compania</h4>
-                                    <ul>
-                                        <li><a href="#">Despre noi</a></li>
-                                        <li><a href="#">Cariere</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Politica de confidențialitate</a></li>
-                                        <li><a href="#">Parteneri</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- footer-bottom area -->
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-xl-12 text-center">
-                                <div class="footer-copy-right">
-                                    <p>
-                                        <!-- Copyright Notice -->
-                                        Copyright &copy;
-                                        <script>document.write(new Date().getFullYear());</script> Toate drepturile rezervate <i class="fa fa-heart" aria-hidden="true"></i>  <a href="#" target="_blank">Trade Your Skill</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End-->
-        </div>
-    </footer>
+    @Html.Partial("_Footer")
     <!-- Scroll Up -->
     <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
