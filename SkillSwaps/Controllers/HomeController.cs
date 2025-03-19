@@ -1,4 +1,6 @@
-﻿using Business_Logic.Interfaces;
+﻿using Domain.Article;
+using Business_Logic;
+using Business_Logic.Interfaces;
 using SkillSwaps.Models;
 using System;
 using System.Collections.Generic;
@@ -14,14 +16,15 @@ namespace SkillSwaps.Controllers
         private readonly ISession _session;
         public HomeController() 
         {
-            var bl = new BusinessLogic.BusinessLogic();
-            _product = bl.GetProductBL();
+            var bl = new BusinessLogic();
+            _product = bl.GetProductBl();
             _session = bl.GetSessionBL();
         }
         // GET: Home
         public ActionResult Index()
+
         {
-            List<ArticlesDataMain> var data = _product.GetAllArticleFor();
+            List<ArticleDataMain> data = _product.GetAllArticleFor();
 
             var ss = _session.ValidateSessionId("");
 
