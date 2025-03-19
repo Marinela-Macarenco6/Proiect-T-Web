@@ -1,4 +1,5 @@
-﻿using Business_Logic;
+﻿using Domain.User;
+using Business_Logic;
 using Business_Logic.Interfaces;
 using SkillSwaps.Models.User;
 using System;

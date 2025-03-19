@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.User;
+using Domain.Article;
 
 namespace Business_Logic.Core
 {

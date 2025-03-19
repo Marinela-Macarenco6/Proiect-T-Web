@@ -1,4 +1,6 @@
-﻿using Business_Logic.Core;
+﻿using Domain.Article;
+using Business_Logic.Core;
+using Business_Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace Business_Logic.BL_Struct
     public class ProductBL : UserApi, IProduct
     {
 
-    public List<ArticlesDataMain> GetAllArticleFor()
+    public List<ArticleDataMain> GetAllArticleFor()
             {
             return GetAllArticleForAction();
             }

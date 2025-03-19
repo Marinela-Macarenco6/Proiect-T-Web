@@ -1,4 +1,5 @@
-﻿using Business_Logic.Core;
+﻿using Domain.User;
+using Business_Logic.Core;
 using Business_Logic.Interfaces;
 using System;
 using System.Collections.Generic;

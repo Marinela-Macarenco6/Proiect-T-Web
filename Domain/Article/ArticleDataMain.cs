@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Article
 {
-    class ArticleDataMain
+    public class ArticleDataMain
     {
         public int ArticleId { get; set; }
         public string Title { get; set; }
