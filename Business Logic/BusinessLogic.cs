@@ -18,5 +18,10 @@ namespace Business_Logic
         {
             return new ProductBL();
         }
+
+        public IReg GetRegBL() 
+        {
+            return new RegBL();
+        }
     }
 }

@@ -47,5 +47,10 @@ namespace Business_Logic.Core
             return new List<ArticleDataMain>();
         }
 
+
+        public void Test() 
+        {
+
+        }
     }
 }

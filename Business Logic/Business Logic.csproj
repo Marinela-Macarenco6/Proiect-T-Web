@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL Struct\ProductBL.cs" />
+    <Compile Include="BL Struct\RegBL.cs" />
     <Compile Include="BL Struct\SessionBL.cs" />
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
+    <Compile Include="Interfaces\IReg.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

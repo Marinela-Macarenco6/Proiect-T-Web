@@ -604,6 +604,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Reg\RegData.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\User\AuthData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -672,7 +673,7 @@
     <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Blog\Ev1.cshtml" />
     <Content Include="Views\Blog\Ev2.cshtml" />
