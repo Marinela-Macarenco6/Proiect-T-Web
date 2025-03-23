@@ -10,6 +10,6 @@ namespace Business_Logic.Interfaces
 {
     public interface IReg
     {
-        string RegUser(UserRegData uRegData);
+        string UserRegLogic(UserRegData uRegData);
     }
 }

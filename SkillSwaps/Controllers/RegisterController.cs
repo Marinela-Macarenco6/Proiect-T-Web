@@ -37,10 +37,6 @@ namespace SkillSwaps.Controllers
             };
             string sessionKey = _reg.RegUser(uRegData);
 
-
-
-
-
             return View();
         }
 

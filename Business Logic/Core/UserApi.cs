@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.User;
 using Domain.Article;
+using SkillSwaps.Controllers;
 
 namespace Business_Logic.Core
 {
@@ -47,10 +48,15 @@ namespace Business_Logic.Core
             return new List<ArticleDataMain>();
         }
 
-
-        public void Test() 
+        //-----------------------REG----------------------------
+        public string UserRegLogicAction(UserRegData data) 
         {
 
+
+
+
+            var sessionKey = GenerateSessionKey(data.UserName, "utm2025");
+            return sessionKey;
         }
     }
 }
