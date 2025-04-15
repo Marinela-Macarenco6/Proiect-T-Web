@@ -17,7 +17,7 @@ namespace SkillSwaps.Controllers
         
         public RegisterController() 
         {
-            var bl = new Business_Logic.BusinessLogic();
+            var bl = new BusinessLogic();
             _reg = bl.GetRegBL();
         }
         // GET: Register
@@ -35,7 +35,7 @@ namespace SkillSwaps.Controllers
                 UserName = data.UserName,
                 RequestTime = DateTime.UtcNow
             };
-            string sessionKey = _reg.RegUser(uRegData);
+            string sessionKey = _reg.UserRegLogic(uRegData);
 
             return View();
         }

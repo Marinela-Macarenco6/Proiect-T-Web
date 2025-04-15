@@ -11,7 +11,7 @@ namespace Business_Logic.BL_Struct
 {
     public class RegBL : UserApi, IReg
     {
-        public string RegUser(UserRegData uRegData)
+        public string UserRegLogic(UserRegData uRegData)
         {
             throw new NotImplementedException();
         }
