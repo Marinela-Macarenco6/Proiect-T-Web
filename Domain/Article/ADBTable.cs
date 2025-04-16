@@ -29,7 +29,6 @@ namespace Domain.Article
 
         [Required]
         [Display(Name = "category")]
-        [StringLength(20, MinimumLength = 4, ErrorMessage = "Category can not be shorter than 4 charatcters and longer than 20 characters")]
         public EACategory Category { get; set; }
 
         [Required]
