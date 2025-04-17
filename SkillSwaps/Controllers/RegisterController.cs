@@ -20,6 +20,7 @@ namespace SkillSwaps.Controllers
             var bl = new BusinessLogic();
             _reg = bl.GetRegBL();
         }
+
         // GET: Register
         public ActionResult Index()
         {

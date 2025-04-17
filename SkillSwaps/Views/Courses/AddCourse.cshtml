@@ -1,0 +1,196 @@
+﻿@model SkillSwaps.Models.Course.AddCourseData
+@{
+    Layout = null;
+    ViewBag.Title = "Create Course";
+}
+
+@using System.Web.Optimization
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Create Course | Education</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="~/Content/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
+
+    @Styles.Render("~/Content/assets/css")
+    @Styles.Render("~/Content/assets/scss")
+
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/slicknav.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/flaticon.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/progressbar_barfiller.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/gijgo.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/animate.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/animated-headline.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/slick.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/nice-select.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
+</head>
+<body>
+
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="~/Content/assets/img/logo/loder.png" alt="loader">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <main class="login-body" data-vide-bg="~/Content/assets/img/login-bg.mp4">
+        <!-- Create Course Form -->
+        <form id="createCourseForm" class="form-default" action="/Courses/AddCourse" method="post">
+
+
+            <div class="login-form">
+                <div class="logo-login">
+                    <img src="~/Content/assets/img/logo/loder.png" alt="">
+                </div>
+                <h2>Create Course</h2>
+
+                <div class="form-input">
+                    <label for="Title">Titlu</label>
+                    <input type="text" name="Title" placeholder="Titlu curs" required />
+                </div>
+
+                <div class="form-input">
+                    <label for="Teacher">Profesor</label>
+                    <input type="text" name="Teacher" placeholder="Numele profesorului" required />
+                </div>
+
+                <div class="form-input">
+                    <label for="Category">Categorie</label>
+                    <select name="Category" required>
+                        @foreach (var category in Enum.GetValues(typeof(Domain.Enums.EACategory)))
+                        {
+                            <option value="@category">@category</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-input">
+                    <label for="Description">Descriere</label>
+                    <textarea name="Description" placeholder="Descriere curs" required></textarea>
+                </div>
+
+                <div class="form-input">
+                    <label for="ArticleImage">URL Imagine</label>
+                    <input type="text" name="ArticleImage" placeholder="https://..." required />
+                </div>
+
+                <div class="form-input pt-30" style="text-align:center;">
+                    <input type="submit" value="Create Course" />
+                </div>
+            </div>
+        </form>
+        <!-- End Form -->
+    </main>
+
+    <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/assets/js/popper.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/Content/assets/js/jquery.vide.js"></script>
+    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Content/assets/js/slick.min.js"></script>
+    <script src="~/Content/assets/js/wow.min.js"></script>
+    <script src="~/Content/assets/js/animated.headline.js"></script>
+    <script src="~/Content/assets/js/jquery.magnific-popup.js"></script>
+    <script src="~/Content/assets/js/gijgo.min.js"></script>
+    <script src="~/Content/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/assets/js/jquery.sticky.js"></script>
+    <script src="~/Content/assets/js/jquery.barfiller.js"></script>
+    <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/assets/js/waypoints.min.js"></script>
+    <script src="~/Content/assets/js/jquery.countdown.min.js"></script>
+    <script src="~/Content/assets/js/hover-direction-snake.min.js"></script>
+    <script src="~/Content/assets/js/contact.js"></script>
+    <script src="~/Content/assets/js/jquery.form.js"></script>
+    <script src="~/Content/assets/js/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/js/mail-script.js"></script>
+    <script src="~/Content/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Content/assets/js/plugins.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+
+    @Scripts.Render("~/Scripts/js")
+
+    <script>
+        $(function () {
+
+            $("#createCourseForm").validate({
+                rules: {
+                    Title: {
+                        required: true,
+                        minlength: 3
+                    },
+                    Teacher: {
+                        required: true,
+                        minlength: 3
+                    },
+                    Category: {
+                        required: true
+                    },
+                    Description: {
+                        required: true,
+                        minlength: 10
+                    },
+                    ArticleImage: {
+                        required: true,
+                        url: true
+                    }
+                },
+                messages: {
+                    Title: {
+                        required: "Introdu titlul cursului",
+                        minlength: "Titlul trebuie sa aiba cel putin 3 caractere"
+                    },
+                    Teacher: {
+                        required: "Introdu numele profesorului",
+                        minlength: "Numele trebuie sa aiba cel putin 3 caractere"
+                    },
+                    Category: {
+                        required: "Alege o categorie"
+                    },
+                    Description: {
+                        required: "Introdu o descriere",
+                        minlength: "Descrierea trebuie sa aiba cel putin 10 caractere"
+                    },
+                    ArticleImage: {
+                        required: "Introdu un link catre imagine",
+                        url: "Introdu un URL valid"
+                    }
+                },
+                errorPlacement: function (error, element) {
+                    error.addClass("text-danger");
+                    element.closest(".form-input").append(error);
+                },
+                errorElement: "span",
+                highlight: function (element) {
+                    $(element).addClass("is-invalid");
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("is-invalid");
+                }
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

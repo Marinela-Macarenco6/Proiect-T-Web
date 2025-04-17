@@ -9,12 +9,17 @@ using System.Threading.Tasks;
 
 namespace Business_Logic.BL_Struct
 {
-    public class ProductBL : UserApi, IProduct
+    public class ProductBL : CourseApi, IProduct
     {
+        public List<ArticleDataMain> GetAllArticleFor()
+        { 
 
-    public List<ArticleDataMain> GetAllArticleFor()
-            {
             return GetAllArticleForAction();
-            }
+        }
+
+        public bool AddCourse(ArticleDataMain courseData)
+        {
+            return AddCourseAction(courseData);
+        }
     }
 }

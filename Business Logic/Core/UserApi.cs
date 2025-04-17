@@ -43,10 +43,7 @@ namespace Business_Logic.Core
             return sKey;
         }
 
-        public List<ArticleDataMain> GetAllArticleForAction()
-        {
-            return new List<ArticleDataMain>();
-        }
+
 
         //-----------------------REG----------------------------
         public string UserRegLogicAction(UserRegData data) 
