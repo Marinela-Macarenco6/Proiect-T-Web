@@ -1,12 +1,7 @@
 ﻿using Business_Logic;
+using Business_Logic.BL_Struct;
 using Business_Logic.Interfaces;
 using Domain.User;
-using SkillSwaps.Models.User;
-using SkillSwaps.Models.Reg;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SkillSwaps.Controllers
@@ -14,32 +9,48 @@ namespace SkillSwaps.Controllers
     public class RegisterController : Controller
     {
         private readonly IReg _reg;
-        
-        public RegisterController() 
+
+        // Constructorul pentru injectarea dependenței
+        public RegisterController()
         {
-            var bl = new BusinessLogic();
-            _reg = bl.GetRegBL();
+            _reg = new RegBL();  // Logica de business pentru înregistrare
         }
 
-        // GET: Register
+        // GET: Registration Page
         public ActionResult Index()
         {
             return View();
         }
 
+        // POST: Register New User
         [HttpPost]
-        public ActionResult Register(RegData data)
+        public ActionResult Register(UserRegData data)
         {
-            var uRegData = new UserRegData
+            // Validare confirmare parolă pe server
+            if (data.Password != data.ConfirmPassword)
             {
-                Password = data.Password,
-                UserName = data.UserName,
-                RequestTime = DateTime.UtcNow
-            };
-            string sessionKey = _reg.UserRegLogic(uRegData);
+                ModelState.AddModelError("ConfirmPassword", "Parolele nu se potrivesc.");
+            }
 
-            return View();
+            if (ModelState.IsValid)
+            {
+                // Apelarea logicii de înregistrare (din RegBL)
+                string sessionKey = _reg.UserRegLogic(data);
+
+                if (!string.IsNullOrEmpty(sessionKey))
+                {
+                    // Dacă înregistrarea este cu succes, returnezi un mesaj de succes
+                    TempData["Success"] = "Utilizatorul a fost înregistrat cu succes!";
+                    return RedirectToAction("Index", "Home"); // După înregistrare, redirect la pagina de login
+                }
+                else
+                {
+                    ModelState.AddModelError("", "A apărut o eroare la înregistrare. Te rugăm să încerci din nou.");
+                }
+            }
+
+            // Dacă modelul nu este valid, returnezi pagina cu mesaj de eroare
+            return View("Index", data);
         }
-
     }
 }

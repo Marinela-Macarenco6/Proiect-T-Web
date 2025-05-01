@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.User;
-using Domain.Article;
-using SkillSwaps.Controllers;
+using Business_Logic.DbDataContext.Seed;
 
 namespace Business_Logic.Core
 {
@@ -46,11 +41,47 @@ namespace Business_Logic.Core
 
 
         //-----------------------REG----------------------------
-        public string UserRegLogicAction(UserRegData data) 
+        public string UserRegLogicAction(RegDataActionDTO data)
         {
+            if (data == null
+                || string.IsNullOrEmpty(data.UserName)
+                || string.IsNullOrEmpty(data.Password)
+                || string.IsNullOrEmpty(data.ConfirmPassword)
+                || string.IsNullOrEmpty(data.FullName)
+                || string.IsNullOrEmpty(data.Email))
+            {
+                return string.Empty;
+            }
 
+            // Verificăm dacă parolele se potrivesc
+            if (data.Password != data.ConfirmPassword)
+            {
+                return string.Empty;
+            }
 
+            using (var db = new UserContext())
+            {
+                // Verificăm dacă username-ul sau email-ul există deja
+                var existingUser = db.UserRegDatas.FirstOrDefault(u => u.UserName == data.UserName || u.Email == data.Email);
+                if (existingUser != null)
+                {
+                    return string.Empty;
+                }
 
+                // Creăm noul utilizator
+                var newUser = new UserRegData
+                {
+                    FullName = data.FullName,
+                    UserName = data.UserName,
+                    Email = data.Email,
+                    Password = data.Password,
+                    ConfirmPassword = data.ConfirmPassword,
+                    RequestTime = DateTime.UtcNow
+                };
+
+                db.UserRegDatas.Add(newUser);
+                db.SaveChanges();
+            }
 
             var sessionKey = GenerateSessionKey(data.UserName, "utm2025");
             return sessionKey;

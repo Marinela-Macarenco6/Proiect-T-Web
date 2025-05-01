@@ -58,6 +58,7 @@
     <Compile Include="Core\CourseApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DbDataContext\ArticleContext.cs" />
+    <Compile Include="DbDataContext\Seed\UserContext.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IReg.cs" />
     <Compile Include="Interfaces\ISession.cs" />
@@ -73,9 +74,7 @@
       <Name>Helpers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DbDataContext\Seed\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
