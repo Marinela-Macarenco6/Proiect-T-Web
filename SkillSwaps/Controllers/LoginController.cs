@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using Domain.User.UserActionResp;
 
 namespace SkillSwaps.Controllers
 {
@@ -21,39 +22,36 @@ namespace SkillSwaps.Controllers
             _session = bl.GetSessionBL();
         }
 
-
-
-
-        // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
-            //var sId = "abcd";
-            //bool isSessionValid = _session.ValidateSessionId(sId); 
-            //if(isSessionValid)
-            //{
-            //    return RedirectToAction("Login");
-            //}
-            return View();
+            return View(new AuthData());
         }
 
-        [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(AuthData data)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(AuthData data) 
-        {
-            var uAuthData = new UserAuthData
-            { 
+            var uAuthData = new UserAuthDTO
+            {
                 Password = data.Password,
                 UserName = data.UserName,
-                RequestTime = DateTime.UtcNow
+                UserIp = "localhost"
             };
-            string sessionKey = _session.AuthUser(uAuthData);
+            var resp = _session.AuthUser(uAuthData);
 
-            return View();
+            if (resp.Status)
+            {
+                var respCookie = _session.GeneratCookieByUser(resp.UserId);
+
+                var cookie = respCookie.Cookie;
+
+                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+            else
+            {
+                return RedirectToAction("Error", "Error");
+            }
+            return RedirectToAction("Index", "Home");
+
         }
 
     }

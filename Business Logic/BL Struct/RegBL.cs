@@ -1,32 +1,17 @@
 ﻿using Business_Logic.Core;
 using Business_Logic.Interfaces;
+using Domain.Enums;
 using Domain.User;
+using Domain.User.Reg;
+using System;
 
 namespace Business_Logic.BL_Struct
 {
     public class RegBL : UserApi, IReg
     {
-        // Constructor fără parametru 'userLevel'
-        public RegBL()
+        public UserRegDataResp UserRegLogic(RegDataActionDTO uRegData)
         {
-        }
-
-        public string UserRegLogic(UserRegData uRegData)
-        {
-            return UserRegLogicAction(new RegDataActionDTO
-            {
-                FullName = uRegData.FullName,
-                UserName = uRegData.UserName,
-                Email = uRegData.Email,
-                Password = uRegData.Password,
-                ConfirmPassword = uRegData.ConfirmPassword
-            });
-        }
-
-
-        public string RegisterUser(RegDataActionDTO userData)
-        {
-            return UserRegLogicAction(userData);
+            return UserRegLogicAction(uRegData);
         }
     }
 }

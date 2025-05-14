@@ -1,0 +1,75 @@
+﻿@model SkillSwaps.Models.User.AuthData
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
+</head>
+<body>
+    <main class="login-body" data-vide-bg="assets/img/login-bg.mp4">
+        <form class="form-default" method="post" action="@Url.Action("Login", "Login")">
+            @Html.AntiForgeryToken()
+
+            <div class="login-form">
+                <div class="logo-login">
+                    <img src="~/Content/assets/img/logo/loder.png" alt="logo" />
+                </div>
+
+                <h2>Login Here</h2>
+
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Count > 0)
+                {
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach (var modelError in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@modelError.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                <div class="form-input">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Email sau Username",
+                        name = "UserName",
+                        value = Model?.UserName ?? ""
+                    })
+                </div>
+
+                <div class="form-input">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Password",
+                        name = "Password"
+                    })
+                </div>
+
+                <div class="form-input pt-30">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+
+                <div class="pt-3">
+                    <a href="/Register/Index" class="registration">Don't have an account? Register</a>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="~/Content/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

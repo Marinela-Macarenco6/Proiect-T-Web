@@ -26,9 +26,6 @@ namespace SkillSwaps.Controllers
         {
             List<ArticleDataMain> data = _product.GetAllArticleFor();
 
-            var ss = _session.ValidateSessionId("");
-
-
             UserData u = new UserData();
             u.Username = "Customer";
             u.Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" };

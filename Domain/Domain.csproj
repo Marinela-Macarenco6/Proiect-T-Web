@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,10 +58,13 @@
     <Compile Include="Enums\EACategory.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\Auth\UserAuthDTO.cs" />
+    <Compile Include="User\Auth\USessionDbTable.cs" />
     <Compile Include="User\Reg\RegDataActionDTO.cs" />
     <Compile Include="User\Reg\UserRegData.cs" />
     <Compile Include="User\Reg\UserRegDataResp.cs" />
-    <Compile Include="User\UserAuthData.cs" />
+    <Compile Include="User\UserActionResp\UserCookieResp.cs" />
+    <Compile Include="User\UserActionResp\UserResp.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Helpers\Helpers.csproj">

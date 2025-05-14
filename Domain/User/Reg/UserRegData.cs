@@ -32,15 +32,10 @@ namespace Domain.User
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [NotMapped]
-        [Required(ErrorMessage = "Confirm Password is required.")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Passwords do not match.")]
-        public string ConfirmPassword { get; set; }
-
         [Display(Name = "request_time")]
-        public DateTime RequestTime { get; set; }
+        public DateTime? RequestTime { get; set; }
+
 
     }
 }
+

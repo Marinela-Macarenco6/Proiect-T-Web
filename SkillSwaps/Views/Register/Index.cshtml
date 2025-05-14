@@ -6,40 +6,31 @@
 }
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Register | SkillSwap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="utf-8" />
+    <title>Register | YourApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Content/assets/css/style.css" />
 </head>
-
 <body>
-    <main class="login-body" data-vide-bg="~/Content/assets/img/login-bg.mp4">
+    <main class="login-body">
+        <form class="form-default" id="registerForm" method="post" action="@Url.Action("Register", "Register")">
+            @Html.AntiForgeryToken()
 
-        <!-- Form Registration -->
-        @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @id = "registerForm", @class = "form-default" }))
-        {
             <div class="login-form">
-
                 <div class="logo-login">
-                    <img src="~/Content/assets/img/logo/loder.png" alt="Logo" />
+                    <img src="~/Content/assets/img/logo.png" alt="Logo" />
                 </div>
 
                 <h2>Register Here</h2>
 
-                <!-- Mesaje de succes -->
                 @if (TempData["Success"] != null)
                 {
-                    <div class="alert alert-success">
-                        @TempData["Success"]
-                    </div>
+                    <div class="alert alert-success">@TempData["Success"]</div>
                 }
 
-                <!-- Mesaje de eroare -->
                 @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Count > 0)
                 {
                     <div class="alert alert-danger">
@@ -54,32 +45,27 @@
 
                 <div class="form-input inputForm">
                     <label for="FullName">Full Name</label>
-                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name", id = "FullName" })
-                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                    <input type="text" class="form-control" placeholder="Full Name" id="FullName" name="FullName" value="@Model.FullName" />
                 </div>
 
                 <div class="form-input inputForm">
                     <label for="UserName">User Name</label>
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name", id = "UserName" })
-                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    <input type="text" class="form-control" placeholder="User Name" id="UserName" name="UserName" value="@Model.UserName" />
                 </div>
 
                 <div class="form-input inputForm">
                     <label for="Email">Email Address</label>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", type = "email", id = "Email" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    <input type="email" class="form-control" placeholder="Email" id="Email" name="Email" value="@Model.Email" />
                 </div>
 
                 <div class="form-input inputForm">
                     <label for="Password">Password</label>
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", id = "Password" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <input type="password" class="form-control" placeholder="Password" id="Password" name="Password" />
                 </div>
 
                 <div class="form-input inputForm">
                     <label for="ConfirmPassword">Confirm Password</label>
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", id = "ConfirmPassword" })
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    <input type="password" class="form-control" placeholder="Confirm Password" id="ConfirmPassword" name="ConfirmPassword" />
                 </div>
 
                 <div class="form-input pt-30">
@@ -89,35 +75,8 @@
                 <div class="pt-3">
                     <a href="/Login/Index" class="registration">Already have an account? Login</a>
                 </div>
-
             </div>
-        }
-
+        </form>
     </main>
-
-    <!-- Scripturi necesare -->
-    <script src="~/Content/assets/js/jquery-1.12.4.min.js"></script>
-    <script src="~/Content/assets/js/bootstrap.min.js"></script>
-
-    <!-- Validare ASP.NET MVC -->
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-    <!-- Confirmare parolă JS -->
-    <script>
-        $(document).ready(function () {
-            $('#registerForm').submit(function () {
-                var password = $('#Password').val();
-                var confirmPassword = $('#ConfirmPassword').val();
-
-                if (password !== confirmPassword) {
-                    alert("Parolele nu se potrivesc!");
-                    return false;
-                }
-                return true;
-            });
-        });
-    </script>
-
 </body>
 </html>

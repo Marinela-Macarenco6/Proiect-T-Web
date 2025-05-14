@@ -1,90 +1,168 @@
-﻿using System;
-using System.Linq;
+﻿using Business_Logic.DbDataContext.Seed;
 using Domain.User;
-using Business_Logic.DbDataContext.Seed;
+using Domain.User.Reg;
+using Domain.User.UserActionResp;
+using Helpers.RegFlow;
+using Helpers.Session;
+using SkillSwaps.Models.Session;
+using System;
+using System.Linq;
+using System.Web;
 
 namespace Business_Logic.Core
 {
     public class UserApi
     {
-        internal bool ValidateSessionIdAction(string id)
+
+        //----------------------- AUTH ----------------------------
+        internal UserResp AuthUserAction(UserAuthDTO data)
         {
-            return true;
-        }
-        internal string AuthUserAction(UserAuthData data) 
-        {
-            if (data != null)
+            UserRegData user;
+
+            try
             {
-                bool isUserNameValid = false;
-                if (isUserNameValid)
+                var passHashed = RegPassHelper.HashGen(data.Password);
+
+                using (var db = new UserContext())
                 {
-
-                    //Check if password is correct
-
-
-
-
-
-                    //All ok!
-                    var sessionKey = GenerateSessionKey(data.UserName, "utm2025");
-                    return sessionKey;
+                    user = db.UserRegDatas.FirstOrDefault(
+                        u => u.UserName == data.UserName && u.Password == passHashed);
                 }
             }
-            return string.Empty;
-        }
-        private  string GenerateSessionKey(string username, string noise)
-        {
-            string sKey = username + noise;
-            return sKey;
-        }
-
-
-
-        //-----------------------REG----------------------------
-        public string UserRegLogicAction(RegDataActionDTO data)
-        {
-            if (data == null
-                || string.IsNullOrEmpty(data.UserName)
-                || string.IsNullOrEmpty(data.Password)
-                || string.IsNullOrEmpty(data.ConfirmPassword)
-                || string.IsNullOrEmpty(data.FullName)
-                || string.IsNullOrEmpty(data.Email))
+            catch (Exception ex)
             {
-                return string.Empty;
+                return new UserResp()
+                {
+                    Status = false,
+                    Error = ex.Message
+                };
             }
 
-            // Verificăm dacă parolele se potrivesc
-            if (data.Password != data.ConfirmPassword)
+            if (user == null)
             {
-                return string.Empty;
+                return new UserResp()
+                {
+                    Status = false,
+                    Error = "no user found"
+                };
             }
+
+            return new UserResp()
+            {
+                Status = true,
+                Error = string.Empty,
+                UserId = 1
+            };
+        }
+        internal UserCookieResp GeneratCookieByUserAction(int userId)
+        {
+            var cookieString = new HttpCookie("X-KEY")
+            {
+                Value = CookieGenerator.Create(userId + "[0.0.0.0]" + "ISP: Super Fast Internet")
+            };
+
+            var dateTime = DateTime.Now;
+
+            USessionDbTable session;
+
+            using (var db = new SessionContext())
+            {
+                session = db.Session.FirstOrDefault(u => u.UserId == userId);
+
+            }
+
+            if (session != null)
+            {
+                //UPDATE TABLE
+
+                session.Cookie = cookieString.Value;
+                session.IsValidATime = dateTime.AddHours(3);
+
+                using (var db = new SessionContext())
+                {
+                    db.Entry(session).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                //INSERT TABLE
+
+                session = new USessionDbTable()
+                {
+                    UserId = userId,
+                    Cookie = cookieString.Value,
+                    IsValidATime = dateTime.AddHours(3)
+                };
+
+                using (var db = new SessionContext())
+                {
+                    db.Session.Add(session);
+                    db.SaveChanges();
+                }
+
+            }
+
+
+            return new UserCookieResp() { UserId = userId, Cookie = cookieString, ValidUntil = dateTime };
+        }
+
+
+        //----------------------- REG ----------------------------
+        public UserRegDataResp UserRegLogicAction(RegDataActionDTO data)
+        {
+            UserRegData user;
+            try
+            {
+                using (var db = new UserContext())
+                {
+                    user = db.UserRegDatas
+                        .FirstOrDefault(u => u.UserName == data.UserName || u.Email == data.Email);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new UserRegDataResp
+                {
+                    Status = false,
+                    Error = "Eroare: " + ex.Message
+                };
+            }
+
+            if (user != null)
+            {
+                return new UserRegDataResp
+                {
+                    Status = false,
+                    Error = "Utilizatorul există deja cu acest username sau email."
+                };
+            }
+
+            var passHashed = RegPassHelper.HashGen(data.Password);
+
+            user = new UserRegData
+            {
+                FullName = data.FullName,
+                UserName = data.UserName,
+                Email = data.Email,
+                Password = passHashed,
+                RequestTime = DateTime.UtcNow.ToLocalTime()
+            };
 
             using (var db = new UserContext())
             {
-                // Verificăm dacă username-ul sau email-ul există deja
-                var existingUser = db.UserRegDatas.FirstOrDefault(u => u.UserName == data.UserName || u.Email == data.Email);
-                if (existingUser != null)
-                {
-                    return string.Empty;
-                }
-
-                // Creăm noul utilizator
-                var newUser = new UserRegData
-                {
-                    FullName = data.FullName,
-                    UserName = data.UserName,
-                    Email = data.Email,
-                    Password = data.Password,
-                    ConfirmPassword = data.ConfirmPassword,
-                    RequestTime = DateTime.UtcNow
-                };
-
-                db.UserRegDatas.Add(newUser);
+                db.UserRegDatas.Add(user);
                 db.SaveChanges();
             }
 
-            var sessionKey = GenerateSessionKey(data.UserName, "utm2025");
-            return sessionKey;
+            return new UserRegDataResp
+            {
+                Status = true,
+                Error = string.Empty,
+                UserId = user.Id
+            };
         }
     }
 }
+
+
