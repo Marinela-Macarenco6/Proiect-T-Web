@@ -596,13 +596,13 @@
     <Content Include="Scripts\vendor\modernizr-3.5.0.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Scripts\wow.min.js" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -611,6 +611,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comment\Comment.cs" />
     <Compile Include="Models\Course\AddCourseData.cs" />
     <Compile Include="Models\Reg\RegData.cs" />
     <Compile Include="Models\UserData.cs" />
@@ -704,12 +705,9 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Courses\AddCourse.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+    <Content Include="web.config" />
+    <None Include="Web.Debug.config" />
+    <None Include="Web.Release.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

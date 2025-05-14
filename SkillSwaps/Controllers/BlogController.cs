@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SkillSwaps.DbDataContext;
+using SkillSwaps.Domain.Comments;
+using SkillSwaps.Models.Course;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +11,12 @@ namespace SkillSwaps.Controllers
 {
     public class BlogController : Controller
     {
+        private readonly CommentsContext _context;
+
+        public BlogController()
+        {
+            _context = new CommentsContext();
+        }
         // GET: Blog
         public ActionResult Index()
         {
@@ -61,7 +70,8 @@ namespace SkillSwaps.Controllers
 
         public ActionResult Ev10()
         {
-            return View();
+            var comments = _context.Comments.OrderByDescending(c => c.PostedAt).ToList();
+            return View(comments);
         }
 
         public ActionResult Ev11()
