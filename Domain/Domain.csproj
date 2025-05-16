@@ -57,6 +57,7 @@
     <Compile Include="Comments\CTable.cs" />
     <Compile Include="Enums\EACategory.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Enums\EURole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\Auth\UserAuthDTO.cs" />
     <Compile Include="User\Auth\USessionDbTable.cs" />

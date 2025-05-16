@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillSwaps - Panou Admin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 1rem;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 8px; /* Spatiu intre iconita si text */
+            }
+
+                nav a:hover {
+                    text-decoration: underline;
+                }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background-color: #34495e;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-icon {
+            width: 25px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+            .hamburger-icon span {
+                display: block;
+                height: 3px;
+                background-color: white;
+                border-radius: 2px;
+                transition: background-color 0.3s ease;
+            }
+
+        /* Schimbare culoare și mică animație la hover */
+        .dropdown-button:hover .hamburger-icon span {
+            background-color: #1abc9c;
+        }
+
+        .dropdown-button:hover .hamburger-icon {
+            transform: rotate(90deg);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ecf0f1;
+            min-width: 250px; /* Am marit putin latimea pentru a acomoda bara de cautare */
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            left: 0;
+            padding: 10px; /* Adaugat padding pentru spatiu in jurul continutului */
+        }
+
+            .dropdown-content a {
+                color: #2c3e50;
+                padding: 10px 16px; /* Ajustat putin padding-ul */
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 8px; /* Spatiu intre iconita si text in submeniu */
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #dcdcdc;
+                }
+
+        /* afișare meniului la hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Stilizare pentru submeniuri */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+            .dropdown-submenu .submenu {
+                display: none;
+                position: absolute;
+                left: 100%;
+                top: 0;
+                background-color: #ecf0f1;
+                min-width: 220px;
+                box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+                z-index: 2;
+                border-radius: 5px;
+            }
+
+            .dropdown-submenu:hover .submenu {
+                display: block;
+            }
+
+            .dropdown-submenu > a::after {
+                display: inline-block;
+                content: "\25B8"; /* Săgeată spre dreapta */
+                font-size: 0.8em;
+                margin-left: 5px;
+            }
+
+            .dropdown-submenu .submenu a {
+                padding-left: 25px; /* Indentare pentru submeniuri */
+            }
+
+        /* Stilizare bara de cautare */
+        .menu-search {
+            margin-bottom: 10px;
+        }
+
+            .menu-search input[type="text"] {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+            .stat-item h4 {
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+                color: #34495e;
+                font-size: 1.2rem;
+            }
+
+            .stat-item .stat-value {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #1abc9c;
+            }
+
+            .stat-item .stat-description {
+                color: #7f8c8d;
+                font-size: 0.9rem;
+            }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>SkillSwaps - Panou de Administrare</h1>
+    </header>
+
+    <nav>
+        <div class="dropdown">
+            <button class="dropdown-button" aria-label="Meniu Admin">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="dropdown-content">
+                <div class="menu-search">
+                    <input type="text" placeholder="Caută în meniu...">
+                </div>
+                <div class="dropdown-submenu">
+                    <a href="#"><i class="fas fa-book"></i> Cursuri</a>
+                    <div class="submenu">
+                        <a href="#"><i class="fas fa-check-circle"></i> Aprobare cursuri</a>
+                        <a href="#"><i class="fas fa-list-alt"></i> Gestionare cursuri</a>
+                        <a href="#"><i class="fas fa-plus-circle"></i> Adaugă curs nou</a>
+                        <a href="#"><i class="fas fa-tags"></i> Categorii cursuri</a>
+                    </div>
+                </div>
+                <div class="dropdown-submenu">
+                    <a href="#"><i class="fas fa-users"></i> Utilizatori</a>
+                    <div class="submenu">
+                        <a href="#"><i class="fas fa-eye"></i> Vezi utilizatori</a>
+                        <a href="#"><i class="fas fa-user-plus"></i> Adaugă utilizator</a>
+                        <a href="#"><i class="fas fa-user-edit"></i> Editează utilizator</a>
+                        <a href="#"><i class="fas fa-user-slash"></i> Blochează utilizator</a>
+                    </div>
+                </div>
+                <div class="dropdown-submenu">
+                    <a href="#"><i class="fas fa-newspaper"></i> Blog</a>
+                    <div class="submenu">
+                        <a href="#"><i class="fas fa-edit"></i> Gestionare articole</a>
+                        <a href="#"><i class="fas fa-plus-square"></i> Adaugă articol nou</a>
+                        <a href="#"><i class="fas fa-folder-open"></i> Categorii blog</a>
+                    </div>
+                </div>
+                <a href="#"><i class="fas fa-comments"></i> Comentarii</a>
+                <a href="#"><i class="fas fa-chart-bar"></i> Rapoarte</a>
+                <a href="https://mail.google.com" target="_blank"><i class="fas fa-envelope"></i> Gmail</a>
+                <a href="#"><i class="fas fa-cog"></i> Setări</a>
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="card">
+            <h2>Bun venit, Admin!</h2>
+            <p>Aici poți gestiona utilizatorii și setările aplicației tale.</p>
+        </div>
+
+        <div class="card">
+            <h3>Statistici rapide</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>Utilizatori activi</h4>
+                    <div class="stat-value">124</div>
+                    <div class="stat-description">Numărul total de utilizatori activi.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Utilizatori noi (luna curentă)</h4>
+                    <div class="stat-value" id="new-users-current-month">YY</div>
+                    <div class="stat-description">Utilizatori înregistrați în mai 2025.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Utilizatori noi (ultima lună)</h4>
+                    <div class="stat-value" id="new-users-last-month">XX</div>
+                    <div class="stat-description">Utilizatori înregistrați în aprilie 2025.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Cursuri totale</h4>
+                    <div class="stat-value" id="total-courses">ZZ</div>
+                    <div class="stat-description">Numărul total de cursuri disponibile.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Cursuri în așteptare</h4>
+                    <div class="stat-value">8</div>
+                    <div class="stat-description">Cursuri care necesită aprobare.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Comentarii totale</h4>
+                    <div class="stat-value" id="total-comments">WW</div>
+                    <div class="stat-description">Numărul total de comentarii pe platformă.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Articole blog publicate</h4>
+                    <div class="stat-value" id="published-articles">VV</div>
+                    <div class="stat-description">Numărul total de articole de blog publicate.</div>
+                </div>
+                <div class="stat-item">
+                    <h4>Media rating cursuri</h4>
+                    <div class="stat-value" id="average-course-rating">N/A</div>
+                    <div class="stat-description">Media ratingurilor oferite cursurilor.</div>
+                </div>
+            </div>
+
+            <div style="width:100%; max-width:500px; margin-top:20px;">
+                <canvas id="newUsersChartInline" style="display:block; width:100%; height:auto;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Presupunem că ai aceste date disponibile din backend
+        const weeklyNewUsersData = {
+            labels: ['Săpt. 1', 'Săpt. 2', 'Săpt. 3', 'Săpt. 4', 'Săpt. 5'], // Etichetele pentru săptămâni
+            datasets: [{
+                label: 'Utilizatori noi',
+                data: [15, 22, 18, 25, 30], // Numărul de utilizatori noi pentru fiecare săptămână
+                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Culoarea de fundal a barelor/liniei
+                borderColor: 'rgba(54, 162, 235, 1)', // Culoarea liniei/bordurii
+                borderWidth: 1
+            }]
+        };
+
+        const ctxInline = document.getElementById('newUsersChartInline').getContext('2d');
+        const newUsersChartInline = new Chart(ctxInline, {
+            type: 'line',
+            data: weeklyNewUsersData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Număr de utilizatori'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Săptămâna'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    title: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

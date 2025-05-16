@@ -5,10 +5,7 @@ namespace SkillSwaps.DbDataContext
 {
     public class CommentsContext : DbContext
     {
-        public CommentsContext() : base("name=DbSkillSwap")
-        {
-        }
-
+        public CommentsContext() : base("name=DbSkillSwap") {}
         public DbSet<CTable> Comments { get; set; }
 
     }

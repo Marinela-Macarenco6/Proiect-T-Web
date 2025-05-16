@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace SkillSwaps.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IProduct _product;
         private readonly ISession _session;
@@ -24,6 +24,15 @@ namespace SkillSwaps.Controllers
         public ActionResult Index()
 
         {
+            SessionStatus();
+
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View();
+
+
             List<ArticleDataMain> data = _product.GetAllArticleFor();
 
             UserData u = new UserData();

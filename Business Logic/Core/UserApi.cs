@@ -51,7 +51,8 @@ namespace Business_Logic.Core
             {
                 Status = true,
                 Error = string.Empty,
-                UserId = 1
+                UserId = 1,
+                UserName = user.UserName,
             };
         }
         internal UserCookieResp GeneratCookieByUserAction(int userId)
@@ -107,6 +108,38 @@ namespace Business_Logic.Core
             return new UserCookieResp() { UserId = userId, Cookie = cookieString, ValidUntil = dateTime };
         }
 
+        internal UserResp GetUserByCookieAction(string cookieKey)
+        {
+            USessionDbTable session;
+            UserRegData user;
+
+            using (var db = new SessionContext())
+            {
+                session = db.Session.FirstOrDefault(s => s.Cookie.Contains (cookieKey));
+            }
+
+            if (session != null)
+            { 
+                using (var db = new UserContext())
+                {
+                    user = db.UserRegDatas .FirstOrDefault(u => u.Id == session.UserId);
+                }   
+
+                if (user != null)
+                {
+                    return new UserResp
+                    {
+                        Status = true,
+                        UserId = user.Id,
+                        UserName = user.UserName,
+                        Role = user.userRole,
+                    };
+                }
+            }
+
+            return new UserResp { Status = false };
+        }
+
 
         //----------------------- REG ----------------------------
         public UserRegDataResp UserRegLogicAction(RegDataActionDTO data)
@@ -146,8 +179,9 @@ namespace Business_Logic.Core
                 UserName = data.UserName,
                 Email = data.Email,
                 Password = passHashed,
-                RequestTime = DateTime.UtcNow.ToLocalTime()
-            };
+                RequestTime = DateTime.UtcNow.ToLocalTime(),
+                userRole = 0
+    };
 
             using (var db = new UserContext())
             {

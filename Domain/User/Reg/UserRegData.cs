@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -34,6 +35,9 @@ namespace Domain.User
 
         [Display(Name = "request_time")]
         public DateTime? RequestTime { get; set; }
+
+        [Display(Name = "role")]
+        public EURole userRole { get; set; }
 
 
     }
