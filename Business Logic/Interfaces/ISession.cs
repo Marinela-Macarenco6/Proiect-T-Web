@@ -7,5 +7,7 @@ namespace Business_Logic.Interfaces
     {
         UserCookieResp GeneratCookieByUser(int id);
         UserResp AuthUser(UserAuthDTO data);
+        bool LogoutUser(string sessionKey);
     }
 }
+ 

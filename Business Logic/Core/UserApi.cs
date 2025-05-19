@@ -1,5 +1,6 @@
 ﻿using Business_Logic.DbDataContext.Seed;
 using Domain.User;
+using Domain.User.EditAcc;
 using Domain.User.Reg;
 using Domain.User.UserActionResp;
 using Helpers.RegFlow;
@@ -51,7 +52,7 @@ namespace Business_Logic.Core
             {
                 Status = true,
                 Error = string.Empty,
-                UserId = 1,
+                UserId = user.Id,
                 UserName = user.UserName,
             };
         }
@@ -107,7 +108,6 @@ namespace Business_Logic.Core
 
             return new UserCookieResp() { UserId = userId, Cookie = cookieString, ValidUntil = dateTime };
         }
-
         internal UserResp GetUserByCookieAction(string cookieKey)
         {
             USessionDbTable session;
@@ -115,26 +115,32 @@ namespace Business_Logic.Core
 
             using (var db = new SessionContext())
             {
-                session = db.Session.FirstOrDefault(s => s.Cookie.Contains (cookieKey));
+                session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey && s.IsValidATime > DateTime.Now);
+
+                if (session == null)
+                    return new UserResp { Status = false };
+
+                // Reînnoiește expirarea sesiunii  (+30 minute)
+                session.IsValidATime = DateTime.Now.AddMinutes(30);
+
+                db.Entry(session).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
             }
 
-            if (session != null)
-            { 
-                using (var db = new UserContext())
-                {
-                    user = db.UserRegDatas .FirstOrDefault(u => u.Id == session.UserId);
-                }   
+            using (var db = new UserContext())
+            {
+                user = db.UserRegDatas.FirstOrDefault(u => u.Id == session.UserId);
+            }
 
-                if (user != null)
+            if (user != null)
+            {
+                return new UserResp
                 {
-                    return new UserResp
-                    {
-                        Status = true,
-                        UserId = user.Id,
-                        UserName = user.UserName,
-                        Role = user.userRole,
-                    };
-                }
+                    Status = true,
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Role = user.userRole,
+                };
             }
 
             return new UserResp { Status = false };
@@ -196,7 +202,95 @@ namespace Business_Logic.Core
                 UserId = user.Id
             };
         }
+
+        //----------------------- LOGOUT ----------------------------
+        internal bool LogoutUserAction(string cookieKey)
+        {
+            using (var db = new SessionContext())
+            {
+                var session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey);
+
+                if (session != null)
+                {
+                    db.Session.Remove(session);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        //----------------------- EDIT ACCOUNT ----------------------------
+        public bool UserChangePasswordAction(ChangePasswordData changePswdData)
+        {
+            UserRegData user;
+
+                var UserResp = GetUserByCookieAction(changePswdData.UserId);
+
+                if(UserResp.Status == false)
+                {
+                    return false;
+                }
+
+                using (var userDb = new UserContext())
+                {
+                    user = userDb.UserRegDatas.FirstOrDefault(u => u.Id == UserResp.UserId);
+                    if (user == null)
+                        return false;
+
+                    var oldHashed = RegPassHelper.HashGen(changePswdData.OldPassword);
+                    if (user.Password != oldHashed)
+                        return false;
+
+                    user.Password = RegPassHelper.HashGen(changePswdData.NewPassword);
+
+                    userDb.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    userDb.SaveChanges();
+
+                    return true;
+                }
+        }
+
+        public bool UserChangeUsernameAction(ChangeUsernameData changeUsernameData)
+        {
+            UserRegData user;
+
+            var UserResp = GetUserByCookieAction(changeUsernameData.SessionKey);
+
+            if (UserResp.Status == false)
+            {
+                return false;
+            }
+
+            using (var userDb = new UserContext())
+            {
+                user = userDb.UserRegDatas.FirstOrDefault(u => u.Id == UserResp.UserId);
+                if (user == null)
+                    return false;
+
+                var existingUser = userDb.UserRegDatas
+                    .FirstOrDefault(u => u.UserName.ToLower() == changeUsernameData.NewUsername.ToLower());
+                if (existingUser != null)
+                    return false;
+
+                user.UserName = changeUsernameData.NewUsername;
+
+                userDb.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                userDb.SaveChanges();
+
+                return true;
+            }
+        }
+
+
+
+
+
     }
 }
+
 
 

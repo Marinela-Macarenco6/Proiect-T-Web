@@ -2,6 +2,7 @@
 using Business_Logic.Interfaces;
 using Domain.Enums;
 using Domain.User;
+using Domain.User.EditAcc;
 using Domain.User.Reg;
 using Domain.User.UserActionResp;
 using System;
@@ -19,6 +20,16 @@ namespace Business_Logic.BL_Struct
         public UserRegDataResp UserRegLogic(RegDataActionDTO uRegData)
         {
             return UserRegLogicAction(uRegData);
+        }
+
+        public bool UserChangePassword(ChangePasswordData changePswdData)
+        {
+            return UserChangePasswordAction(changePswdData);
+        }
+
+        public bool UserChangeUsername(ChangeUsernameData changeUsernameData)
+        {
+            return UserChangeUsernameAction(changeUsernameData);
         }
     }
 }

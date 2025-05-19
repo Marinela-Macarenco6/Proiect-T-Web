@@ -17,6 +17,11 @@ namespace Business_Logic.BL_Struct
             return GeneratCookieByUserAction(id);
         }
 
+       public bool LogoutUser(string sessionKey)
+        {
+            return LogoutUserAction(sessionKey);
+        }
+
     }
 }
 

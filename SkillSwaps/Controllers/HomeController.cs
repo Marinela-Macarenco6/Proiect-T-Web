@@ -22,7 +22,6 @@ namespace SkillSwaps.Controllers
         }
         // GET: Home
         public ActionResult Index()
-
         {
             SessionStatus();
 

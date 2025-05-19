@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿a<!DOCTYPE html>
 <html lang="ro">
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,6 +17,71 @@
             color: white;
             padding: 1rem;
             text-align: center;
+            position: relative;
+        }
+
+        .account-dropdown {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .account-logo-container {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #34495e;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+            .account-logo-container:hover {
+                background-color: #1abc9c;
+            }
+
+        .account-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; /* Afișează sub siglă */
+            right: 0;
+            background-color: #ecf0f1;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+            .account-dropdown-content a, .logout-button-link {
+                color: #2c3e50;
+                padding: 10px 16px;
+                text-decoration: none;
+                display: block;
+                transition: background-color 0.3s ease;
+                text-align: left;
+            }
+
+                .account-dropdown-content a:hover, .logout-button-link:hover {
+                    background-color: #dcdcdc;
+                }
+
+            .account-dropdown-content form {
+                margin: 0; /* Elimină orice margine implicită a formularului */
+            }
+
+        .logout-button-link {
+            border: none;
+            background: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: inherit; /* Preluare dimensiune font de la părinte */
+            font-family: inherit; /* Preluare font de la părinte */
         }
 
         nav {
@@ -33,7 +98,7 @@
                 text-decoration: none;
                 display: flex;
                 align-items: center;
-                gap: 8px; /* Spatiu intre iconita si text */
+                gap: 8px;
             }
 
                 nav a:hover {
@@ -71,7 +136,6 @@
                 transition: background-color 0.3s ease;
             }
 
-        /* Schimbare culoare și mică animație la hover */
         .dropdown-button:hover .hamburger-icon span {
             background-color: #1abc9c;
         }
@@ -84,33 +148,31 @@
             display: none;
             position: absolute;
             background-color: #ecf0f1;
-            min-width: 250px; /* Am marit putin latimea pentru a acomoda bara de cautare */
+            min-width: 250px;
             box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 5px;
             left: 0;
-            padding: 10px; /* Adaugat padding pentru spatiu in jurul continutului */
+            padding: 10px;
         }
 
             .dropdown-content a {
                 color: #2c3e50;
-                padding: 10px 16px; /* Ajustat putin padding-ul */
+                padding: 10px 16px;
                 text-decoration: none;
                 display: flex;
                 align-items: center;
-                gap: 8px; /* Spatiu intre iconita si text in submeniu */
+                gap: 8px;
             }
 
                 .dropdown-content a:hover {
                     background-color: #dcdcdc;
                 }
 
-        /* afișare meniului la hover */
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        /* Stilizare pentru submeniuri */
         .dropdown-submenu {
             position: relative;
         }
@@ -133,16 +195,15 @@
 
             .dropdown-submenu > a::after {
                 display: inline-block;
-                content: "\25B8"; /* Săgeată spre dreapta */
+                content: "\25B8";
                 font-size: 0.8em;
                 margin-left: 5px;
             }
 
             .dropdown-submenu .submenu a {
-                padding-left: 25px; /* Indentare pentru submeniuri */
+                padding-left: 25px;
             }
 
-        /* Stilizare bara de cautare */
         .menu-search {
             margin-bottom: 10px;
         }
@@ -206,6 +267,19 @@
 
     <header>
         <h1>SkillSwaps - Panou de Administrare</h1>
+        <div class="account-dropdown">
+            <a href="#" class="account-logo-container" id="accountToggle"><i class="fas fa-user-circle"></i></a>
+            <div class="account-dropdown-content" id="accountOptions">
+                <a href="/Account/ChangePassword"><i class="fas fa-key"></i> Schimbare parolă</a>
+                <a href="/Account/ChangeUsername"><i class="fas fa-user-edit"></i> Editare username</a>
+                <a href="#"><i class="fas fa-envelope"></i> Schimbare Gmail</a>
+                <form action="@Url.Action("Logout", "Admin")" method="post">
+                    <button type="submit" class="logout-button-link">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
     </header>
 
     <nav>
@@ -251,7 +325,6 @@
                 <a href="#"><i class="fas fa-chart-bar"></i> Rapoarte</a>
                 <a href="https://mail.google.com" target="_blank"><i class="fas fa-envelope"></i> Gmail</a>
                 <a href="#"><i class="fas fa-cog"></i> Setări</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </nav>
@@ -316,12 +389,12 @@
     <script>
         // Presupunem că ai aceste date disponibile din backend
         const weeklyNewUsersData = {
-            labels: ['Săpt. 1', 'Săpt. 2', 'Săpt. 3', 'Săpt. 4', 'Săpt. 5'], // Etichetele pentru săptămâni
+            labels: ['Săpt. 1', 'Săpt. 2', 'Săpt. 3', 'Săpt. 4', 'Săpt. 5'],
             datasets: [{
                 label: 'Utilizatori noi',
-                data: [15, 22, 18, 25, 30], // Numărul de utilizatori noi pentru fiecare săptămână
-                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Culoarea de fundal a barelor/liniei
-                borderColor: 'rgba(54, 162, 235, 1)', // Culoarea liniei/bordurii
+                data: [15, 22, 18, 25, 30],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }]
         };
@@ -358,6 +431,26 @@
                 }
             }
         });
+
+        // JavaScript pentru dropdown-ul de cont
+        const accountToggle = document.getElementById('accountToggle');
+        const accountOptions = document.getElementById('accountOptions');
+
+        if (accountToggle && accountOptions) {
+            accountToggle.addEventListener('click', function (event) {
+                event.preventDefault(); // Previne navigarea implicită a link-ului
+                accountOptions.style.display = (accountOptions.style.display === 'block') ? 'none' : 'block';
+            });
+
+            // Ascunde dropdown-ul când se dă click în afara lui
+            document.addEventListener('click', function (event) {
+                if (accountOptions.style.display === 'block' && !accountToggle.contains(event.target) && !accountOptions.contains(event.target)) {
+                    accountOptions.style.display = 'none';
+                }
+            });
+        } else {
+            console.error("Elementele accountToggle sau accountOptions nu au fost găsite în DOM.");
+        }
     </script>
 
 </body>

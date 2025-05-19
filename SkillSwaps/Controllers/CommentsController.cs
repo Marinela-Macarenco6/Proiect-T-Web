@@ -27,6 +27,7 @@ namespace SkillSwaps.Controllers
                 UserName = userName,
                 Content = content,
                 PostedAt = DateTime.Now
+
             };
 
             _context.Comments.Add(comment);
