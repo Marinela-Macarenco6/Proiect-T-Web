@@ -1,23 +1,33 @@
 ﻿@model List<Domain.Blog.EvenimentBlog>
 @using System.Web.Optimization
-
 @{
     Layout = null;
-    ViewBag.Title = "Evenimente și Workshopuri";
+    ViewBag.Title = "Rezultatele Căutării";
 }
 
 <!doctype html>
-<html class="no-js" lang="ro">
+<html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Evenimente | Education</title>
+    <title>Rezultate Căutare | Education</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
     @Styles.Render("~/Content/assets/scss")
     @Styles.Render("~/Content/assets/css")
 </head>
 <body>
+
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="~/Content/assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 
     @Html.Partial("_Header")
 
@@ -30,11 +40,11 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1>Evenimente și Workshopuri</h1>
+                                    <h1>Rezultatele Căutării</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/">Acasă</a></li>
-                                            <li class="breadcrumb-item"><a href="/">Evenimente</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Căutare</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,49 +55,39 @@
             </div>
         </section>
 
-        <!-- Evenimente și Sidebar -->
+        <!-- Rezultate căutare -->
         <section class="blog_area section-padding">
             <div class="container">
                 <div class="row">
-                    <!-- Lista Evenimente -->
+                    <!-- Rezultate -->
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
-                            @if (Model.Any())
-                            {
-                                foreach (var ev in Model)
-                                {
-                                    <article class="blog_item">
-                                        <div class="blog_item_img">
-                                            <img class="card-img rounded-0" src="@Url.Content(ev.ImagineUrl)" alt="@ev.Titlu">
-                                            <a href="#" class="blog_item_date">
-                                                <h3>@ev.Data.Day</h3>
-                                                <p>@ev.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
-                                            </a>
-                                        </div>
-                                        <div class="blog_details">
-                                            <a class="d-inline-block" href="@Url.Action("Ev" + ev.Id, "Blog")">
-                                                <h2 class="blog-head" style="color: #2d2d2d;">@ev.Titlu</h2>
-                                            </a>
-                                            <p>@ev.Descriere</p>
-                                        </div>
-                                    </article>
-                                }
+                            <h2>Rezultate pentru: "@ViewBag.SearchQuery"</h2>
 
-                                <!-- Paginare -->
-                                <nav class="blog-pagination justify-content-center d-flex">
-                                    <ul class="pagination">
-                                        @for (int i = 1; i <= ViewBag.TotalPagini; i++)
-                                        {
-                                            <li class="page-item @(i == ViewBag.PaginaCurenta ? "active" : "")">
-                                                <a class="page-link" href="@Url.Action("Index", new { pagina = i, searchQuery = ViewBag.SearchQuery })">@i</a>
-                                            </li>
-                                        }
-                                    </ul>
-                                </nav>
+                            @if (!Model.Any())
+                            {
+                                <p><strong>Nu a fost găsit niciun eveniment.</strong></p>
                             }
                             else
                             {
-                                <p><strong>Nu s-au găsit evenimente pentru termenul introdus.</strong></p>
+                                foreach (var articol in Model)
+                                {
+                                    <article class="blog_item">
+                                        <div class="blog_item_img">
+                                            <img class="card-img rounded-0" src="@Url.Content(articol.ImagineUrl)" alt="@articol.Titlu" />
+                                            <a href="#" class="blog_item_date">
+                                                <h3>@articol.Data.Day</h3>
+                                                <p>@articol.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
+                                            </a>
+                                        </div>
+                                        <div class="blog_details">
+                                            <a class="d-inline-block" href="@Url.Action("Detalii", "Blog", new { slug = articol.Slug })">
+                                                <h2 class="blog-head" style="color: #2d2d2d;">@articol.Titlu</h2>
+                                            </a>
+                                            <p>@articol.Descriere</p>
+                                        </div>
+                                    </article>
+                                }
                             }
                         </div>
                     </div>

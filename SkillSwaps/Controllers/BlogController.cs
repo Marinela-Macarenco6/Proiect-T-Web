@@ -6,19 +6,81 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Business_Logic.BL_Struct;
+using Business_Logic.Interfaces;
+using System;
 
 namespace SkillSwaps.Controllers
 {
     public class BlogController : Controller
     {
         private readonly CommentsContext _context;
+        private readonly IBlogLogic _blogLogic;
 
         public BlogController()
         {
             _context = new CommentsContext();
+            _blogLogic = new BlogBL();
         }
         // GET: Blog
-        public ActionResult Index()
+        public ActionResult Index(string searchQuery = "", int pagina = 1)
+        {
+            int pePagina = 5;
+
+            var evenimente = string.IsNullOrWhiteSpace(searchQuery)
+                ? _blogLogic.GetToateEvenimentele()
+                : _blogLogic.GetEvenimenteFiltrate(searchQuery);
+
+            var total = evenimente.Count;
+            var paginat = evenimente.Skip((pagina - 1) * pePagina).Take(pePagina).ToList();
+
+            ViewBag.SearchQuery = searchQuery;
+            ViewBag.PaginaCurenta = pagina;
+            ViewBag.TotalPagini = (int)Math.Ceiling((double)total / pePagina);
+
+            return View("Index", paginat);
+        }
+        public ActionResult Categorie(string categorie, int pagina = 1)
+        {
+            int pePagina = 5;
+
+            var toate = _blogLogic.GetToateEvenimentele()
+                .Where(e => e.Categorie == categorie)
+                .ToList();
+
+            var paginat = toate
+                .Skip((pagina - 1) * pePagina)
+                .Take(pePagina)
+                .ToList();
+
+            ViewBag.Categorie = categorie;
+            ViewBag.TotalPagini = (int)Math.Ceiling((double)toate.Count / pePagina);
+            ViewBag.PaginaCurenta = pagina;
+
+            return View("Categorie", paginat);
+        }
+        public ActionResult Cauta(string searchQuery)
+        {
+            var rezultate = _blogLogic.GetEvenimenteFiltrate(searchQuery);
+            ViewBag.SearchQuery = searchQuery;
+            return View("SearchResults", rezultate);
+        }
+        public ActionResult EvNotabil1()
+        {
+            return View();
+        }
+
+        public ActionResult EvNotabil2()
+        {
+            return View();
+        }
+
+        public ActionResult EvNotabil3()
+        {
+            return View();
+        }
+
+        public ActionResult EvNotabil4()
         {
             return View();
         }

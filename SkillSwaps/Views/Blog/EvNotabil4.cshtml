@@ -1,28 +1,20 @@
-﻿@model List<Domain.Blog.EvenimentBlog>
-@using System.Web.Optimization
-
-@{
+﻿@{
     Layout = null;
-    ViewBag.Title = "Evenimente și Workshopuri";
+    ViewBag.Title = "Colaborare România – Moldova";
 }
-
+@using System.Web.Optimization
 <!doctype html>
-<html class="no-js" lang="ro">
+<html lang="ro">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Evenimente | Education</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/assets/scss")
     @Styles.Render("~/Content/assets/css")
 </head>
 <body>
-
     @Html.Partial("_Header")
 
     <main>
-        <!-- Banner -->
         <section class="slider-area slider-area2">
             <div class="slider-active">
                 <div class="single-slider slider-height2">
@@ -30,11 +22,11 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1>Evenimente și Workshopuri</h1>
+                                    <h1>@ViewBag.Title</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/">Acasă</a></li>
-                                            <li class="breadcrumb-item"><a href="/">Evenimente</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Colaborare România – Moldova</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,54 +37,58 @@
             </div>
         </section>
 
-        <!-- Evenimente și Sidebar -->
-        <section class="blog_area section-padding">
+        <section class="blog_area single-post-area section-padding">
             <div class="container">
                 <div class="row">
-                    <!-- Lista Evenimente -->
-                    <div class="col-lg-8 mb-5 mb-lg-0">
-                        <div class="blog_left_sidebar">
-                            @if (Model.Any())
-                            {
-                                foreach (var ev in Model)
-                                {
-                                    <article class="blog_item">
-                                        <div class="blog_item_img">
-                                            <img class="card-img rounded-0" src="@Url.Content(ev.ImagineUrl)" alt="@ev.Titlu">
-                                            <a href="#" class="blog_item_date">
-                                                <h3>@ev.Data.Day</h3>
-                                                <p>@ev.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
-                                            </a>
-                                        </div>
-                                        <div class="blog_details">
-                                            <a class="d-inline-block" href="@Url.Action("Ev" + ev.Id, "Blog")">
-                                                <h2 class="blog-head" style="color: #2d2d2d;">@ev.Titlu</h2>
-                                            </a>
-                                            <p>@ev.Descriere</p>
-                                        </div>
-                                    </article>
-                                }
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid w-100" src="~/Content/assets/img/post/romold.jpg" alt="Colaborare Moldova-România">
+                            </div>
+                            <div class="blog_details">
+                                <h2>Poduri educaționale între România și Moldova</h2>
+                                <p class="excert">23 Octombrie, 2024</p>
+                                <p>
+                                    Într-un context regional în care educația devine tot mai mult un instrument strategic de apropiere și integrare, forumul „Colaborare România – Moldova” a adus în prim-plan nevoia de a construi un spațiu educațional comun între cele două maluri ale Prutului. Evenimentul a reunit reprezentanți ai ministerelor educației, ONG-uri de profil, cadre universitare, experți în politici educaționale și lideri ai administrației locale, cu scopul de a pune bazele unor proiecte concrete și durabile.
+                                </p>
+                                <p>
+                                    Printre temele abordate: schimburi de profesori și elevi, digitalizarea programelor școlare, formarea comună a cadrelor didactice și dezvoltarea de platforme educaționale bilingve.
+                                </p>
+                                <div class="quote-wrapper">
+                                    <div class="quotes">„Granițele dispar când investim împreună în educație.”</div>
+                                </div>
+                                <p>
+                                    Sub mottoul „Granițele dispar când investim împreună în educație”, participanții au pledat pentru o abordare strategică și de lungă durată, în care educația să devină un pilon al integrării culturale și sociale. Accentul a fost pus pe parteneriatele între instituții de învățământ, autorități locale și comunități, ca elemente-cheie în construirea unei rețele educaționale transfrontaliere eficiente și sustenabile.
 
-                                <!-- Paginare -->
-                                <nav class="blog-pagination justify-content-center d-flex">
-                                    <ul class="pagination">
-                                        @for (int i = 1; i <= ViewBag.TotalPagini; i++)
-                                        {
-                                            <li class="page-item @(i == ViewBag.PaginaCurenta ? "active" : "")">
-                                                <a class="page-link" href="@Url.Action("Index", new { pagina = i, searchQuery = ViewBag.SearchQuery })">@i</a>
-                                            </li>
-                                        }
-                                    </ul>
-                                </nav>
-                            }
-                            else
-                            {
-                                <p><strong>Nu s-au găsit evenimente pentru termenul introdus.</strong></p>
-                            }
+                                    De asemenea, au fost propuse mecanisme concrete de colaborare: înfrățirea instituțiilor de învățământ, organizarea de școli de vară comune, dezvoltarea de manuale și resurse didactice adaptate și implicarea în proiecte comune finanțate prin fonduri europene sau regionale.
+                                </p>
+                                <p>
+                                    Forumul a fost perceput ca un pas important spre realizarea unui spațiu educațional românesc unitar, bazat pe solidaritate, respect reciproc și inovație. Participanții au concluzionat că, într-o lume în continuă schimbare, cooperarea educațională poate construi punți mai solide decât orice infrastructură fizică și că investiția în educația comună este, de fapt, o investiție în viitorul ambelor societăți.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comment-form">
+                            <h4>Adaugă un comentariu</h4>
+                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <textarea class="form-control w-100" name="comment" rows="6" placeholder="Scrie un comentariu..."></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" name="name" type="text" placeholder="Nume">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" name="email" type="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Trimite comentariul</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
-                    <!-- Sidebar -->
                     <!-- Sidebar -->
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
@@ -217,19 +213,6 @@
             </div>
         </section>
     </main>
-
     @Html.Partial("_Footer")
-
-    <div id="back-top">
-        <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
-    </div>
-
-    <!-- JS -->
-    <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/Content/assets/js/bootstrap.min.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-    @Scripts.Render("~/Scripts/js")
-
 </body>
 </html>

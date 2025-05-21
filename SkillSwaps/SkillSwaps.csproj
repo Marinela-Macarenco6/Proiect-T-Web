@@ -311,6 +311,7 @@
     <Content Include="Content\assets\img\blog\Startup-Village.jpg" />
     <Content Include="Content\assets\img\blog\Startup-World-Cup-Moldova-.jpg" />
     <Content Include="Content\assets\img\blog\startup.jpg" />
+    <Content Include="Content\assets\img\blog\tek.jpeg" />
     <Content Include="Content\assets\img\blog\tineri.jpg" />
     <Content Include="Content\assets\img\elements\a.jpg" />
     <Content Include="Content\assets\img\elements\a2.jpg" />
@@ -657,6 +658,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -752,13 +754,11 @@
     <Content Include="Views\Blog\Ev3.cshtml" />
     <Content Include="Views\Blog\Ev4.cshtml" />
     <Content Include="Views\Blog\Ev5.cshtml" />
-    <Content Include="Views\Blog\Evpag2.cshtml" />
     <Content Include="Views\Blog\Ev6.cshtml" />
     <Content Include="Views\Blog\Ev7.cshtml" />
     <Content Include="Views\Blog\Ev10.cshtml" />
     <Content Include="Views\Blog\Ev8.cshtml" />
     <Content Include="Views\Blog\Ev9.cshtml" />
-    <Content Include="Views\Blog\Evpag3.cshtml" />
     <Content Include="Views\Blog\Ev11.cshtml" />
     <Content Include="Views\Blog\Ev12.cshtml" />
     <Content Include="Views\Blog\Ev13.cshtml" />
@@ -780,6 +780,13 @@
     <Content Include="Views\Courses\curs5.cshtml" />
     <Content Include="Views\Courses\curs6.cshtml" />
     <Content Include="Views\Account\View.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Blog\Categorie.cshtml" />
+    <Content Include="Views\Blog\EvNotabil1.cshtml" />
+    <Content Include="Views\Blog\EvNotabil2.cshtml" />
+    <Content Include="Views\Blog\EvNotabil3.cshtml" />
+    <Content Include="Views\Blog\EvNotabil4.cshtml" />
+    <Content Include="Views\Blog\SearchResults.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config" />
   </ItemGroup>

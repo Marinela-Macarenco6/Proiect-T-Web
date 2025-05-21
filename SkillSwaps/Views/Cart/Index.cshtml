@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Coșul Meu";
+}
+
+@using System.Web.Optimization
+
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/Content/assets/scss")
+    @Styles.Render("~/Content/assets/css")
+</head>
+<body>
+    @Html.Partial("_Header")
+
+    <main>
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <div class="single-slider slider-height2 d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="hero__caption hero__caption2 text-center">
+                                    <h1>@ViewBag.Title</h1>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb justify-content-center">
+                                            <li class="breadcrumb-item"><a href="~/Home/Index">Acasă</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Coș</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog_area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="mb-4">Cursurile adăugate în coșul tău:</h3>
+
+                        <!-- Simulare listă cursuri (în realitate vei itera printr-o listă de model ViewModel) -->
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="~/Content/assets/img/gallery/test3.JFIF" class="card-img" alt="Curs croitorie">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Curs acreditat de croitorie</h5>
+                                        <p class="card-text">Preț: 750 lei</p>
+                                        <a href="#" class="btn btn-danger">Șterge din coș</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repetă cardul de mai sus pentru fiecare curs adăugat -->
+
+                        <div class="text-right">
+                            <h4>Total: 750 lei</h4>
+                            <a href="~/Checkout/Index" class="btn btn-primary mt-3">Continuă spre plată</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @Html.Partial("_Footer")
+</body>
+</html>

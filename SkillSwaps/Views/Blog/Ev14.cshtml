@@ -271,179 +271,124 @@
                             </form>
                         </div>
                     </div>
+                    <!-- Sidebar -->
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
+
+                            <!-- Căutare -->
                             <aside class="single_sidebar_widget search_widget">
-                                <form action="#">
+                                <form method="get" action="@Url.Action("Cauta", "Blog")">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder='Search Keyword'
-                                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                            <input type="text" name="searchQuery" class="form-control" placeholder="Căutare..."
+                                                   value="@ViewBag.SearchQuery" />
                                             <div class="input-group-append">
-                                                <button class="btns" type="button"><i class="ti-search"></i></button>
+                                                <button class="btns" type="submit"><i class="ti-search"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                            type="submit">
-                                        Search
-                                    </button>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Caută</button>
                                 </form>
                             </aside>
+
+                            <!-- Categorii -->
                             <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Categorii</h4>
                                 <ul class="list cat-list">
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Domenii tehnice & IT" })" class="d-flex">
                                             <p>Domenii tehnice & IT</p>
-                                            <p>(37)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Arte & Design" })" class="d-flex">
                                             <p>Arte & Design</p>
-                                            <p>(10)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Științe exacte" })" class="d-flex">
                                             <p>Științe exacte</p>
-                                            <p>(03)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Business & Marketing" })" class="d-flex">
                                             <p>Business & Marketing</p>
-                                            <p>(11)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Dezvoltare personală" })" class="d-flex">
                                             <p>Dezvoltare personală</p>
-                                            <p>(21)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Cursuri Practice & Hobby-uri" })" class="d-flex">
                                             <p>Cursuri Practice & Hobby-uri</p>
-                                            <p>(09)</p>
                                         </a>
                                     </li>
                                 </ul>
+
                             </aside>
+
+                            <!-- Evenimente Notabile -->
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title" style="color: #2d2d2d;">Evenimente Notabile</h3>
+                                <!-- Exemplu post -->
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/post_1.png" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;"> Recunoașterea internațională a proiectului „Tekwill în fiecare școală”</h3>
-                                        </a>
+                                        <a href="/Blog/EvNotabil1"><h3 style="color: #2d2d2d;">Recunoaștere Tekwill în fiecare școală</h3></a>
                                         <p>5 Februarie, 2025</p>
                                     </div>
                                 </div>
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/profesori.jpg" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;">Lansarea proiectului-pilot „Investim în profesori”</h3>
-                                        </a>
-                                        <p>19 februarie, 2025</p>
+                                        <a href="/Blog/EvNotabil2"><h3 style="color: #2d2d2d;">Investim în profesori</h3></a>
+                                        <p>19 Februarie, 2025</p>
                                     </div>
                                 </div>
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/eradigitala.png" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;"> Conferința „Copiii în era digitală"</h3>
-                                        </a>
+                                        <a href="/Blog/EvNotabil3"><h3 style="color: #2d2d2d;">Copiii în era digitală</h3></a>
                                         <p>18 Decembrie, 2024</p>
                                     </div>
                                 </div>
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/romold.jpg" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;">Colaborare educațională între România și Republica Moldova</h3>
-                                        </a>
-                                        <p>23 octombrie, 2024</p>
+                                        <a href="/Blog/EvNotabil4"><h3 style="color: #2d2d2d;">Colaborare România – Moldova</h3></a>
+                                        <p>23 Octombrie, 2024</p>
                                     </div>
                                 </div>
                             </aside>
+
+                            <!-- Tag Cloud -->
                             <aside class="single_sidebar_widget tag_cloud_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
                                 <ul class="list">
-                                    <li>
-                                        <a href="#">programare</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">marketing</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">blogging</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">psihologie</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">public speaking</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">muzică</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">fotografie</a>
-                                    </li>
+                                    <li><a href="#">programare</a></li>
+                                    <li><a href="#">design</a></li>
+                                    <li><a href="#">marketing</a></li>
+                                    <li><a href="#">blogging</a></li>
+                                    <li><a href="#">psihologie</a></li>
+                                    <li><a href="#">public speaking</a></li>
+                                    <li><a href="#">muzică</a></li>
+                                    <li><a href="#">fotografie</a></li>
                                 </ul>
                             </aside>
-                            <aside class="single_sidebar_widget instagram_feeds">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
-                                <ul class="instagram_row flex-wrap">
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </aside>
+
+                            <!-- Newsletter -->
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
                                 <form action="#">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                        <input type="email" class="form-control" placeholder="Enter email" required>
                                     </div>
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Subscribe</button>
                                 </form>
                             </aside>
+
                         </div>
                     </div>
                 </div>

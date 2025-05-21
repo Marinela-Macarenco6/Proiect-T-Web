@@ -1,17 +1,16 @@
 ﻿@model List<Domain.Blog.EvenimentBlog>
 @using System.Web.Optimization
-
 @{
     Layout = null;
-    ViewBag.Title = "Evenimente și Workshopuri";
+    ViewBag.Title = "Evenimente pe Categorie";
 }
 
 <!doctype html>
-<html class="no-js" lang="ro">
+<html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Evenimente | Education</title>
+    <title>@ViewBag.Categorie | Education</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
     @Styles.Render("~/Content/assets/scss")
@@ -30,11 +29,11 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1>Evenimente și Workshopuri</h1>
+                                    <h1>Evenimente: @ViewBag.Categorie</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/">Acasă</a></li>
-                                            <li class="breadcrumb-item"><a href="/">Evenimente</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Evenimente pe categorii</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,30 +44,36 @@
             </div>
         </section>
 
-        <!-- Evenimente și Sidebar -->
+        <!-- Rezultate categorie -->
         <section class="blog_area section-padding">
             <div class="container">
                 <div class="row">
-                    <!-- Lista Evenimente -->
+                    <!-- Evenimente -->
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
-                            @if (Model.Any())
+                            <h2>Evenimente în categoria: "@ViewBag.Categorie"</h2>
+
+                            @if (!Model.Any())
                             {
-                                foreach (var ev in Model)
+                                <p><strong>Nu există evenimente în această categorie.</strong></p>
+                            }
+                            else
+                            {
+                                foreach (var articol in Model)
                                 {
                                     <article class="blog_item">
                                         <div class="blog_item_img">
-                                            <img class="card-img rounded-0" src="@Url.Content(ev.ImagineUrl)" alt="@ev.Titlu">
+                                            <img class="card-img rounded-0" src="@Url.Content(articol.ImagineUrl)" alt="@articol.Titlu" />
                                             <a href="#" class="blog_item_date">
-                                                <h3>@ev.Data.Day</h3>
-                                                <p>@ev.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
+                                                <h3>@articol.Data.Day</h3>
+                                                <p>@articol.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
                                             </a>
                                         </div>
                                         <div class="blog_details">
-                                            <a class="d-inline-block" href="@Url.Action("Ev" + ev.Id, "Blog")">
-                                                <h2 class="blog-head" style="color: #2d2d2d;">@ev.Titlu</h2>
+                                            <a class="d-inline-block" href="@Url.Action("Ev" + articol.Id, "Blog")">
+                                                <h2 class="blog-head" style="color: #2d2d2d;">@articol.Titlu</h2>
                                             </a>
-                                            <p>@ev.Descriere</p>
+                                            <p>@articol.Descriere</p>
                                         </div>
                                     </article>
                                 }
@@ -79,15 +84,11 @@
                                         @for (int i = 1; i <= ViewBag.TotalPagini; i++)
                                         {
                                             <li class="page-item @(i == ViewBag.PaginaCurenta ? "active" : "")">
-                                                <a class="page-link" href="@Url.Action("Index", new { pagina = i, searchQuery = ViewBag.SearchQuery })">@i</a>
+                                                <a class="page-link" href="@Url.Action("Categorie", new { categorie = ViewBag.Categorie, pagina = i })">@i</a>
                                             </li>
                                         }
                                     </ul>
                                 </nav>
-                            }
-                            else
-                            {
-                                <p><strong>Nu s-au găsit evenimente pentru termenul introdus.</strong></p>
                             }
                         </div>
                     </div>
@@ -224,7 +225,6 @@
         <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
     </div>
 
-    <!-- JS -->
     <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="~/Content/assets/js/bootstrap.min.js"></script>

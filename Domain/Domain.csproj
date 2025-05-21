@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Article\ArticleDataMain.cs" />
     <Compile Include="Article\ADBTable.cs" />
+    <Compile Include="Blog\EvenimentBlog.cs" />
     <Compile Include="Comments\CTable.cs" />
     <Compile Include="Enums\EACategory.cs" />
     <Compile Include="Class1.cs" />

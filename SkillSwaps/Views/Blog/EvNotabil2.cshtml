@@ -1,28 +1,19 @@
-﻿@model List<Domain.Blog.EvenimentBlog>
-@using System.Web.Optimization
-
-@{
+﻿@{
     Layout = null;
-    ViewBag.Title = "Evenimente și Workshopuri";
+    ViewBag.Title = "Investim în profesori";
 }
-
+@using System.Web.Optimization
 <!doctype html>
-<html class="no-js" lang="ro">
+<html lang="ro">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Evenimente | Education</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/assets/scss")
     @Styles.Render("~/Content/assets/css")
 </head>
 <body>
-
     @Html.Partial("_Header")
-
     <main>
-        <!-- Banner -->
         <section class="slider-area slider-area2">
             <div class="slider-active">
                 <div class="single-slider slider-height2">
@@ -30,11 +21,11 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1>Evenimente și Workshopuri</h1>
+                                    <h1>@ViewBag.Title</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/">Acasă</a></li>
-                                            <li class="breadcrumb-item"><a href="/">Evenimente</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Investim în profesori</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -45,50 +36,53 @@
             </div>
         </section>
 
-        <!-- Evenimente și Sidebar -->
-        <section class="blog_area section-padding">
+        <section class="blog_area single-post-area section-padding">
             <div class="container">
                 <div class="row">
-                    <!-- Lista Evenimente -->
-                    <div class="col-lg-8 mb-5 mb-lg-0">
-                        <div class="blog_left_sidebar">
-                            @if (Model.Any())
-                            {
-                                foreach (var ev in Model)
-                                {
-                                    <article class="blog_item">
-                                        <div class="blog_item_img">
-                                            <img class="card-img rounded-0" src="@Url.Content(ev.ImagineUrl)" alt="@ev.Titlu">
-                                            <a href="#" class="blog_item_date">
-                                                <h3>@ev.Data.Day</h3>
-                                                <p>@ev.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
-                                            </a>
-                                        </div>
-                                        <div class="blog_details">
-                                            <a class="d-inline-block" href="@Url.Action("Ev" + ev.Id, "Blog")">
-                                                <h2 class="blog-head" style="color: #2d2d2d;">@ev.Titlu</h2>
-                                            </a>
-                                            <p>@ev.Descriere</p>
-                                        </div>
-                                    </article>
-                                }
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid w-100" src="~/Content/assets/img/post/profesori.jpg" alt="Investim în profesori">
+                            </div>
+                            <div class="blog_details">
+                                <h2>Investiție strategică în educație: sprijin pentru cadrele didactice</h2>
+                                <p class="excert">19 Februarie, 2025</p>
+                                <p>
+                                    Într-o lume educațională aflată într-o continuă transformare, formarea continuă a cadrelor didactice devine un element esențial în asigurarea unei educații de calitate, adaptată nevoilor societății contemporane. Evenimentul <strong>„Investim în profesori”</strong>, organizat recent, a reunit peste 300 de participanți – profesori, directori de instituții de învățământ, experți în politici educaționale, reprezentanți ai societății civile și parteneri internaționali din domeniul educației și al tehnologiei.
+                                </p>
+                                <p>
+                                    Evenimentul s-a desfășurat sub deviza „Un profesor bun inspiră viitorul unei națiuni”, reflectând rolul primordial pe care îl joacă educatorii în formarea generațiilor viitoare.Pe parcursul sesiunilor de formare, participanții au avut ocazia să exploreze o varietate de teme esențiale pentru modernizarea practicilor educaționale. Accentul a fost pus pe metodologii moderne de predare centrate pe elev, precum învățarea prin proiecte, învățarea diferențiată și abordările interdisciplinare, care permit adaptarea conținutului la nevoile și interesele fiecărui elev. De asemenea, un rol important l-a jucat utilizarea platformelor digitale și a inteligenței artificiale în procesul de predare, cu scopul de a spori interactivitatea, eficiența și personalizarea actului educațional.
 
-                                <!-- Paginare -->
-                                <nav class="blog-pagination justify-content-center d-flex">
-                                    <ul class="pagination">
-                                        @for (int i = 1; i <= ViewBag.TotalPagini; i++)
-                                        {
-                                            <li class="page-item @(i == ViewBag.PaginaCurenta ? "active" : "")">
-                                                <a class="page-link" href="@Url.Action("Index", new { pagina = i, searchQuery = ViewBag.SearchQuery })">@i</a>
-                                            </li>
-                                        }
-                                    </ul>
-                                </nav>
-                            }
-                            else
-                            {
-                                <p><strong>Nu s-au găsit evenimente pentru termenul introdus.</strong></p>
-                            }
+                                    O altă direcție de formare a vizat dezvoltarea inteligenței emoționale și a abilităților de relaționare pozitivă cu elevii, aspecte fundamentale pentru construirea unui climat școlar sigur, empatic și incluziv. Nu în ultimul rând, s-a pus un accent deosebit pe leadershipul educațional, înțeles ca un instrument cheie pentru transformarea școlilor în spații de învățare colaborativă, inovatoare și bine conectate cu nevoile comunității. Aceste direcții formează împreună un cadru solid pentru un învățământ de calitate, adaptat provocărilor și oportunităților secolului XXI.
+                                </p>
+                                <div class="quote-wrapper">
+                                    <div class="quotes">„Un profesor bun inspiră viitorul unei națiuni.”</div>
+                                </div>
+                                <p>
+                                    Inițiativa este parte a strategiei naționale de digitalizare a educației până în 2030 și este susținută de Ministerul Educației al Republicii Moldova, Asociația Națională a Companiilor din Domeniul TIC (ATIC) și Tekwill. Prin această colaborare strategică public-privat, organizatorii își propun să creeze o rețea solidă de profesori-formatori, să îmbunătățească accesul la resurse educaționale digitale și să sprijine inovația pedagogică în toate regiunile țării.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Comentarii -->
+                        <div class="comment-form">
+                            <h4>Adaugă un comentariu</h4>
+                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <textarea class="form-control w-100" name="comment" id="comment" rows="6" placeholder="Scrie un comentariu..."></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" name="name" type="text" placeholder="Nume">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" name="email" type="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Trimite comentariul</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
@@ -217,19 +211,6 @@
             </div>
         </section>
     </main>
-
     @Html.Partial("_Footer")
-
-    <div id="back-top">
-        <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
-    </div>
-
-    <!-- JS -->
-    <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/Content/assets/js/bootstrap.min.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-    @Scripts.Render("~/Scripts/js")
-
 </body>
 </html>
