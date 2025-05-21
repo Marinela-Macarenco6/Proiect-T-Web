@@ -9,12 +9,17 @@ public class BundleConfig
     "~/Content/assets/css/animate.min.css",
     "~/Content/assets/css/animated-headline.css",
     "~/Content/assets/css/bootstrap.min.css",
+    "~/Content/assets/css/bootstrap.min2.css",
     "~/Content/assets/css/flaticon.css",
     "~/Content/assets/css/fontawesome-all.min.css",
     "~/Content/assets/css/gijgo.css",
     "~/Content/assets/css/hamburgers.min.css",
     "~/Content/assets/css/magnific-popup.css",
+    "~/Content/assets/css/aos.css",
+    "~/Content/assets/css/glightbox.min.css",
+    "~/Content/assets/css/swiper-bundle.min.css",
     "~/Content/assets/css/main.css",
+    "~/Content/assets/css/main1.css",
     "~/Content/assets/css/nice-select.css",
     "~/Content/assets/css/owl.carousel.min.css",
     "~/Content/assets/css/price_rangs.css",
@@ -23,7 +28,8 @@ public class BundleConfig
     "~/Content/assets/css/slick.css",
     "~/Content/assets/css/slicknav.css",
     "~/Content/assets/css/style.css",
-    "~/Content/assets/css/themify-icons.css"
+    "~/Content/assets/css/themify-icons.css",
+    "~/Content/assets/css/bootstrap-icons1.css"
 ));
         bundles.Add(new StyleBundle("~/Content/assets/scss").Include(
     "~/Content/assets/scss/_about.css",
@@ -82,7 +88,8 @@ public class BundleConfig
             "~/Scripts/mail-script.js",
             "~/Scripts/jquery.ajaxchimp.min.js",
             "~/Scripts/plugins.js",
-            "~/Scripts/main.js"));
+            "~/Scripts/main.js"
+            ));
 
 
 

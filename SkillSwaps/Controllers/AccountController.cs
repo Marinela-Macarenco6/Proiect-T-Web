@@ -105,7 +105,10 @@ namespace SkillSwaps.Controllers
 
         }
 
-
+        public ActionResult ChangeGmailAcc()
+        {
+            return View(new ChangeUserData());
+        }
 
 
         // LOGOUT

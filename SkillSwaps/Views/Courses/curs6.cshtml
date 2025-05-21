@@ -1,0 +1,297 @@
+﻿@{ Layout = null;
+    ViewBag.Title = "Index";
+}
+
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Course Details - Online Learning Platform</title>
+    <meta name="description" content="Explore our comprehensive online courses and start learning today!">
+    <meta name="keywords" content="online courses, e-learning, education, learning platform">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    @Styles.Render("~/Content/assets/css")
+</head>
+
+<!-- Header Start -->
+<div class="header-area header-transparent">
+    <div class="main-header ">
+        <div class="header-bottom  header-sticky">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Logo -->
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo">
+                            <a href="/Home/Index"><img src="~/Content/assets/img/logo/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-10">
+                        <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                            <!-- Main-menu -->
+                            <div class="main-menu d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li class="active"><a href="~/Home/Index">Acasă</a></li>
+                                        <li class="active"><a href="~/Courses/Index">Cursuri</a></li>
+                                        <li class="active"><a href="~/About/Index">Despre Noi</a></li>
+                                        <li class="active"><a href="~/Blog/Index">Blog</a></li>
+                                        <li class="active"><a href="~/Contact/Index">Contacte</a></li>
+                                        <!-- Button -->
+                                        <li class="button-header margin-left "><a href="~/Register/Index" class="btn">Înregistrare</a></li>
+                                        <li class="button-header"><a href="~/Login/Login" class="btn btn3">Conectează-te</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="slider-area slider-area2">
+    <div class="slider-active">
+        <!-- Single Slider -->
+        <div class="single-slider slider-height2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-11 col-md-12">
+                        <div class="hero__caption hero__caption2">
+                            <h1 data-animation="bounceIn" data-delay="0.2s">Programare</h1>
+                            <!-- breadcrumb Start-->
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Cursuri</a></li>
+                                </ol>
+                            </nav>
+                            <!-- breadcrumb End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="service-details" class="service-details section">
+    <div class="container">
+        <div class="row gy-5">
+
+            <div class="col-lg-8">
+                <div class="service-main-content">
+                    <div class="service-header">
+                        <h1>Programare Python pentru Începători</h1>
+                        <div class="service-meta">
+                            <span><i class="bi bi-award"></i> Curs Online</span>
+                            <span><i class="bi bi-clock"></i> 12 Săptămâni</span>
+                            <span><i class="bi bi-star-fill"></i> 4.8/5 Recenzii</span>
+                        </div>
+                        <p class="lead">
+                            Învață programarea în Python de la zero printr-un curriculum practic, bazat pe proiecte reale și exerciții interactive.
+                        </p>
+                    </div>
+
+                    <div class="service-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#service-details-tab-1">
+                                    <i class="bi bi-info-circle"></i> Prezentare Generală
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-2">
+                                    <i class="bi bi-diagram-3"></i> Curriculum
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-3">
+                                    <i class="bi bi-graph-up-arrow"></i> Beneficii
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="service-details-tab-1">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="content-block">
+                                            <h3>Introducere în curs</h3>
+                                            <p>Dobândește abilități valoroase și creează aplicații reale în timp ce înveți programare Python de la instructori cu experiență.</p>
+                                            <p>Cursul acoperă conceptele esențiale ale limbajului Python într-un mod clar și accesibil pentru începători și cei care doresc o reconsolidare.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="~/Content/assets/img/gallery/python1.jpg" alt="Web Development" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                                <div class="swiper mySwiper" style="padding: 20px 0;">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/topic1.png" alt="Imagine 1" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/topic2.png" alt="Imagine 2" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/topic3.png" alt="Imagine 3" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/topic4.png" alt="Imagine 4" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/topic5.png" alt="Imagine 5" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/topic6.png" alt="Imagine 6" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="service-details-tab-2">
+                                <div class="process-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">01</div>
+                                        <div class="timeline-content">
+                                            <h4>Noțiuni de bază în Python</h4>
+                                            <p>Învață sintaxa și structura de bază a limbajului Python pentru a începe să scrii cod eficient.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">02</div>
+                                        <div class="timeline-content">
+                                            <h4>Structuri de date și condiționale</h4>
+                                            <p>Explorează liste, dicționare, condiții și bucle pentru a crea programe dinamice.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">03</div>
+                                        <div class="timeline-content">
+                                            <h4>Funcții și module</h4>
+                                            <p>Organizează codul eficient prin funcții și reutilizează-l folosind module Python.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">04</div>
+                                        <div class="timeline-content">
+                                            <h4>Proiect final</h4>
+                                            <p>Aplică tot ce ai învățat într-un proiect practic și util în viața reală.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="service-details-tab-3">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-graph-up"></i>
+                                            </div>
+                                            <h4>Abilități căutate</h4>
+                                            <p>Învață limbajul Python, utilizat pe scară largă în industrie și educație.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-people"></i>
+                                            </div>
+                                            <h4>Comunitate activă</h4>
+                                            <p>Participă la forumuri și interacționează cu alți cursanți și mentori.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-cash-coin"></i>
+                                            </div>
+                                            <h4>Accesibil</h4>
+                                            <p>Educație de calitate la un preț corect pentru toți.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-bar-chart-line"></i>
+                                            </div>
+                                            <h4>Monitorizare progres</h4>
+                                            <p>Urmărește-ți evoluția cu ajutorul rapoartelor de progres.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="service-sidebar">
+                    <div class="action-card">
+                        <h3>Înscrie-te la curs</h3>
+                        <p>Începe călătoria ta în programare Python chiar azi, cu ajutorul cursului nostru online.</p>
+                        <a href="#" class="btn-primary">Înscrie-te acum</a>
+                        <span class="guarantee"><i class="bi bi-shield-check"></i> Certificat Inclus</span>
+                    </div>
+
+                    <div class="service-features-list">
+                        <h4>Caracteristici curs</h4>
+                        <ul>
+                            <li><i class="bi bi-megaphone"></i><div><h5>Instructori Experți</h5><p>Învață de la profesioniști cu experiență reală</p></div></li>
+                            <li><i class="bi bi-search"></i><div><h5>Proiecte Practice</h5><p>Aplică teoria în exerciții ghidate</p></div></li>
+                            <li><i class="bi bi-newspaper"></i><div><h5>Resurse Descărcabile</h5><p>Acces la materiale oricând</p></div></li>
+                            <li><i class="bi bi-envelope-paper"></i><div><h5>Forum de Suport</h5><p>Ajutor și interacțiune cu colegii</p></div></li>
+                            <li><i class="bi bi-graph-up-arrow"></i><div><h5>Rapoarte Progres</h5><p>Urmărește-ți învățarea</p></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@Html.Partial("_Footer")
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+</body>
+</html>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+
+<script src="~/Scripts/bootstrap.bundle.min1.js"></script>
+<script src="~/Scripts/validate.js"></script>
+<script src="~/Scripts/aos.js"></script>
+<script src="~/Scripts/swiper-bundle.min.js"></script>
+<script src="~/Scripts/glightbox.min.js"></script>
+<script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+<script src="~/Scripts/isotope.pkgd.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>

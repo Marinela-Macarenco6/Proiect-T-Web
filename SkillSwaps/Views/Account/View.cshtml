@@ -1,0 +1,116 @@
+﻿@model SkillSwaps.Models.User.ChangeEmail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schimbare Gmail</title> {{-- Titlul paginii a fost actualizat --}}
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/style.css" />
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body class="login-body" data-vide-bg="assets/img/login-bg.mp4">
+    <main class="login-body" data-vide-bg="assets/img/login-bg.mp4">
+        {{-- Acțiunea formularului a fost actualizată --}}
+        <form class="form-default" method="post" action="@Url.Action("ChangeGmail", "Account")" onsubmit="return validateForm()">
+            @Html.AntiForgeryToken()
+
+            <div class="login-form">
+                <div class="logo-login">
+                    <img src="~/Content/assets/img/logo/loder.png" alt="logo" />
+                </div>
+
+                <h2>Schimbare Gmail</h2> {{-- Titlul din formular a fost actualizat --}}
+
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Count > 0)
+                {
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach (var modelError in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@modelError.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                }
+                <div class="form-input">
+                    {{-- Câmpul pentru noul Gmail, legat de proprietatea NewGmail din model --}}
+                    @Html.LabelFor(m => m.NewEmail, "Adresa Gmail Nouă")
+                    @Html.TextBoxFor(m => m.NewEmail, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Adresa Gmail Nouă",
+                        name = "NewGmail",
+                        id = "NewGmail",
+                        type = "email" // Adăugăm type="email" pentru validare browser
+                    })
+                    <p id="newGmailError" class="error-message"></p> {{-- ID-ul erorii a fost actualizat --}}
+                </div>
+
+                <div class="form-input">
+                    {{-- Câmpul pentru parola, legat de proprietatea Password din model --}}
+                    @Html.LabelFor(m => m.Password, "Parola (pentru confirmare)")
+                    @Html.PasswordFor(m => m.Password, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Parola (pentru confirmare)",
+                        name = "Password",
+                        id = "Password"
+                    })
+                    <p id="passwordError" class="error-message"></p>
+                </div>
+
+                <div class="form-input pt-30">
+                    <input type="submit" value="Schimbă Gmail" class="btn btn-primary" /> {{-- Textul butonului a fost actualizat --}}
+                </div>
+
+                <div class="pt-3">
+                    <a href="@Url.Action("Index", "Home")" class="registration">Înapoi Acasă</a>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="~/Content/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script>
+        function validateForm() {
+            const newGmailInput = document.getElementById('NewGmail');
+            const newGmail = newGmailInput.value;
+            const newGmailError = document.getElementById('newGmailError');
+            const passwordInput = document.getElementById('Password');
+            const password = passwordInput.value;
+            const passwordError = document.getElementById('passwordError');
+            let isValid = true;
+
+            newGmailError.textContent = '';
+            passwordError.textContent = '';
+
+            // Validare Gmail: lungime minimă, format email (adăugăm și o verificare de bază)
+            if (newGmail.length < 5  !newGmail.includes('@'')  !newGmail.includes('.')) { // Exemplu de validare de bază
+                newGmailError.textContent = 'Adresa de Gmail trebuie să fie validă și să aibă cel puțin 5 caractere.';
+                isValid = false;
+            }
+
+            // Validare parolă: lungime minimă
+            if (password.length < 5) {
+                passwordError.textContent = 'Parola trebuie să aibă cel puțin 5 caractere.';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
