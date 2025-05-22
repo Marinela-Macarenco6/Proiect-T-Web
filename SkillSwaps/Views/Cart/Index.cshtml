@@ -1,16 +1,19 @@
-﻿@model List<SkillSwaps.Models.Courses.CartItem> 
+﻿@model List<SkillSwaps.Models.Courses.CartItem>
+
+
 @{
     ViewBag.Title = "Coș de cumpărături";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // adaptează dacă folosești alt layout
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{ Layout = null;
     ViewBag.Title = "Index";
 }
 
+@using System.Linq
 @using System.Web.Optimization
+
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -26,9 +29,8 @@
     @Styles.Render("~/Content/assets/css")
 
     <style>
-        /* Stilizare pentru butonul Șterge personalizat */
         .btn-delete-custom {
-            background-color: #84a4f4; /* roșu aprins */
+            background-color: #84a4f4;
             color: white;
             border: 2px solid #84a4f4;
             font-weight: 600;
@@ -127,6 +129,4 @@
 
     @Html.Partial("_Footer")
 </body>
-
 </html>
-
