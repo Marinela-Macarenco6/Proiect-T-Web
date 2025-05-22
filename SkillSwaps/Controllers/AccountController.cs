@@ -28,13 +28,13 @@ namespace SkillSwaps.Controllers
 
 
         
-        // Get Change Password
+        // GET: Change Password
         public ActionResult ChangePassword()
         {
             return View(new ChangePswdData());
         }
 
-        //Post Change Password
+        // POST: Change Password
         [HttpPost]
         public ActionResult ChangePassword(ChangePswdData data)
         {
@@ -49,32 +49,46 @@ namespace SkillSwaps.Controllers
                 UserId = sessionKey.Value,
                 OldPassword = data.OldPassword,
                 NewPassword = data.NewPassword,
-                ConfirmPassword = data.ConfirmPassword,
+                ConfirmPassword = data.ConfirmPassword
             };
 
-            bool isChanged = _change.UserChangePassword(newData);
+            var resp = _change.UserChangePassword(newData);
 
-            if (isChanged)
+            if (resp.Status)
             {
                 TempData["Success"] = "Parola a fost schimbata cu succes!";
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                ModelState.AddModelError("", "A aparut o eroare. Te rugam sa incerci din nou.");
-                return View(data); // returnezi aceeasi pagina cu datele completate
+                            if (resp.Error != null &&
+                                (resp.Error.Contains("Sesiunea nu a fost gasita") || resp.Error.Contains("Sesiunea a expirat")))
+                            {
+                                return RedirectToAction("Index", "Login");
+                            }
+
+                            if (resp.Error != null &&
+                                (resp.Error.Contains("Parola este incorectă.") || resp.Error.Contains("Utilizatorul nu a fost găsit.")))
+                            {
+                                ModelState.AddModelError("", "Ați introdus datele greșite.");
+                                return View(data);
+                            }
+
+                ModelState.AddModelError("", resp.Error ?? "A aparut o eroare. Te rugam sa incerci din nou.");
+                return View(data);
             }
         }
 
 
 
-        //Get Change Username
+
+        // GET: Change Username
         public ActionResult ChangeUsername()
         {
             return View(new ChangeUserData());
         }
 
-        //Post Change Username
+        //POST: Change Username
         [HttpPost]
         public ActionResult ChangeUsername(ChangeUserData data)
         {
@@ -83,6 +97,7 @@ namespace SkillSwaps.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+
             var newData = new ChangeUsernameData
             {
                 SessionKey = sessionKey.Value,
@@ -90,17 +105,85 @@ namespace SkillSwaps.Controllers
                 Password = data.Password
             };
 
-            bool isChanged = _change.UserChangeUsername(newData);
+            var resp = _change.UserChangeUsername(newData);
 
-            if (isChanged)
+            if (resp.Status)
             {
                 TempData["Success"] = "Numele de utilizator a fost schimbat cu succes!";
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                ModelState.AddModelError("", "A aparut o eroare. Te rugam sa incerci din nou.");
-                return View(data); // returnezi aceeasi pagina cu datele completate
+                         if (resp.Error != null &&
+                                (resp.Error.Contains("Sesiunea nu a fost gasita") || resp.Error.Contains("Sesiunea a expirat")))
+                         {
+                             return RedirectToAction("Index", "Login");
+                         }
+
+                         if (resp.Error != null &&
+                             (resp.Error.Contains("Parola introdusă este incorectă.")))
+                         {
+                             ModelState.AddModelError("", "Ați introdus o parolă incorectă.");
+                             return View(data);
+                         }
+
+                if (resp.Error != null &&
+                    (resp.Error.Contains("Username indisponibil.")))
+                {
+                    ModelState.AddModelError("", "Username Indisponibil");
+                    return View(data);
+                }
+
+                ModelState.AddModelError("", resp.Error ?? "A aparut o eroare. Te rugam sa incerci din nou.");
+                return View(data);
+            }
+        }
+
+
+
+
+        // GET: Change Gmail Account
+        public ActionResult ChangeEmailAcc()
+        {
+            return View(new ChangeEmail());
+        }
+
+       // POST: Change Gmail Account
+        [HttpPost]
+        public ActionResult ChangeEmailAcc(ChangeEmail data)
+        {
+
+            var sessionKey = Request.Cookies["X-KEY"];
+            if (sessionKey == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var newData = new ChangeEmailData
+            {
+                SessionKey = sessionKey.Value,
+                NewEmail = data.NewEmail,
+                Password = data.Password
+            };
+
+            var resp = _change.UserChangeEmail(newData);
+
+            if (resp.Status)
+            {
+
+                TempData["Success"] = "Emailul utilizatorului a fost schimbat cu succes!";
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                    if (resp.Error != null &&
+                        (resp.Error.Contains("Sesiunea nu a fost gasita") || resp.Error.Contains("Sesiunea a expirat")))
+                    {
+                        return RedirectToAction("Index", "Login");
+                    }
+
+                ModelState.AddModelError("", resp.Error ?? "A aparut o eroare. Te rugam sa incerci din nou.");
+                return View(data);
             }
 
         }
@@ -108,28 +191,9 @@ namespace SkillSwaps.Controllers
 
 
 
-        // LOGOUT
-        //[HttpPost]
-        //public ActionResult Logout()
-        //{
-        //    var sessionKey = Request.Cookies["X-KEY"];
 
-        //    if (sessionKey != null)
-        //    {
-        //        sessionKey.Expires = DateTime.Now.AddDays(-1);
-        //        Response.Cookies.Add(sessionKey);
 
-        //        bool success = _session.LogoutUser(sessionKey.Value);
 
-        //        if (!success)
-        //        {
-        //            Session.Clear();
-        //            return RedirectToAction("Error", "Error");
-        //        }
-        //    }
-        //    Session.Clear();
 
-        //    return RedirectToAction("Index", "Home");
-        //}
     }
 }

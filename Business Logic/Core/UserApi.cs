@@ -1,4 +1,6 @@
 ﻿using Business_Logic.DbDataContext.Seed;
+using Domain.Admin;
+using Domain.Enums;
 using Domain.User;
 using Domain.User.EditAcc;
 using Domain.User.Reg;
@@ -7,6 +9,7 @@ using Helpers.RegFlow;
 using Helpers.Session;
 using SkillSwaps.Models.Session;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
@@ -47,6 +50,8 @@ namespace Business_Logic.Core
                     Error = "no user found"
                 };
             }
+
+
 
             return new UserResp()
             {
@@ -115,14 +120,16 @@ namespace Business_Logic.Core
 
             using (var db = new SessionContext())
             {
-                session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey && s.IsValidATime > DateTime.Now);
+                session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey);
 
                 if (session == null)
-                    return new UserResp { Status = false };
+                    return new UserResp { Status = false, Error = "Sesiunea nu a fost gasita." };
 
-                // Reînnoiește expirarea sesiunii  (+30 minute)
+                if (session.IsValidATime <= DateTime.Now)
+                    return new UserResp { Status = false, Error = "Sesiunea a expirat." };
+
+                // Reînnoiește expirarea sesiunii (+30 minute)
                 session.IsValidATime = DateTime.Now.AddMinutes(30);
-
                 db.Entry(session).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -132,18 +139,16 @@ namespace Business_Logic.Core
                 user = db.UserRegDatas.FirstOrDefault(u => u.Id == session.UserId);
             }
 
-            if (user != null)
-            {
-                return new UserResp
-                {
-                    Status = true,
-                    UserId = user.Id,
-                    UserName = user.UserName,
-                    Role = user.userRole,
-                };
-            }
+            if (user == null)
+                return new UserResp { Status = false, Error = "Utilizatorul nu mai exista." };
 
-            return new UserResp { Status = false };
+            return new UserResp
+            {
+                Status = true,
+                UserId = user.Id,
+                UserName = user.UserName,
+                Role = user.userRole
+            };
         }
 
 
@@ -203,12 +208,15 @@ namespace Business_Logic.Core
             };
         }
 
+
         //----------------------- LOGOUT ----------------------------
         internal bool LogoutUserAction(string cookieKey)
         {
+            USessionDbTable session;
+
             using (var db = new SessionContext())
             {
-                var session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey);
+                 session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey);
 
                 if (session != null)
                 {
@@ -223,67 +231,263 @@ namespace Business_Logic.Core
             }
         }
 
+
         //----------------------- EDIT ACCOUNT ----------------------------
-        public bool UserChangePasswordAction(ChangePasswordData changePswdData)
+        public UserResp UserChangePasswordAction(ChangePasswordData changePswdData)
         {
             UserRegData user;
 
-                var UserResp = GetUserByCookieAction(changePswdData.UserId);
+            var userResp = GetUserByCookieAction(changePswdData.UserId);
 
-                if(UserResp.Status == false)
-                {
-                    return false;
-                }
-
-                using (var userDb = new UserContext())
-                {
-                    user = userDb.UserRegDatas.FirstOrDefault(u => u.Id == UserResp.UserId);
-                    if (user == null)
-                        return false;
-
-                    var oldHashed = RegPassHelper.HashGen(changePswdData.OldPassword);
-                    if (user.Password != oldHashed)
-                        return false;
-
-                    user.Password = RegPassHelper.HashGen(changePswdData.NewPassword);
-
-                    userDb.Entry(user).State = System.Data.Entity.EntityState.Modified;
-                    userDb.SaveChanges();
-
-                    return true;
-                }
-        }
-
-        public bool UserChangeUsernameAction(ChangeUsernameData changeUsernameData)
-        {
-            UserRegData user;
-
-            var UserResp = GetUserByCookieAction(changeUsernameData.SessionKey);
-
-            if (UserResp.Status == false)
+            if (!userResp.Status)
             {
-                return false;
+                return new UserResp
+                {
+                    Status = false,
+                    Error = userResp.Error
+                };
             }
+
+            var oldHashed = RegPassHelper.HashGen(changePswdData.OldPassword);
 
             using (var userDb = new UserContext())
             {
-                user = userDb.UserRegDatas.FirstOrDefault(u => u.Id == UserResp.UserId);
+                 user = userDb.UserRegDatas
+                    .FirstOrDefault(u => u.Id == userResp.UserId);
+
                 if (user == null)
-                    return false;
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Utilizatorul nu a fost găsit."
+                    };
+                }
+
+                if (user.Password != oldHashed)
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Parola introdusă este incorectă."
+                    };
+                }
+
+                user.Password = RegPassHelper.HashGen(changePswdData.NewPassword);
+
+                userDb.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                userDb.SaveChanges();
+
+                return new UserResp
+                {
+                    Status = true,
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Role = user.userRole
+                };
+            }
+        }
+        public UserResp UserChangeUsernameAction(ChangeUsernameData changeUsernameData)
+        {
+            UserRegData user;
+
+            var userResp = GetUserByCookieAction(changeUsernameData.SessionKey);
+
+            if (!userResp.Status)
+            {
+                return new UserResp
+                {
+                    Status = false,
+                    Error = userResp.Error
+                };
+            }
+
+            var passHashed = RegPassHelper.HashGen(changeUsernameData.Password);
+
+            using (var userDb = new UserContext())
+            {
+                // Verificăm dacă există un user cu acel ID și cu parola corectă
+                 user = userDb.UserRegDatas
+                    .FirstOrDefault(u => u.Id == userResp.UserId && u.Password == passHashed);
+
+                if (user == null)
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Parola introdusă este incorectă."
+                    };
+                }
 
                 var existingUser = userDb.UserRegDatas
-                    .FirstOrDefault(u => u.UserName.ToLower() == changeUsernameData.NewUsername.ToLower());
-                if (existingUser != null)
-                    return false;
+                    .FirstOrDefault(u => u.UserName.ToLower() == changeUsernameData.NewUsername.ToLower()
+                                      && u.Id != userResp.UserId);
 
+                if (existingUser != null)
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Username indisponibil."
+                    };
+                }
+
+                // Dacă totul e în regulă, actualizăm numele de utilizator
                 user.UserName = changeUsernameData.NewUsername;
 
                 userDb.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 userDb.SaveChanges();
 
-                return true;
+                return new UserResp
+                {
+                    Status = true,
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Role = user.userRole
+                };
             }
         }
+        public UserResp UserChangeEmailAction(ChangeEmailData changeEmailData)
+        {
+            UserRegData user;
+
+            var UserResp = GetUserByCookieAction(changeEmailData.SessionKey);
+
+            if (!UserResp.Status)
+            {
+                return new UserResp
+                {
+                    Status = false,
+                    Error = UserResp.Error
+                };
+            }
+
+            var passHashed = RegPassHelper.HashGen(changeEmailData.Password);
+
+            using (var userDb = new UserContext())
+            {
+                user = userDb.UserRegDatas
+                    .FirstOrDefault(u => u.Id == UserResp.UserId && u.Password == passHashed);
+
+                if (user == null)
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Parola introdusă este incorectă."
+                    };
+                }
+
+                // Verificăm dacă noul email este identic cu cel deja salvat
+                if (user.Email.ToLower() == changeEmailData.NewEmail.ToLower())
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Noul email este identic cu cel actual."
+                    };
+                }
+
+                // Verificăm dacă emailul nou există la alt utilizator
+                var existingGmail = userDb.UserRegDatas
+                    .FirstOrDefault(u => u.Email.ToLower() == changeEmailData.NewEmail.ToLower()
+                                      && u.Id != UserResp.UserId);
+
+                if (existingGmail != null)
+                {
+                    return new UserResp
+                    {
+                        Status = false,
+                        Error = "Adresă Email indisponibilă."
+                    };
+                }
+
+                user.Email = changeEmailData.NewEmail;
+                userDb.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                userDb.SaveChanges();
+
+                return new UserResp
+                {
+                    Status = true,
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    Role = user.userRole
+                };
+            }
+        }
+
+
+        //----------------------- ADMIN ----------------------------
+        public List<UserDataMain> GetAllUserAction()
+        {
+            using (var db = new UserContext())
+            {
+                return db.UserRegDatas
+                    .Select(u => new UserDataMain
+                    {
+                        UserId = u.Id,
+                        FullName = u.FullName,
+                        UserName = u.UserName,
+                        Email = u.Email,
+                        RequestTime = u.RequestTime,
+                        UserRole = u.userRole
+                    })
+                    .ToList();
+            }
+        }
+        public List<UserDataMain> GetAllOnlineUserAction()
+        {
+            using (var sessionDb = new SessionContext())
+            using (var userDb = new UserContext())
+            {
+                var activeUserIds = sessionDb.Session
+                    .Where(s => s.IsValidATime > DateTime.Now)
+                    .Select(s => s.UserId)
+                    .Distinct()
+                    .ToList();
+
+                return userDb.UserRegDatas
+                    .Where(u => activeUserIds.Contains(u.Id))
+                    .Select(u => new UserDataMain
+                    {
+                        UserId = u.Id,
+                        FullName = u.FullName,
+                        UserName = u.UserName,
+                        Email = u.Email,
+                        RequestTime = u.RequestTime,
+                        UserRole = u.userRole
+                    })
+                    .ToList();
+            }
+        }
+        public bool BanUserAccAction(UserDataMain data)
+        {
+            using (var db = new UserContext())
+            {
+                var user = db.UserRegDatas.FirstOrDefault(u => u.Id == data.UserId);
+
+                if (user != null)
+                {
+                    if (user.userRole == EURole.IsBanned)
+                    {
+                        // Utilizatorul este deja banat
+                        return false;
+                    }
+
+                    user.userRole = EURole.IsBanned;
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+
 
 
 

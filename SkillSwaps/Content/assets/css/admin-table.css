@@ -1,0 +1,385 @@
+﻿/* Dacă vrei să imporți fontul 'Montserrat' de pe Google Fonts, adaugă această linie la începutul fișierului */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Stiluri pentru bara de antet SkillSwaps */
+.header-bar {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #2c3e50;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+    .header-bar .logo-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.8em;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: linear-gradient(45deg, #3498db, #8e44ad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    position: relative;
+}
+
+/* Container pentru acțiunile de deasupra tabelului - Modificat pentru Flexbox */
+.table-header-actions {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    /* Stiluri generale pentru butoanele de filtrare */
+    .table-header-actions .filter-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        white-space: nowrap;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    /* Stiluri pentru butonul principal (Afișează utilizatori online) */
+    .table-header-actions .primary-btn {
+        background-color: #3498db; /* Culoare albastră */
+        color: #ffffff;
+        box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    }
+
+        .table-header-actions .primary-btn:hover {
+            background-color: #217dbb; /* Albastru mai închis la hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+
+    /* Stiluri pentru butonul secundar (Afișează toți utilizatorii) */
+    .table-header-actions .secondary-btn {
+        background-color: #ecf0f1; /* Gri deschis */
+        color: #34495e; /* Text mai închis pentru contrast */
+        border: 1px solid #bdc3c7; /* Margine subtilă */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .table-header-actions .secondary-btn:hover {
+            background-color: #dbe4e6; /* Gri ușor mai închis la hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+.switch, .slider, .switch input, .switch-label {
+    display: none !important;
+}
+
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 2.5em;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    padding-top: 50px;
+}
+
+    h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 4px;
+        background-color: #3498db;
+        border-radius: 2px;
+    }
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin: 20px auto;
+    background-color: #ffffff;
+}
+
+th, td {
+    padding: 18px 25px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    border-top: none;
+}
+
+    th:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    th:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+
+tbody tr {
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+    tbody tr:nth-child(even) {
+        background-color: #f8fcfd;
+    }
+
+    tbody tr:hover {
+        background-color: #e3f2fd;
+        cursor: pointer;
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    tbody tr.hidden-by-filter {
+        display: none;
+    }
+
+
+td:first-child {
+    font-weight: 600;
+    color: #555;
+}
+
+td:last-child {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+    .action-buttons button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85em;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        color: #fff;
+        white-space: nowrap;
+    }
+
+    /* Noile culori pentru butoanele de acțiune (nuanțe de albastru) */
+    .action-buttons .edit-btn {
+        background-color: #3498db; /* Albastru standard (ca primary-btn) */
+    }
+
+    .action-buttons .delete-btn {
+        background-color: #2980b9; /* Un albastru mai închis */
+    }
+
+    .action-buttons .block-btn {
+        background-color: #1a5276; /* Un albastru și mai închis, aproape de bleumarin */
+    }
+
+    .action-buttons button:hover {
+        opacity: 0.95;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+/* Message for no users */
+.no-users-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    .header-bar {
+        padding: 15px 0;
+    }
+
+        .header-bar .logo-text {
+            font-size: 2em;
+        }
+
+    /* Stiluri pentru butoanele de filtrare pe mobil */
+    .table-header-actions {
+        position: static;
+        flex-direction: column;
+        margin: 20px auto 0;
+        width: auto;
+        right: auto;
+        top: auto;
+        padding: 0 15px;
+    }
+
+        .table-header-actions .filter-btn {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+    .container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 25px;
+        padding-top: 20px;
+    }
+
+        h2::after {
+            width: 60px;
+            height: 3px;
+        }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tbody tr {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+        }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 45px;
+    }
+
+        td:last-child {
+            border-bottom: none;
+        }
+
+        td:before {
+            position: static;
+            width: auto;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: 600;
+            color: #444;
+            flex-shrink: 0;
+        }
+
+        /* Data labels for responsive table */
+        td:nth-of-type(1):before {
+            content: "ID";
+        }
+
+        td:nth-of-type(2):before {
+            content: "Nume complet";
+        }
+
+        td:nth-of-type(3):before {
+            content: "Username";
+        }
+
+        td:nth-of-type(4):before {
+            content: "Email";
+        }
+
+        td:nth-of-type(5):before {
+            content: "Rol";
+        }
+
+        td:nth-of-type(6):before {
+            content: "Data înregistrării";
+        }
+
+        td:nth-of-type(7):before {
+            content: "Acțiuni";
+        }
+
+    .action-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    td:nth-of-type(7) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+
+}

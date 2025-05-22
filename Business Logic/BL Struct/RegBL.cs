@@ -22,14 +22,19 @@ namespace Business_Logic.BL_Struct
             return UserRegLogicAction(uRegData);
         }
 
-        public bool UserChangePassword(ChangePasswordData changePswdData)
+        public UserResp UserChangePassword(ChangePasswordData changeData)
         {
-            return UserChangePasswordAction(changePswdData);
+            return UserChangePasswordAction(changeData);
         }
 
-        public bool UserChangeUsername(ChangeUsernameData changeUsernameData)
+        public UserResp UserChangeUsername(ChangeUsernameData changeData)
         {
-            return UserChangeUsernameAction(changeUsernameData);
+            return UserChangeUsernameAction(changeData);
+        }
+
+        public UserResp UserChangeEmail(ChangeEmailData changeData)
+        {
+            return UserChangeEmailAction(changeData);
         }
     }
 }

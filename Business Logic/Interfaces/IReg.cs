@@ -12,8 +12,9 @@ namespace Business_Logic.Interfaces
 
         //string UserRegLogic(UserRegData uRegData);
         UserRegDataResp UserRegLogicAction(RegDataActionDTO uRegData);
-        bool UserChangePassword(ChangePasswordData changePswdData);
-        bool UserChangeUsername(ChangeUsernameData changeUsernameData);
-        
+        UserResp UserChangePassword(ChangePasswordData changeData);
+        UserResp UserChangeUsername(ChangeUsernameData changeData);
+        UserResp UserChangeEmail(ChangeEmailData changeData);
+
     }
 }

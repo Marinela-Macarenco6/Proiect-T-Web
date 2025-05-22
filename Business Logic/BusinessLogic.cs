@@ -22,5 +22,10 @@ namespace Business_Logic
         {
             return new RegBL();
         }
+
+        public IAdmin GetAdminBl()
+        {
+            return new AdminBl();
+        }
     }
 }

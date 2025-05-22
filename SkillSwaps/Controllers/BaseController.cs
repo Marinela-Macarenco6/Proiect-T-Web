@@ -45,7 +45,6 @@ namespace SkillSwaps.Controllers
 
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
                 }
-
             }
             else
             { 

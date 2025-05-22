@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL Struct\AdminBl.cs" />
     <Compile Include="BL Struct\ProductBL.cs" />
     <Compile Include="BL Struct\RegBL.cs" />
     <Compile Include="BL Struct\SessionBL.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="DbDataContext\ArticleContext.cs" />
     <Compile Include="DbDataContext\Seed\SessionContext.cs" />
     <Compile Include="DbDataContext\Seed\UserContext.cs" />
+    <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IReg.cs" />
     <Compile Include="Interfaces\ISession.cs" />

@@ -251,6 +251,7 @@
     <Content Include="bin\System.Web.WebPages.Deployment.dll" />
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="Content\assets\css\admin-table.css" />
     <Content Include="Content\assets\css\animate.min.css" />
     <Content Include="Content\assets\css\animated-headline.css" />
     <Content Include="Content\assets\css\bootstrap.min.css" />
@@ -620,10 +621,12 @@
     <Compile Include="Models\Comment\Comment.cs" />
     <Compile Include="Models\Course\AddCourseData.cs" />
     <Compile Include="Models\Reg\RegData.cs" />
+    <Compile Include="Models\User\ChangeEmail.cs" />
     <Compile Include="Models\User\ChangePswdData.cs" />
     <Compile Include="Models\User\ChangeUserData.cs" />
     <Compile Include="Models\User\UserData.cs" />
     <Compile Include="Models\User\AuthData.cs" />
+    <Compile Include="Models\User\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -718,6 +721,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ChangeUsername.cshtml" />
+    <Content Include="Views\Account\ChangeEmailAcc.cshtml" />
+    <Content Include="Views\Admin\GetAllUsers.cshtml" />
+    <Content Include="Views\Admin\GetOnlineUsers.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config" />
   </ItemGroup>

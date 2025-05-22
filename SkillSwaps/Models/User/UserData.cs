@@ -7,8 +7,9 @@ namespace SkillSwaps.Models
 {
 	public class UserData
 	{
-		public string Username { get; set; }
-		 
-		public List<string> Products { get; set; }
+		public string UserName { get; set; }
+
+
+        public List<string> Products { get; set; }
 	}
 }

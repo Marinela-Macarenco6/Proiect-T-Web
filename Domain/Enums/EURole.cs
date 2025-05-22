@@ -13,5 +13,6 @@ namespace Domain.Enums
         Administrator = 10,
         ServiceProvider = 100,
         Organizer = 200,
+        IsBanned  = -1
     }
 }

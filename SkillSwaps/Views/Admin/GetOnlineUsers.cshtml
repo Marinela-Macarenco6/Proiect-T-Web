@@ -1,0 +1,75 @@
+﻿@model List<SkillSwaps.Models.User.UserInfo>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Lista Utilizatori</title>
+
+    <link rel="stylesheet" href="~/Content/assets/css/admin-table.css" />
+</head>
+<body>
+    <div class="header-bar">
+        <span class="logo-text">SkillSwaps</span>
+    </div>
+
+    <div class="container">
+        <h2>Utilizatori online</h2>
+
+        <div class="table-header-actions">
+            <form method="get" action="@Url.Action("GetAllUsers", "Admin")" style="display:inline;">
+                <button type="submit" class="filter-btn secondary-btn">Afișează toți utilizatorii</button>
+            </form>
+        </div>
+
+        @if (Model == null || !Model.Any())
+        {
+            <p class="no-users-message">Nu există utilizatori înregistrați de afișat.</p>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nume complet</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Data înregistrării</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserId</td>
+                            <td>@user.FullName</td>
+                            <td>@user.UserName</td>
+                            <td>@user.Email</td>
+                            <td>@user.UserRole</td>
+                            <td>@(user.RequestTime?.ToString("dd/MM/yyyy HH:mm"))</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="edit-btn">Editare</button>
+                                    <form method="post" action="@Url.Action("BanUser", "Admin")" style="display:inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="UserId" value="@user.UserId" />
+                                        <button type="submit" class="block-btn">Blocare</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</body>
+</html>
