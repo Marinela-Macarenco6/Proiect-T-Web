@@ -33,6 +33,30 @@ namespace SkillSwaps.Controllers
             //bool isValid = _user.isSessionValid(); 
             return View();
         }
+        public ActionResult curs1()
+        {
+            return View();
+        }
+        public ActionResult curs2()
+        {
+            return View();
+        }
+        public ActionResult curs3()
+        {
+            return View();
+        }
+        public ActionResult curs4()
+        {
+            return View();
+        }
+        public ActionResult curs5()
+        {
+            return View();
+        }
+        public ActionResult curs6()
+        {
+            return View();
+        }
 
         // POST: Add Course  
         [HttpPost]

@@ -1,0 +1,259 @@
+﻿@{ Layout = null;
+    ViewBag.Title = "Index";
+}
+
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Detalii Curs - Platformă de Învățare Online</title>
+    <meta name="description" content="Descoperă cursurile noastre online complete și începe să înveți chiar azi!">
+    <meta name="keywords" content="cursuri online, e-learning, educație, platformă de învățare">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    @Styles.Render("~/Content/assets/css")
+</head>
+
+@Html.Partial("_Header")
+
+<section class="slider-area slider-area2">
+    <div class="slider-active">
+        <div class="single-slider slider-height2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-11 col-md-12">
+                        <div class="hero__caption hero__caption2">
+                            <h1 data-animation="bounceIn" data-delay="0.2s">Matematică</h1>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Acasă</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Cursuri</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="service-details" class="service-details section">
+    <div class="container">
+        <div class="row gy-5">
+            <div class="col-lg-8">
+                <div class="service-main-content">
+                    <div class="service-header">
+                        <h1>Curs complet de Matematică</h1>
+                        <div class="service-meta">
+                            <span><i class="bi bi-award"></i> Curs Online</span>
+                            <span><i class="bi bi-clock"></i> 12 săptămâni</span>
+                            <span><i class="bi bi-star-fill"></i> 4.9/5 Recenzii</span>
+                        </div>
+                        <p class="lead">
+                            Stăpânește conceptele fundamentale și avansate din matematică printr-un program interactiv și bine structurat, conceput pentru elevi, studenți sau autodidacți.
+                        </p>
+                    </div>
+
+                    <div class="service-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#service-details-tab-1">
+                                    <i class="bi bi-info-circle"></i> Prezentare generală
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-2">
+                                    <i class="bi bi-diagram-3"></i> Curriculum
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-3">
+                                    <i class="bi bi-graph-up-arrow"></i> Beneficii
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="service-details-tab-1">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="content-block">
+                                            <h3>Introducere în curs</h3>
+                                            <p>Învață matematica pas cu pas: aritmetică, algebră, geometrie, funcții și ecuații într-un format prietenos și ușor de înțeles.</p>
+                                            <p>Cursul este structurat pe niveluri de dificultate, de la începători la avansați, cu explicații clare și exemple interactive.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="~/Content/assets/img/gallery/mat7.jpg" alt="Matematică" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                                <div class="swiper mySwiper" style="padding: 20px 0;">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/mat1.jpg" alt="Imagine 1" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/mat2.jpg" alt="Imagine 2" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/mat3.jpg" alt="Imagine 3" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/mat4.jpg" alt="Imagine 4" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/mat5.jpg" alt="Imagine 5" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="~/Content/assets/img/gallery/mat6.jpg" alt="Imagine 6" style="width: 100%; border-radius: 8px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="service-details-tab-2">
+                                <div class="process-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">01</div>
+                                        <div class="timeline-content">
+                                            <h4>Noțiuni fundamentale</h4>
+                                            <p>Adunare, scădere, înmulțire și împărțire. Bazele matematicii în mod clar explicate.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">02</div>
+                                        <div class="timeline-content">
+                                            <h4>Algebră și ecuații</h4>
+                                            <p>Învață cum să rezolvi ecuații și să manipulezi expresii algebrice.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">03</div>
+                                        <div class="timeline-content">
+                                            <h4>Geometrie și trigonometrie</h4>
+                                            <p>Forme, unghiuri, teorema lui Pitagora, funcții trigonometrice explicate pas cu pas.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">04</div>
+                                        <div class="timeline-content">
+                                            <h4>Analiză matematică</h4>
+                                            <p>Funcții, derivate, integrale și aplicații ale acestora în probleme reale.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="service-details-tab-3">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-graph-up"></i>
+                                            </div>
+                                            <h4>Gândire logică</h4>
+                                            <p>Îți formezi un mod de gândire analitic și structurat, aplicabil în orice domeniu.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-people"></i>
+                                            </div>
+                                            <h4>Sprijin educațional</h4>
+                                            <p>Ideal pentru elevi și studenți care vor să-și îmbunătățească performanțele școlare.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-cash-coin"></i>
+                                            </div>
+                                            <h4>Accesibil oricui</h4>
+                                            <p>Învață în ritmul tău, de oriunde, oricând.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-card">
+                                            <div class="benefit-icon">
+                                                <i class="bi bi-bar-chart-line"></i>
+                                            </div>
+                                            <h4>Evaluare continuă</h4>
+                                            <p>Teste și exerciții pentru fiecare capitol pentru consolidarea cunoștințelor.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="service-sidebar">
+                    <div class="action-card">
+                        <h3>Înscrie-te la curs</h3>
+                        <p>Începe chiar acum să înțelegi matematica mai bine ca niciodată, cu lecții clare și practice.</p>
+                        <a href="#" class="btn-primary" onclick="document.getElementById('cartForm2').submit(); return false;">Achiziționează</a>
+                        <span class="guarantee"><i class="bi bi-shield-check"></i> Certificat inclus</span>
+                    </div>
+
+                    <div class="service-features-list">
+                        <h4>Caracteristici curs</h4>
+                        <ul>
+                            <li><i class="bi bi-megaphone"></i><div><h5>Profesori specializați</h5><p>Predat de matematicieni pasionați</p></div></li>
+                            <li><i class="bi bi-search"></i><div><h5>Probleme aplicate</h5><p>Rezolvă probleme din viața reală</p></div></li>
+                            <li><i class="bi bi-newspaper"></i><div><h5>Materiale PDF</h5><p>Fișiere de studiu descărcabile</p></div></li>
+                            <li><i class="bi bi-envelope-paper"></i><div><h5>Asistență online</h5><p>Întreabă profesorii direct în platformă</p></div></li>
+                            <li><i class="bi bi-graph-up-arrow"></i><div><h5>Teste periodice</h5><p>Verifică-ți progresul la finalul fiecărui modul</p></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<form id="cartForm2" action="@Url.Action("AddToCart", "Cart")" method="post" style="display: none;">
+    <input type="hidden" name="courseId" value="2" />
+    <input type="hidden" name="courseName" value="Matematica" />
+    <input type="hidden" name="price" value="120" />
+</form>
+
+@Html.Partial("_Footer")
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+</body>
+</html>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+
+<script src="~/Scripts/bootstrap.bundle.min1.js"></script>
+<script src="~/Scripts/validate.js"></script>
+<script src="~/Scripts/aos.js"></script>
+<script src="~/Scripts/swiper-bundle.min.js"></script>
+<script src="~/Scripts/glightbox.min.js"></script>
+<script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+<script src="~/Scripts/isotope.pkgd.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>

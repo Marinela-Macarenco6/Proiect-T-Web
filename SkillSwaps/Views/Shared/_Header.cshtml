@@ -1,36 +1,89 @@
-﻿
+﻿@{
+    var isAuthenticated = false;
+    var userId = 0;
+
+    var cookie = Request.Cookies["X-KEY"];
+    if (cookie != null)
+    {
+        try
+        {
+            var decrypted = Helpers.Session.CookieGenerator.Validate(cookie.Value);
+            var userIdStr = decrypted.Split('[')[0];
+            userId = int.Parse(userIdStr);
+            isAuthenticated = true;
+        }
+        catch { isAuthenticated = false; }
+    }
+    ViewBag.IsAuthenticated = isAuthenticated;
+    ViewBag.UserId = userId;
+}
+
 <!-- Header Start -->
 <div class="header-area header-transparent">
-    <div class="main-header ">
-        <div class="header-bottom  header-sticky">
+    <div class="main-header">
+        <div class="header-bottom header-sticky" style="padding-top: 10px;">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <!-- Logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="/Home/Index"><img src="~/Content/assets/img/logo/logo.png" alt=""></a>
+                            <a href="/Home/Index">
+                                <img src="~/Content/assets/img/logo/logo.png" alt="logo">
+                            </a>
                         </div>
                     </div>
+
                     <div class="col-xl-10 col-lg-10">
                         <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                            <!-- Main-menu -->
-                            <div class="main-menu d-none d-lg-block">
-                                <nav>
-                                    <ul id="navigation">
-                                        <li class="active"><a href="~/Home/Index">Acasă</a></li>
-                                        <li class="active"><a href="~/Courses/Index">Cursuri</a></li>
-                                        <li class="active"><a href="~/About/Index">Despre Noi</a></li>
-                                        <li class="active"><a href="~/Blog/Index">Blog</a></li>
-                                        <li class="active"><a href="~/Contact/Index">Contacte</a></li>
-                                        <!-- Button -->
-                                        <li class="button-header margin-left "><a href="~/Register/Index" class="btn">Înregistrare</a></li>
-                                        <li class="button-header"><a href="~/Login/Login" class="btn btn3">Conectează-te</a></li>
-                                    </ul>
-                                </nav>
+                            <div class="main-menu d-none d-lg-flex align-items-center">
+                                @if (!isAuthenticated)
+                                {
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li class="active"><a href="~/Home/Index">Acasă</a></li>
+                                            <li class="active"><a href="~/Courses/Index">Cursuri</a></li>
+                                            <li class="active"><a href="~/About/Index">Despre Noi</a></li>
+                                            <li class="active"><a href="~/Blog/Index">Blog</a></li>
+                                            <li class="active"><a href="~/Contact/Index">Contacte</a></li>
+                                            <li class="button-header margin-left">
+                                                <a href="~/Register/Index" class="btn">Înregistrare</a>
+                                            </li>
+                                            <li class="button-header">
+                                                <a href="~/Login/Index" class="btn btn3">Conectează-te</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                }
+                                else
+                                {
+                                    <!-- Iconițe profil și coș -->
+                                    <div class="d-flex align-items-center mr-4">
+                                        <a href="~/Account/View" title="Profilul meu" class="text-white mr-5">
+                                            <i class="fas fa-user-circle fa-lg"></i>
+                                        </a>
+                                        <a href="~/Cart/Index" title="Coșul meu" class="text-white mr-3">
+                                            <i class="fas fa-shopping-cart fa-lg"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- Meniu dropdown la hover -->
+                                    <div class="hover-dropdown ml-3">
+                                        <button class="btn btn-outline-light">☰ Meniu</button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="~/Home/Index">Acasă</a>
+                                            <a class="dropdown-item" href="~/Courses/Index">Cursuri</a>
+                                            <a class="dropdown-item" href="~/About/Index">Despre Noi</a>
+                                            <a class="dropdown-item" href="~/Blog/Index">Blog</a>
+                                            <a class="dropdown-item" href="~/Contact/Index">Contacte</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" href="~/Account/Logout">Deconectează-mă</a>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
-                    <!-- Mobile Menu -->
+
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
@@ -39,6 +92,4 @@
         </div>
     </div>
 </div>
-<!-- Header End -->
- </header>
 <!-- Header End -->

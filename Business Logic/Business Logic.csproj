@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL Struct\BlogBL.cs" />
     <Compile Include="BL Struct\AdminBl.cs" />
     <Compile Include="BL Struct\ProductBL.cs" />
     <Compile Include="BL Struct\RegBL.cs" />
@@ -63,10 +64,20 @@
     <Compile Include="DbDataContext\ArticleContext.cs" />
     <Compile Include="DbDataContext\Seed\SessionContext.cs" />
     <Compile Include="DbDataContext\Seed\UserContext.cs" />
+    <Compile Include="Interfaces\IBlogLogic.cs" />
     <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IReg.cs" />
     <Compile Include="Interfaces\ISession.cs" />
+    <Compile Include="Migrations\202505141557491_InitialCreate.cs" />
+    <Compile Include="Migrations\202505141557491_InitialCreate.Designer.cs">
+      <DependentUpon>202505141557491_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505212235233_AddUserRoleToUserRegDatas.cs" />
+    <Compile Include="Migrations\202505212235233_AddUserRoleToUserRegDatas.Designer.cs">
+      <DependentUpon>202505212235233_AddUserRoleToUserRegDatas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +90,14 @@
       <Name>Helpers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202505141557491_InitialCreate.resx">
+      <DependentUpon>202505141557491_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505212235233_AddUserRoleToUserRegDatas.resx">
+      <DependentUpon>202505212235233_AddUserRoleToUserRegDatas.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

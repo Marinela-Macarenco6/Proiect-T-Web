@@ -1,55 +1,42 @@
-﻿@{ Layout = null;
-    ViewBag.Title = "Index";
+﻿@model List<Domain.Blog.EvenimentBlog>
+@using System.Web.Optimization
+
+@{
+    Layout = null;
+    ViewBag.Title = "Evenimente și Workshopuri";
 }
 
-@using System.Web.Optimization
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ro">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Courses | Education</title>
-    <meta name="description" content="">
+    <title>Evenimente | Education</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="~/Content/site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
     @Styles.Render("~/Content/assets/scss")
     @Styles.Render("~/Content/assets/css")
-
-   
+</head>
 <body>
-    <!--? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="~/Content/assets/img/logo/loder.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
+
     @Html.Partial("_Header")
+
     <main>
-        <!--? slider Area Start-->
+        <!-- Banner -->
         <section class="slider-area slider-area2">
             <div class="slider-active">
-                <!-- Single Slider -->
                 <div class="single-slider slider-height2">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="bounceIn" data-delay="0.2s">Evenimente și Workshopuri</h1>
-                                    <!-- breadcrumb Start-->
+                                    <h1>Evenimente și Workshopuri</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Acasă</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Evenimente</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Acasă</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Evenimente</a></li>
                                         </ol>
                                     </nav>
-                                    <!-- breadcrumb End -->
                                 </div>
                             </div>
                         </div>
@@ -57,353 +44,192 @@
                 </div>
             </div>
         </section>
-        <!--? Blog Area Start-->
+
+        <!-- Evenimente și Sidebar -->
         <section class="blog_area section-padding">
             <div class="container">
                 <div class="row">
+                    <!-- Lista Evenimente -->
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="~/Content/assets/img/blog/Hackathon-01-1.png" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Martie</p>
-                                    </a>
-                                </div>
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="~/Blog/Ev1">
-                                        <h2 class="blog-head" style="color: #2d2d2d;">Hackathon pentru Începători în IT</h2>
-                                    </a>
-                                    <p>
-                                        Un eveniment intensiv de programare unde participanții vor învăța bazele coding-ului și vor crea un proiect funcțional într-o zi.
-                                    </p>
-                                </div>
-                            </article>
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="~/Content/assets/img/blog/mathc.jpg" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>22</h3>
-                                        <p>Martie</p>
-                                    </a>
-                                </div>
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="~/Blog/Ev2">
-                                        <h2 class="blog-head" style="color: #2d2d2d;">Matematica Distractivă – Atelier pentru Elevi</h2>
-                                    </a>
-                                    <p>
-                                        O sesiune interactivă unde copiii descoperă matematică prin jocuri logice și provocări captivante.
-                                    </p>
-                                </div>
-                            </article>
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="~/Content/assets/img/blog/Concurs-sah.jpg" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>5</h3>
-                                        <p>Aprilie</p>
-                                    </a>
-                                </div>
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="~/Blog/Ev3">
-                                        <h2 class="blog-head" style="color: #2d2d2d;">Turneu de Șah pentru Începători și Avansați</h2>
-                                    </a>
-                                    <p>
-                                        Competiție deschisă tuturor pasionaților de șah, cu premii și sesiuni de analiză a partidelor împreună cu experți.
-                                    </p>
-                                </div>
-                            </article>
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="~/Content/assets/img/blog/design-grafic.jpg" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>12</h3>
-                                        <p>Aprilie</p>
-                                    </a>
-                                </div>
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="~/Blog/Ev4">
-                                        <h2 class="blog-head" style="color: #2d2d2d;">Curs de Design Grafic cu Adobe Illustrator</h2>
-                                    </a>
-                                    <p>
-                                        Workshop practic unde participanții învață să creeze logo-uri, bannere și alte elemente vizuale profesionale.
-                                    </p>
-                                </div>
-                            </article>
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="~/Content/assets/img/blog/inteligenta artificiala.jpg" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>20</h3>
-                                        <p>Aprilie</p>
-                                    </a>
-                                </div>
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="~/Blog/Ev5">
-                                        <h2 class="blog-head" style="color: #2d2d2d;">Seminar: Inteligența Artificială și Viitorul Locurilor de Muncă</h2>
-                                    </a>
-                                    <p>
-                                        O discuție deschisă cu specialiști în AI despre cum tehnologia transformă piața muncii și ce competențe vor fi esențiale în viitor.
-                                    </p>
-                                </div>
-                            </article>
-                            <nav class="blog-pagination justify-content-center d-flex">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Previous">
-                                            <i class="ti-angle-left"></i>
-                                        </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="~/Blog/Index" class="page-link">1</a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a href="~/Blog/Evpag2" class="page-link">2</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="~/Blog/Evpag2" class="page-link" aria-label="Next">
-                                            <i class="ti-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            @if (Model.Any())
+                            {
+                                foreach (var ev in Model)
+                                {
+                                    <article class="blog_item">
+                                        <div class="blog_item_img">
+                                            <img class="card-img rounded-0" src="@Url.Content(ev.ImagineUrl)" alt="@ev.Titlu">
+                                            <a href="#" class="blog_item_date">
+                                                <h3>@ev.Data.Day</h3>
+                                                <p>@ev.Data.ToString("MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("ro-RO"))</p>
+                                            </a>
+                                        </div>
+                                        <div class="blog_details">
+                                            <a class="d-inline-block" href="@Url.Action("Ev" + ev.Id, "Blog")">
+                                                <h2 class="blog-head" style="color: #2d2d2d;">@ev.Titlu</h2>
+                                            </a>
+                                            <p>@ev.Descriere</p>
+                                        </div>
+                                    </article>
+                                }
+
+                                <!-- Paginare -->
+                                <nav class="blog-pagination justify-content-center d-flex">
+                                    <ul class="pagination">
+                                        @for (int i = 1; i <= ViewBag.TotalPagini; i++)
+                                        {
+                                            <li class="page-item @(i == ViewBag.PaginaCurenta ? "active" : "")">
+                                                <a class="page-link" href="@Url.Action("Index", new { pagina = i, searchQuery = ViewBag.SearchQuery })">@i</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </nav>
+                            }
+                            else
+                            {
+                                <p><strong>Nu s-au găsit evenimente pentru termenul introdus.</strong></p>
+                            }
                         </div>
                     </div>
+
+                    <!-- Sidebar -->
+                    <!-- Sidebar -->
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
+
+                            <!-- Căutare -->
                             <aside class="single_sidebar_widget search_widget">
-                                <form action="#">
+                                <form method="get" action="@Url.Action("Cauta", "Blog")">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder='Search Keyword'
-                                                   onfocus="this.placeholder = ''"
-                                                   onblur="this.placeholder = 'Search Keyword'">
+                                            <input type="text" name="searchQuery" class="form-control" placeholder="Căutare..."
+                                                   value="@ViewBag.SearchQuery" />
                                             <div class="input-group-append">
-                                                <button class="btns" type="button"><i class="ti-search"></i></button>
+                                                <button class="btns" type="submit"><i class="ti-search"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                            type="submit">
-                                        Search
-                                    </button>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Caută</button>
                                 </form>
                             </aside>
+
+                            <!-- Categorii -->
                             <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Categorii</h4>
                                 <ul class="list cat-list">
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Domenii tehnice & IT" })" class="d-flex">
                                             <p>Domenii tehnice & IT</p>
-                                            <p>(37)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Arte & Design" })" class="d-flex">
                                             <p>Arte & Design</p>
-                                            <p>(10)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Științe exacte" })" class="d-flex">
                                             <p>Științe exacte</p>
-                                            <p>(03)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Business & Marketing" })" class="d-flex">
                                             <p>Business & Marketing</p>
-                                            <p>(11)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Dezvoltare personală" })" class="d-flex">
                                             <p>Dezvoltare personală</p>
-                                            <p>(21)</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Cursuri Practice & Hobby-uri" })" class="d-flex">
                                             <p>Cursuri Practice & Hobby-uri</p>
-                                            <p>(09)</p>
                                         </a>
                                     </li>
                                 </ul>
+
                             </aside>
+
+                            <!-- Evenimente Notabile -->
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title" style="color: #2d2d2d;">Evenimente Notabile</h3>
+                                <!-- Exemplu post -->
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/post_1.png" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;"> Recunoașterea internațională a proiectului „Tekwill în fiecare școală”</h3>
-                                        </a>
+                                        <a href="/Blog/EvNotabil1"><h3 style="color: #2d2d2d;">Recunoaștere Tekwill în fiecare școală</h3></a>
                                         <p>5 Februarie, 2025</p>
                                     </div>
                                 </div>
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/profesori.jpg" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;">Lansarea proiectului-pilot „Investim în profesori”</h3>
-                                        </a>
-                                        <p>19 februarie, 2025</p>
+                                        <a href="/Blog/EvNotabil2"><h3 style="color: #2d2d2d;">Investim în profesori</h3></a>
+                                        <p>19 Februarie, 2025</p>
                                     </div>
                                 </div>
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/eradigitala.png" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;"> Conferința „Copiii în era digitală"</h3>
-                                        </a>
+                                        <a href="/Blog/EvNotabil3"><h3 style="color: #2d2d2d;">Copiii în era digitală</h3></a>
                                         <p>18 Decembrie, 2024</p>
                                     </div>
                                 </div>
                                 <div class="media post_item">
                                     <img class="test" src="~/Content/assets/img/post/romold.jpg" alt="post">
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;">Colaborare educațională între România și Republica Moldova</h3>
-                                        </a>
-                                        <p>23 octombrie, 2024</p>
+                                        <a href="/Blog/EvNotabil4"><h3 style="color: #2d2d2d;">Colaborare România – Moldova</h3></a>
+                                        <p>23 Octombrie, 2024</p>
                                     </div>
                                 </div>
                             </aside>
+
+                            <!-- Tag Cloud -->
                             <aside class="single_sidebar_widget tag_cloud_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
                                 <ul class="list">
-                                    <li>
-                                        <a href="#">programare</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">marketing</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">blogging</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">psihologie</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">public speaking</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">muzică</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">fotografie</a>
-                                    </li>
+                                    <li><a href="#">programare</a></li>
+                                    <li><a href="#">design</a></li>
+                                    <li><a href="#">marketing</a></li>
+                                    <li><a href="#">blogging</a></li>
+                                    <li><a href="#">psihologie</a></li>
+                                    <li><a href="#">public speaking</a></li>
+                                    <li><a href="#">muzică</a></li>
+                                    <li><a href="#">fotografie</a></li>
                                 </ul>
                             </aside>
 
-                            <aside class="single_sidebar_widget instagram_feeds">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
-                                <ul class="instagram_row flex-wrap">
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="~/Content/assets/img/post/post_5.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="~/Content/assets/img/post/post_6.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="~/Content/assets/img/post/post_7.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="~/Content/assets/img/post/post_8.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="~/Content/assets/img/post/post_9.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </aside>
+                            <!-- Newsletter -->
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
                                 <form action="#">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                        <input type="email" class="form-control" placeholder="Enter email" required>
                                     </div>
-                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                            type="submit">
-                                        Subscribe
-                                    </button>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Subscribe</button>
                                 </form>
                             </aside>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Blog Area End -->
     </main>
+
     @Html.Partial("_Footer")
 
-    <!-- Scroll Up -->
     <div id="back-top">
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+        <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
     </div>
-    <!-- JS here -->
 
+    <!-- JS -->
     <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- Jquery, Popper, Bootstrap -->
     <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/Content/assets/js/popper.min.js"></script>
     <script src="~/Content/assets/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-    <script src="~/Content/assets/js/jquery.slicknav.min.js"></script>
-
-    <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
-    <script src="~/Content/assets/js/slick.min.js"></script>
-    <!-- One Page, Animated-HeadLin -->
-    <script src="~/Content/assets/js/wow.min.js"></script>
-    <script src="~/Content/assets/js/animated.headline.js"></script>
-    <script src="~/Content/assets/js/jquery.magnific-popup.js"></script>
-
-    <!-- Date Picker -->
-    <script src="~/Content/assets/js/gijgo.min.js"></script>
-    <!-- Nice-select, sticky -->
-    <script src="~/Content/assets/js/jquery.nice-select.min.js"></script>
-    <script src="~/Content/assets/js/jquery.sticky.js"></script>
-
-    <!-- counter , waypoint,Hover Direction -->
-    <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
-    <script src="~/Content/assets/js/waypoints.min.js"></script>
-    <script src="~/Content/assets/js/jquery.countdown.min.js"></script>
-    <script src="~/Content/assets/js/hover-direction-snake.min.js"></script>
-
-    <!-- contact js -->
-    <script src="~/Content/assets/js/contact.js"></script>
-    <script src="~/Content/assets/js/jquery.form.js"></script>
-    <script src="~/Content/assets/js/jquery.validate.min.js"></script>
-    <script src="~/Content/assets/js/mail-script.js"></script>
-    <script src="~/Content/assets/js/jquery.ajaxchimp.min.js"></script>
-
-    <!-- Jquery Plugins, main Jquery -->
-    <script src="~/Content/assets/js/plugins.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
-
     @Scripts.Render("~/Scripts/js")
 
 </body>
 </html>
-

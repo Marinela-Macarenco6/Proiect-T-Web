@@ -1,0 +1,217 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Copiii în era digitală";
+}
+@using System.Web.Optimization
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/assets/scss")
+    @Styles.Render("~/Content/assets/css")
+</head>
+<body>
+    @Html.Partial("_Header")
+
+    <main>
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <div class="single-slider slider-height2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-11 col-md-12">
+                                <div class="hero__caption hero__caption2">
+                                    <h1>@ViewBag.Title</h1>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/">Acasă</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Copiii în era digitală</a></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog_area single-post-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid w-100" src="~/Content/assets/img/post/eradigitala.png" alt="Copiii în era digitală">
+                            </div>
+                            <div class="blog_details">
+                                <h2>Educație, siguranță și echilibru pentru copiii nativi digital</h2>
+                                <p class="excert">18 Decembrie, 2024</p>
+                                <p>
+                                    Într-o lume în care tehnologia face parte din viața de zi cu zi, copiii intră în contact cu mediul digital de la vârste tot mai fragede. Evenimentul <strong>„Copiii în era digitală”</strong> a reunit educatori, specialiști în tehnologie, psihologi, părinți și factori de decizie pentru a analiza impactul noilor tehnologii asupra dezvoltării copiilor și pentru a identifica soluții echilibrate între acces și protecție.
+                                </p>
+                                <p>
+                                    Discuțiile au abordat o gamă variată de subiecte, de la introducerea educației media în școli – ca mijloc de dezvoltare a gândirii critice și a discernământului digital – până la siguranța online, în special protecția datelor personale ale minorilor și prevenirea riscurilor asociate, cum ar fi cyberbullying-ul sau expunerea la conținut inadecvat.
+                                </p>
+                                <div class="quote-wrapper">
+                                    <div class="quotes">„Un copil informat digital este un adult responsabil în viitor.”</div>
+                                </div>
+                                <p>
+                                    Sub deviza „Un copil informat digital este un adult responsabil în viitor”, evenimentul a subliniat importanța unei formări digitale timpurii și conștiente. Experți internaționali au prezentat instrumente și bune practici pentru construirea unui mediu digital sigur, incluziv și echilibrat, în care copiii pot naviga în siguranță și își pot dezvolta competențele necesare secolului XXI.
+
+                                    Un accent important a fost pus pe rolul colaborativ al părinților și profesorilor în formarea unei culturi digitale sănătoase. Au fost propuse strategii concrete de sprijin și ghidaj pentru copii, prin comunicare deschisă, reguli clare de utilizare a tehnologiei și implicare activă în conținutul consumat de aceștia.
+
+                                    Evenimentul a evidențiat faptul că tehnologia nu este, în sine, un pericol, ci un instrument care poate deveni aliat al educației, atâta timp cât este folosit în mod conștient, responsabil și adaptat nevoilor fiecărui copil. Concluzia generală: educația digitală trebuie să meargă mână în mână cu educația emoțională și civică, pentru a construi un viitor sigur și echilibrat pentru generațiile care cresc deja în era digitală.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comment-form">
+                            <h4>Adaugă un comentariu</h4>
+                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <textarea class="form-control w-100" name="comment" rows="6" placeholder="Scrie un comentariu..."></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" name="name" type="text" placeholder="Nume">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" name="email" type="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Trimite comentariul</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+
+                            <!-- Căutare -->
+                            <aside class="single_sidebar_widget search_widget">
+                                <form method="get" action="@Url.Action("Cauta", "Blog")">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="searchQuery" class="form-control" placeholder="Căutare..."
+                                                   value="@ViewBag.SearchQuery" />
+                                            <div class="input-group-append">
+                                                <button class="btns" type="submit"><i class="ti-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Caută</button>
+                                </form>
+                            </aside>
+
+                            <!-- Categorii -->
+                            <aside class="single_sidebar_widget post_category_widget">
+                                <h4 class="widget_title" style="color: #2d2d2d;">Categorii</h4>
+                                <ul class="list cat-list">
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Domenii tehnice & IT" })" class="d-flex">
+                                            <p>Domenii tehnice & IT</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Arte & Design" })" class="d-flex">
+                                            <p>Arte & Design</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Științe exacte" })" class="d-flex">
+                                            <p>Științe exacte</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Business & Marketing" })" class="d-flex">
+                                            <p>Business & Marketing</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Dezvoltare personală" })" class="d-flex">
+                                            <p>Dezvoltare personală</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Cursuri Practice & Hobby-uri" })" class="d-flex">
+                                            <p>Cursuri Practice & Hobby-uri</p>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </aside>
+
+                            <!-- Evenimente Notabile -->
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title" style="color: #2d2d2d;">Evenimente Notabile</h3>
+                                <!-- Exemplu post -->
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/post_1.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil1"><h3 style="color: #2d2d2d;">Recunoaștere Tekwill în fiecare școală</h3></a>
+                                        <p>5 Februarie, 2025</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/profesori.jpg" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil2"><h3 style="color: #2d2d2d;">Investim în profesori</h3></a>
+                                        <p>19 Februarie, 2025</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/eradigitala.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil3"><h3 style="color: #2d2d2d;">Copiii în era digitală</h3></a>
+                                        <p>18 Decembrie, 2024</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/romold.jpg" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil4"><h3 style="color: #2d2d2d;">Colaborare România – Moldova</h3></a>
+                                        <p>23 Octombrie, 2024</p>
+                                    </div>
+                                </div>
+                            </aside>
+
+                            <!-- Tag Cloud -->
+                            <aside class="single_sidebar_widget tag_cloud_widget">
+                                <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
+                                <ul class="list">
+                                    <li><a href="#">programare</a></li>
+                                    <li><a href="#">design</a></li>
+                                    <li><a href="#">marketing</a></li>
+                                    <li><a href="#">blogging</a></li>
+                                    <li><a href="#">psihologie</a></li>
+                                    <li><a href="#">public speaking</a></li>
+                                    <li><a href="#">muzică</a></li>
+                                    <li><a href="#">fotografie</a></li>
+                                </ul>
+                            </aside>
+
+                            <!-- Newsletter -->
+                            <aside class="single_sidebar_widget newsletter_widget">
+                                <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
+                                <form action="#">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Enter email" required>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Subscribe</button>
+                                </form>
+                            </aside>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    @Html.Partial("_Footer")
+</body>
+</html>

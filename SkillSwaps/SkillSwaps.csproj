@@ -107,6 +107,10 @@
     <Reference Include="Microsoft.IdentityModel.Abstractions, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.8.5.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -174,25 +178,30 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -204,11 +213,6 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Web.Infrastructure">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -254,13 +258,18 @@
     <Content Include="Content\assets\css\admin-table.css" />
     <Content Include="Content\assets\css\animate.min.css" />
     <Content Include="Content\assets\css\animated-headline.css" />
+    <Content Include="Content\assets\css\aos.css" />
+    <Content Include="Content\assets\css\bootstrap-icons2.css" />
     <Content Include="Content\assets\css\bootstrap.min.css" />
+    <Content Include="Content\assets\css\bootstrap.min2.css" />
     <Content Include="Content\assets\css\flaticon.css" />
     <Content Include="Content\assets\css\fontawesome-all.min.css" />
     <Content Include="Content\assets\css\gijgo.css" />
+    <Content Include="Content\assets\css\glightbox.min.css" />
     <Content Include="Content\assets\css\hamburgers.min.css" />
     <Content Include="Content\assets\css\magnific-popup.css" />
     <Content Include="Content\assets\css\main.css" />
+    <Content Include="Content\assets\css\main1.css" />
     <Content Include="Content\assets\css\nice-select.css" />
     <Content Include="Content\assets\css\owl.carousel.min.css" />
     <Content Include="Content\assets\css\price_rangs.css" />
@@ -269,6 +278,7 @@
     <Content Include="Content\assets\css\slick.css" />
     <Content Include="Content\assets\css\slicknav.css" />
     <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\css\swiper-bundle.min.css" />
     <Content Include="Content\assets\css\themify-icons.css" />
     <Content Include="Content\assets\fonts\fa-brands-400.svg" />
     <Content Include="Content\assets\fonts\fa-regular-400.svg" />
@@ -278,6 +288,7 @@
     <Content Include="Content\assets\fonts\Flaticon.svg" />
     <Content Include="Content\assets\fonts\gijgo-material.svg" />
     <Content Include="Content\assets\fonts\themify.svg" />
+    <Content Include="Content\assets\img\apple-touch-icon.png" />
     <Content Include="Content\assets\img\blog\author.png" />
     <Content Include="Content\assets\img\blog\centrutineret.jpg" />
     <Content Include="Content\assets\img\blog\comment_1.png" />
@@ -305,6 +316,7 @@
     <Content Include="Content\assets\img\blog\Startup-Village.jpg" />
     <Content Include="Content\assets\img\blog\Startup-World-Cup-Moldova-.jpg" />
     <Content Include="Content\assets\img\blog\startup.jpg" />
+    <Content Include="Content\assets\img\blog\tek.jpeg" />
     <Content Include="Content\assets\img\blog\tineri.jpg" />
     <Content Include="Content\assets\img\elements\a.jpg" />
     <Content Include="Content\assets\img\elements\a2.jpg" />
@@ -332,8 +344,24 @@
     <Content Include="Content\assets\img\elements\success-check.png" />
     <Content Include="Content\assets\img\elements\success-radio.png" />
     <Content Include="Content\assets\img\favicon.ico" />
+    <Content Include="Content\assets\img\favicon.png" />
     <Content Include="Content\assets\img\gallery\about2.png" />
     <Content Include="Content\assets\img\gallery\about3.png" />
+    <Content Include="Content\assets\img\gallery\croitorie2.jpg" />
+    <Content Include="Content\assets\img\gallery\croitorie3.jpg" />
+    <Content Include="Content\assets\img\gallery\croitorie4.jpg" />
+    <Content Include="Content\assets\img\gallery\croitorie5.jpg" />
+    <Content Include="Content\assets\img\gallery\croitorie6.jpg" />
+    <Content Include="Content\assets\img\gallery\croitorie7.jpg" />
+    <Content Include="Content\assets\img\gallery\croitorie8.jpeg" />
+    <Content Include="Content\assets\img\gallery\croitorie9.jpeg" />
+    <Content Include="Content\assets\img\gallery\eng1.jpg" />
+    <Content Include="Content\assets\img\gallery\eng2.png" />
+    <Content Include="Content\assets\img\gallery\eng3.png" />
+    <Content Include="Content\assets\img\gallery\eng4.png" />
+    <Content Include="Content\assets\img\gallery\eng5.jfif" />
+    <Content Include="Content\assets\img\gallery\eng6.jpg" />
+    <Content Include="Content\assets\img\gallery\eng7.jpeg" />
     <Content Include="Content\assets\img\gallery\featured1.png" />
     <Content Include="Content\assets\img\gallery\featured2.png" />
     <Content Include="Content\assets\img\gallery\featured3.png" />
@@ -347,8 +375,24 @@
     <Content Include="Content\assets\img\gallery\h1_hero2.png" />
     <Content Include="Content\assets\img\gallery\heart1.png" />
     <Content Include="Content\assets\img\gallery\logo2_footer.png" />
+    <Content Include="Content\assets\img\gallery\mat1.jpg" />
+    <Content Include="Content\assets\img\gallery\mat2.jpg" />
+    <Content Include="Content\assets\img\gallery\mat3.jpg" />
+    <Content Include="Content\assets\img\gallery\mat4.jpg" />
+    <Content Include="Content\assets\img\gallery\mat5.jpg" />
+    <Content Include="Content\assets\img\gallery\mat6.jpg" />
+    <Content Include="Content\assets\img\gallery\mat7.jpg" />
     <Content Include="Content\assets\img\gallery\python.jpg" />
+    <Content Include="Content\assets\img\gallery\python1.jpg" />
     <Content Include="Content\assets\img\gallery\qutaion.png" />
+    <Content Include="Content\assets\img\gallery\sah1.jpg" />
+    <Content Include="Content\assets\img\gallery\sah2.jpg" />
+    <Content Include="Content\assets\img\gallery\sah3.jpg" />
+    <Content Include="Content\assets\img\gallery\sah4.jpeg" />
+    <Content Include="Content\assets\img\gallery\sah5.jpg" />
+    <Content Include="Content\assets\img\gallery\sah6.jpg" />
+    <Content Include="Content\assets\img\gallery\sah7.jfif" />
+    <Content Include="Content\assets\img\gallery\sah8.jfif" />
     <Content Include="Content\assets\img\gallery\screen.png" />
     <Content Include="Content\assets\img\gallery\section-bg3.png" />
     <Content Include="Content\assets\img\gallery\section_bg01.png" />
@@ -380,6 +424,13 @@
     <Content Include="Content\assets\img\gallery\topic6.png" />
     <Content Include="Content\assets\img\gallery\topic7.png" />
     <Content Include="Content\assets\img\gallery\topic8.png" />
+    <Content Include="Content\assets\img\gallery\ui1.jfif" />
+    <Content Include="Content\assets\img\gallery\ui2.jfif" />
+    <Content Include="Content\assets\img\gallery\ui3.png" />
+    <Content Include="Content\assets\img\gallery\ui4.jfif" />
+    <Content Include="Content\assets\img\gallery\ui5.jfif" />
+    <Content Include="Content\assets\img\gallery\ui6.jpg" />
+    <Content Include="Content\assets\img\gallery\ui7.jpeg" />
     <Content Include="Content\assets\img\gallery\video-bg.svg" />
     <Content Include="Content\assets\img\hero\h1_hero.png" />
     <Content Include="Content\assets\img\hero\hero2.png" />
@@ -569,10 +620,14 @@
     <Content Include="Global.asax" />
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
     <Content Include="Scripts\animated.headline.js" />
+    <Content Include="Scripts\aos.js" />
+    <Content Include="Scripts\bootstrap.bundle.min1.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\gijgo.min.js" />
+    <Content Include="Scripts\glightbox.js" />
     <Content Include="Scripts\hover-direction-snake.min.js" />
+    <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\jquery.ajaxchimp.min.js" />
     <Content Include="Scripts\jquery.barfiller.js" />
     <Content Include="Scripts\jquery.countdown.min.js" />
@@ -587,12 +642,15 @@
     <Content Include="Scripts\jquery.vide.js" />
     <Content Include="Scripts\mail-script.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\main1.js" />
     <Content Include="Scripts\one-page-nav-min.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\price-range.js" />
     <Content Include="Scripts\slick.min.js" />
+    <Content Include="Scripts\swiper-bundle.min.js" />
+    <Content Include="Scripts\validate.js" />
     <Content Include="Scripts\vendor\jquery-1.12.4.min.js" />
     <Content Include="Scripts\vendor\modernizr-3.5.0.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
@@ -605,6 +663,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -620,6 +679,8 @@
     <Compile Include="LogicHelper\HttpContextExtensions.cs" />
     <Compile Include="Models\Comment\Comment.cs" />
     <Compile Include="Models\Course\AddCourseData.cs" />
+    <Compile Include="Models\Course\Cart.cs" />
+    <Compile Include="Models\Course\CartItem.cs" />
     <Compile Include="Models\Reg\RegData.cs" />
     <Compile Include="Models\User\ChangeEmail.cs" />
     <Compile Include="Models\User\ChangePswdData.cs" />
@@ -686,6 +747,8 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\assets\scss\style.scss" />
+    <Content Include="Content\assets\css\Strategy.zip" />
+    <Content Include="Content\assets\img\services-7.webp" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -700,13 +763,11 @@
     <Content Include="Views\Blog\Ev3.cshtml" />
     <Content Include="Views\Blog\Ev4.cshtml" />
     <Content Include="Views\Blog\Ev5.cshtml" />
-    <Content Include="Views\Blog\Evpag2.cshtml" />
     <Content Include="Views\Blog\Ev6.cshtml" />
     <Content Include="Views\Blog\Ev7.cshtml" />
     <Content Include="Views\Blog\Ev10.cshtml" />
     <Content Include="Views\Blog\Ev8.cshtml" />
     <Content Include="Views\Blog\Ev9.cshtml" />
-    <Content Include="Views\Blog\Evpag3.cshtml" />
     <Content Include="Views\Blog\Ev11.cshtml" />
     <Content Include="Views\Blog\Ev12.cshtml" />
     <Content Include="Views\Blog\Ev13.cshtml" />
@@ -721,6 +782,20 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ChangeUsername.cshtml" />
+    <Content Include="Views\Courses\curs1.cshtml" />
+    <Content Include="Views\Courses\curs2.cshtml" />
+    <Content Include="Views\Courses\curs3.cshtml" />
+    <Content Include="Views\Courses\curs4.cshtml" />
+    <Content Include="Views\Courses\curs5.cshtml" />
+    <Content Include="Views\Courses\curs6.cshtml" />
+    <Content Include="Views\Account\View.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Blog\Categorie.cshtml" />
+    <Content Include="Views\Blog\EvNotabil1.cshtml" />
+    <Content Include="Views\Blog\EvNotabil2.cshtml" />
+    <Content Include="Views\Blog\EvNotabil3.cshtml" />
+    <Content Include="Views\Blog\EvNotabil4.cshtml" />
+    <Content Include="Views\Blog\SearchResults.cshtml" />
     <Content Include="Views\Account\ChangeEmailAcc.cshtml" />
     <Content Include="Views\Admin\GetAllUsers.cshtml" />
     <Content Include="Views\Admin\GetOnlineUsers.cshtml" />

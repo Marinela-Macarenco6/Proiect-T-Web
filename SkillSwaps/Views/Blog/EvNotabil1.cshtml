@@ -1,0 +1,258 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Recunoaștere Tekwill în fiecare școală";
+}
+@using System.Web.Optimization
+<!doctype html>
+<html class="no-js" lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="~/Content/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
+
+    @Styles.Render("~/Content/assets/scss")
+    @Styles.Render("~/Content/assets/css")
+</head>
+<body>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="~/Content/assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_Header")
+
+    <main>
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <div class="single-slider slider-height2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-11 col-md-12">
+                                <div class="hero__caption hero__caption2">
+                                    <h1>@ViewBag.Title</h1>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/">Acasă</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Recunoaștere Tekwill în fiecare școală</a></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog_area single-post-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid w-100" style="max-height: 500px; object-fit: cover;" src="~/Content/assets/img/blog/tek.jpeg" alt="Recunoaștere Tekwill">
+                            </div>
+                            <div class="blog_details">
+                                <h2 style="color: #2d2d2d;">Tekwill – Un model educațional recunoscut internațional</h2>
+                                <p class="excert">5 Februarie, 2025</p>
+                                <p>
+                                    Într-un context global în care educația digitală devine o prioritate, proiectul „<strong>Tekwill în fiecare școală</strong>” a fost premiat la nivel internațional pentru inovație și impact social. Platforma a devenit un pilon al transformării digitale în educația din Republica Moldova.
+                                </p>
+                                <p>
+                                    Inițiativa oferă acces gratuit la cursuri de programare, design grafic, dezvoltare personală și competențe digitale, contribuind la reducerea decalajului digital și creșterea șanselor de angajare ale tinerilor.
+                                </p>
+                                <div class="quote-wrapper">
+                                    <div class="quotes">
+                                        „Educația digitală transformă viitorul elevilor din Republica Moldova.”
+                                    </div>
+                                </div>
+                                <p>
+                                    Statisticile arată că peste 200.000 de elevi au beneficiat deja de resursele proiectului, iar peste 2.000 de profesori au fost instruiți pentru a integra metode interactive în procesul educațional. Platforma Tekwill a devenit un model replicabil pentru alte țări în curs de dezvoltare.
+                                </p>
+                                <p>Recunoașterea obținută confirmă valoarea unui sistem educațional modern, incluziv și orientat spre viitor.</p>
+                                <p>Prin parteneriate solide cu instituțiile de învățământ și cu sectorul privat, Tekwill a reușit să aducă tehnologia mai aproape de tineri. Proiectul este susținut de USAID, Suedia și implementat de ATIC, contribuind la dezvoltarea unei societăți bazate pe cunoaștere.</p>
+                                <p>Totodată, Tekwill promovează incluziunea de gen, oferind resurse și oportunități egale pentru fete și băieți, încurajând participarea activă a acestora în domeniile STEM.</p>
+                            </div>
+                        </div>
+                        <div class="comment-form">
+                            <h4>Adaugă un comentariu</h4>
+                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Scrie un comentariu..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input class="form-control" name="name" id="name" type="text" placeholder="Nume">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <input class="form-control" name="website" id="website" type="text" placeholder="Website (opțional)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Trimite comentariul</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+
+                            <!-- Căutare -->
+                            <aside class="single_sidebar_widget search_widget">
+                                <form method="get" action="@Url.Action("Cauta", "Blog")">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="searchQuery" class="form-control" placeholder="Căutare..."
+                                                   value="@ViewBag.SearchQuery" />
+                                            <div class="input-group-append">
+                                                <button class="btns" type="submit"><i class="ti-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Caută</button>
+                                </form>
+                            </aside>
+
+                            <!-- Categorii -->
+                            <aside class="single_sidebar_widget post_category_widget">
+                                <h4 class="widget_title" style="color: #2d2d2d;">Categorii</h4>
+                                <ul class="list cat-list">
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Domenii tehnice & IT" })" class="d-flex">
+                                            <p>Domenii tehnice & IT</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Arte & Design" })" class="d-flex">
+                                            <p>Arte & Design</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Științe exacte" })" class="d-flex">
+                                            <p>Științe exacte</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Business & Marketing" })" class="d-flex">
+                                            <p>Business & Marketing</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Dezvoltare personală" })" class="d-flex">
+                                            <p>Dezvoltare personală</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Categorie", "Blog", new { categorie = "Cursuri Practice & Hobby-uri" })" class="d-flex">
+                                            <p>Cursuri Practice & Hobby-uri</p>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </aside>
+
+                            <!-- Evenimente Notabile -->
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title" style="color: #2d2d2d;">Evenimente Notabile</h3>
+                                <!-- Exemplu post -->
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/post_1.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil1"><h3 style="color: #2d2d2d;">Recunoaștere Tekwill în fiecare școală</h3></a>
+                                        <p>5 Februarie, 2025</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/profesori.jpg" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil2"><h3 style="color: #2d2d2d;">Investim în profesori</h3></a>
+                                        <p>19 Februarie, 2025</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/eradigitala.png" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil3"><h3 style="color: #2d2d2d;">Copiii în era digitală</h3></a>
+                                        <p>18 Decembrie, 2024</p>
+                                    </div>
+                                </div>
+                                <div class="media post_item">
+                                    <img class="test" src="~/Content/assets/img/post/romold.jpg" alt="post">
+                                    <div class="media-body">
+                                        <a href="/Blog/EvNotabil4"><h3 style="color: #2d2d2d;">Colaborare România – Moldova</h3></a>
+                                        <p>23 Octombrie, 2024</p>
+                                    </div>
+                                </div>
+                            </aside>
+
+                            <!-- Tag Cloud -->
+                            <aside class="single_sidebar_widget tag_cloud_widget">
+                                <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
+                                <ul class="list">
+                                    <li><a href="#">programare</a></li>
+                                    <li><a href="#">design</a></li>
+                                    <li><a href="#">marketing</a></li>
+                                    <li><a href="#">blogging</a></li>
+                                    <li><a href="#">psihologie</a></li>
+                                    <li><a href="#">public speaking</a></li>
+                                    <li><a href="#">muzică</a></li>
+                                    <li><a href="#">fotografie</a></li>
+                                </ul>
+                            </aside>
+
+                            <!-- Newsletter -->
+                            <aside class="single_sidebar_widget newsletter_widget">
+                                <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
+                                <form action="#">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Enter email" required>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Subscribe</button>
+                                </form>
+                            </aside>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @Html.Partial("_Footer")
+
+    <div id="back-top">
+        <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+    @Scripts.Render("~/Scripts/js")
+</body>
+</html>
