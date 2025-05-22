@@ -209,7 +209,7 @@
                     <div class="action-card">
                         <h3>Înscrie-te la Curs</h3>
                         <p>Oferă copilului tău un start excelent în învățarea limbii engleze!</p>
-                        <a href="#" class="btn-primary">Înscriere</a>
+                        <a href="#" class="btn-primary" onclick="document.getElementById('cartForm4').submit(); return false;">Achiziționează</a>
                         <span class="guarantee"><i class="bi bi-shield-check"></i> Certificat de Participare</span>
                     </div>
 
@@ -229,6 +229,11 @@
 
     </div>
 </section>
+<form id="cartForm4" action="@Url.Action("AddToCart", "Cart")" method="post" style="display: none;">
+    <input type="hidden" name="courseId" value="4" />
+    <input type="hidden" name="courseName" value="Limba engleză" />
+    <input type="hidden" name="price" value="120" />
+</form>
 
 @Html.Partial("_Footer")
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

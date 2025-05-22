@@ -200,7 +200,7 @@
                     <div class="action-card">
                         <h3>Înscrie-te la curs</h3>
                         <p>Învață șah și transformă fiecare mutare într-o strategie câștigătoare.</p>
-                        <a href="#" class="btn-primary">Înscrie-te acum</a>
+                        <a href="#" class="btn-primary" onclick="document.getElementById('cartForm3').submit(); return false;">Achiziționează</a>
                         <span class="guarantee"><i class="bi bi-shield-check"></i> Certificat inclus</span>
                     </div>
 
@@ -220,6 +220,11 @@
 
     </div>
 </section>
+<form id="cartForm3" action="@Url.Action("AddToCart", "Cart")" method="post" style="display: none;">
+    <input type="hidden" name="courseId" value="3" />
+    <input type="hidden" name="courseName" value="Șah" />
+    <input type="hidden" name="price" value="120" />
+</form>
 
 @Html.Partial("_Footer")
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

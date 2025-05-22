@@ -203,7 +203,7 @@
                     <div class="action-card">
                         <h3>Înscrie-te la curs</h3>
                         <p>Începe chiar acum călătoria ta în lumea croitoriei prin acest curs complet online.</p>
-                        <a href="#" class="btn-primary">Înscrie-te acum</a>
+                        <a href="#" class="btn-primary" onclick="document.getElementById('cartForm1').submit(); return false;">Achiziționează</a>
                         <span class="guarantee"><i class="bi bi-shield-check"></i> Certificat inclus</span>
                     </div>
 
@@ -223,7 +223,11 @@
 
     </div>
 </section>
-
+<form id="cartForm1" action="@Url.Action("AddToCart", "Cart")" method="post" style="display: none;">
+<input type="hidden" name="courseId" value="1" />
+<input type="hidden" name="courseName" value="Croitorie" />
+<input type="hidden" name="price" value="120" />
+</form>
 @Html.Partial("_Footer")
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 

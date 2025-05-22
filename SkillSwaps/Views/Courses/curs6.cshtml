@@ -206,7 +206,7 @@
                     <div class="action-card">
                         <h3>Înscrie-te la curs</h3>
                         <p>Începe călătoria ta în programare Python chiar azi, cu ajutorul cursului nostru online.</p>
-                        <a href="#" class="btn-primary">Înscrie-te acum</a>
+                        <a href="#" class="btn-primary" onclick="document.getElementById('cartForm6').submit(); return false;">Achiziționează</a>
                         <span class="guarantee"><i class="bi bi-shield-check"></i> Certificat Inclus</span>
                     </div>
 
@@ -226,7 +226,11 @@
 
     </div>
 </section>
-
+<form id="cartForm6" action="@Url.Action("AddToCart", "Cart")" method="post" style="display: none;">
+    <input type="hidden" name="courseId" value="6" />
+    <input type="hidden" name="courseName" value="Python Programming" />
+    <input type="hidden" name="price" value="120" />
+</form>
 @Html.Partial("_Footer")
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
