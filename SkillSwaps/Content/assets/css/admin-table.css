@@ -1,5 +1,4 @@
-﻿/* Dacă vrei să imporți fontul 'Montserrat' de pe Google Fonts, adaugă această linie la începutul fișierului */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 
 /* General Body Styles */
@@ -381,5 +380,6 @@ td:last-child {
         padding-bottom: 10px;
     }
 
+    
 
 }

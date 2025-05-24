@@ -61,19 +61,6 @@ namespace SkillSwaps.Controllers
             }
             else
             {
-                            if (resp.Error != null &&
-                                (resp.Error.Contains("Sesiunea nu a fost gasita") || resp.Error.Contains("Sesiunea a expirat")))
-                            {
-                                return RedirectToAction("Index", "Login");
-                            }
-
-                            if (resp.Error != null &&
-                                (resp.Error.Contains("Parola este incorectă.") || resp.Error.Contains("Utilizatorul nu a fost găsit.")))
-                            {
-                                ModelState.AddModelError("", "Ați introdus datele greșite.");
-                                return View(data);
-                            }
-
                 ModelState.AddModelError("", resp.Error ?? "A aparut o eroare. Te rugam sa incerci din nou.");
                 return View(data);
             }
@@ -114,19 +101,6 @@ namespace SkillSwaps.Controllers
             }
             else
             {
-                         if (resp.Error != null &&
-                                (resp.Error.Contains("Sesiunea nu a fost gasita") || resp.Error.Contains("Sesiunea a expirat")))
-                         {
-                             return RedirectToAction("Index", "Login");
-                         }
-
-                         if (resp.Error != null &&
-                             (resp.Error.Contains("Parola introdusă este incorectă.")))
-                         {
-                             ModelState.AddModelError("", "Ați introdus o parolă incorectă.");
-                             return View(data);
-                         }
-
                 if (resp.Error != null &&
                     (resp.Error.Contains("Username indisponibil.")))
                 {
@@ -176,22 +150,11 @@ namespace SkillSwaps.Controllers
             }
             else
             {
-                    if (resp.Error != null &&
-                        (resp.Error.Contains("Sesiunea nu a fost gasita") || resp.Error.Contains("Sesiunea a expirat")))
-                    {
-                        return RedirectToAction("Index", "Login");
-                    }
-
                 ModelState.AddModelError("", resp.Error ?? "A aparut o eroare. Te rugam sa incerci din nou.");
                 return View(data);
             }
-
         }
 
-        public ActionResult ChangeGmailAcc()
-        {
-            return View(new ChangeUserData());
-        }
 
 
 

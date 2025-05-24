@@ -1,0 +1,255 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrare Utilizatori</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .search-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 0;
+        }
+
+            button.primary {
+                background-color: #007bff;
+                color: white;
+            }
+
+        /* Clase CSS pentru stilizarea rolurilor */
+        .role-IsBanned { 
+            color: red;
+            font-weight: bold;
+        }
+
+        .role-Administrator { 
+            color: purple;
+            font-weight: bold;
+        }
+
+        .role-default { 
+            color: black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Administrare Utilizatori</h1>
+        <h2>Editare Conturi</h2>
+
+        <div class="search-section">
+            <div class="form-group">
+                <label for="searchUserInput">Caută utilizator:</label>
+                <input type="text" id="searchUserInput" placeholder="Nume, email sau ID">
+            </div>
+            <button type="button" class="primary" onclick="searchUser()">Caută</button>
+        </div>
+
+        <div id="messageBox" class="message hidden"></div>
+
+        <div id="searchResultsSection" class="hidden">
+            <h3>Rezultate Căutare</h3>
+            <table id="searchResultsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nume Complet</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Data Înregistrării</th>
+                        <th>Acțiune</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Funcție helper pentru a formata data dintr-un format Microsoft JSON
+        function formatMicrosoftJsonDate(jsonDate) {
+            const timestampMatch = /\/Date\((\d+)\)\//.exec(jsonDate);
+            if (timestampMatch && timestampMatch[1]) {
+                const timestamp = parseInt(timestampMatch[1], 10);
+                const date = new Date(timestamp);
+                return date.toLocaleString();
+            }
+            return 'N/A';
+        }
+
+        async function searchUser() {
+            const term = document.getElementById("searchUserInput").value.trim();
+            const msgBox = document.getElementById("messageBox");
+            const section = document.getElementById("searchResultsSection");
+            const tbody = document.querySelector("#searchResultsTable tbody");
+
+            msgBox.classList.add("hidden");
+            section.classList.add("hidden");
+            tbody.innerHTML = "";
+
+            if (!term) {
+                msgBox.textContent = "Introduceți un termen de căutare.";
+                msgBox.className = "message error";
+                msgBox.classList.remove("hidden");
+                return;
+            }
+
+            try {
+                const url = `/Admin/SearchUsers?searchTerm=${encodeURIComponent(term)}`;
+
+                const response = await fetch(url, {
+                    method: "GET" 
+                });
+
+                const result = await response.json();
+
+                if (!result.success) {
+                    msgBox.textContent = result.message || "Eroare la căutare.";
+                    msgBox.className = "message error";
+                    msgBox.classList.remove("hidden");
+                    return;
+                }
+
+                if (!result.users || result.users.length === 0) {
+                    msgBox.textContent = result.message || "Nu s-au găsit utilizatori.";
+                    msgBox.className = "message";
+                    msgBox.classList.remove("hidden");
+                    return;
+                }
+
+                result.users.forEach(user => {
+                    const row = document.createElement("tr");
+
+                    const roleName = user.UserRole || 'Necunoscut';
+                    let roleClass = 'role-default';
+
+                    if (roleName === 'IsBanned') {
+                        roleClass = 'role-IsBanned';
+                    } else if (roleName === 'Administrator') {
+                        roleClass = 'role-Administrator';
+                    }
+
+                    const formattedRequestTime = formatMicrosoftJsonDate(user.RequestTime);
+
+                    row.innerHTML = `
+                            <td>${user.UserId}</td>
+                            <td>${user.FullName}</td>
+                            <td>${user.UserName}</td>
+                            <td>${user.Email}</td>
+                            <td class="${roleClass}">${roleName}</td>
+                            <td>${formattedRequestTime}</td>
+                            <td>
+                                <button onclick="alert('Editează: ${user.UserName}')" class="primary">Editează</button>
+                            </td>
+                        `;
+
+                    tbody.appendChild(row);
+                });
+
+                section.classList.remove("hidden");
+            } catch (err) {
+                console.error("Eroare la fetch:", err);
+                msgBox.textContent = "Eroare la conectarea cu serverul.";
+                msgBox.className = "message error";
+                msgBox.classList.remove("hidden");
+            }
+        }
+    </script>
+</body>
+</html>

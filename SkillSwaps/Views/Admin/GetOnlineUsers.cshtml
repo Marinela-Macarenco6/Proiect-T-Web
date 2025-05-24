@@ -9,9 +9,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Lista Utilizatori</title>
+    <title>Admin - Lista Utilizatori Online</title>
 
     <link rel="stylesheet" href="~/Content/assets/css/admin-table.css" />
+    <style>
+        /* Stiluri pentru Mesajele de Alertă */
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success-alert {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Stiluri pentru Modal (Pop-up) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+            .close-button:hover,
+            .close-button:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group select {
+                width: calc(100% - 20px);
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+
+        /* Stil pentru mesajele de validare */
+        .validation-error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .modal-content .primary-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 44px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .modal-content .primary-btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
 </head>
 <body>
     <div class="header-bar">
@@ -21,6 +139,20 @@
     <div class="container">
         <h2>Utilizatori online</h2>
 
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert success-alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert error-alert">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
         <div class="table-header-actions">
             <form method="get" action="@Url.Action("GetAllUsers", "Admin")" style="display:inline;">
                 <button type="submit" class="filter-btn secondary-btn">Afișează toți utilizatorii</button>
@@ -29,7 +161,7 @@
 
         @if (Model == null || !Model.Any())
         {
-            <p class="no-users-message">Nu există utilizatori înregistrați de afișat.</p>
+            <p class="no-users-message">Nu există utilizatori online de afișat.</p>
         }
         else
         {
@@ -71,5 +203,150 @@
             </table>
         }
     </div>
+
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editare Utilizator</h2>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId" name="UserId" />
+
+                <div class="form-group">
+                    <label for="editFullName">Nume complet:</label>
+                    <input type="text" id="editFullName" name="FullName" required minlength="5" />
+                    <span class="validation-error" id="fullNameError">Numele complet trebuie să aibă minim 5 caractere.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="editUserName">Username:</label>
+                    <input type="text" id="editUserName" name="UserName" required minlength="5" />
+                    <span class="validation-error" id="userNameError">Username-ul trebuie să aibă minim 5 caractere.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" name="Email" required minlength="5" />
+                    <span class="validation-error" id="emailError">Email-ul trebuie să aibă minim 5 caractere.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="editUserRole">Rol:</label>
+                    <select id="editUserRole" name="UserRole">
+                        <option value="User">User</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Organizer">Organizer</option>
+                        <option value="ServiceProvider">Service Provider</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="IsBanned">IsBanned</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="primary-btn">Salvează Modificările</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var modal = $('#editUserModal');
+            var closeButton = $('.close-button');
+            var editButtons = $('.edit-btn');
+            var editUserForm = $('#editUserForm');
+
+            editButtons.on('click', function () {
+                var row = $(this).closest('tr');
+
+                var userId = row.find('td:eq(0)').text().trim();
+                var fullName = row.find('td:eq(1)').text().trim();
+                var userName = row.find('td:eq(2)').text().trim();
+                var email = row.find('td:eq(3)').text().trim();
+                var userRole = row.find('td:eq(4)').text().trim();
+
+                $('#editUserId').val(userId);
+                $('#editFullName').val(fullName);
+                $('#editUserName').val(userName);
+                $('#editEmail').val(email);
+                $('#editUserRole').val(userRole);
+
+                $('.validation-error').hide();
+
+                modal.css({
+                    'display': 'flex',
+                    'justify-content': 'center',
+                    'align-items': 'center'
+                });
+            });
+
+            closeButton.on('click', function () {
+                modal.css('display', 'none');
+                $('.validation-error').hide();
+            });
+
+            $(window).on('click', function (event) {
+                if ($(event.target).is(modal)) {
+                    modal.css('display', 'none');
+                    $('.validation-error').hide();
+                }
+            });
+
+            editUserForm.on('submit', function (event) {
+                event.preventDefault();
+
+                $('.validation-error').hide();
+
+                var isValid = true;
+
+                var fullName = $('#editFullName').val().trim();
+                if (fullName.length < 5) {
+                    $('#fullNameError').show();
+                    isValid = false;
+                }
+
+                var userName = $('#editUserName').val().trim();
+                if (userName.length < 5) {
+                    $('#userNameError').show();
+                    isValid = false;
+                }
+
+                var email = $('#editEmail').val().trim();
+                if (email.length < 5) {
+                    $('#emailError').show();
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    return;
+                }
+
+                var formData = {
+                    UserId: $('#editUserId').val(),
+                    FullName: fullName,
+                    UserName: userName,
+                    Email: email,
+                    UserRole: $('#editUserRole').val()
+                };
+
+                $.ajax({
+                    url: '@Url.Action("EditUser", "Admin")',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Utilizatorul a fost actualizat cu succes!');
+                            modal.css('display', 'none');
+                            location.reload();
+                        } else {
+                            alert('Eroare la actualizarea utilizatorului: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('A apărut o eroare: ' + error);
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -26,6 +26,16 @@ namespace Business_Logic.BL_Struct
             return BanUserAccAction(userData);
         }
 
+        public bool EditUserAcc(UserDataMain userData)
+        {
+            return EditUserAccAction(userData);
+        }
+
+        public List<UserDataMain> SearchUser(string userData)
+        {
+            return SearchUserAction(userData);
+        }
+
 
     }
 }

@@ -1,12 +1,11 @@
-﻿
-@{
-    Layout = null; // <-- ADAUGĂ ACEASTĂ LINIE
+﻿@{
+    Layout = null; 
 }
 
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkillSwaps - Panou Admin</title>
@@ -53,7 +52,7 @@
         .account-dropdown-content {
             display: none;
             position: absolute;
-            top: 100%; /* Afișează sub siglă */
+            top: 100%;
             right: 0;
             background-color: #ecf0f1;
             min-width: 150px;
@@ -77,7 +76,7 @@
                 }
 
             .account-dropdown-content form {
-                margin: 0; /* Elimină orice margine implicită a formularului */
+                margin: 0;
             }
 
         .logout-button-link {
@@ -85,8 +84,8 @@
             background: none;
             width: 100%;
             cursor: pointer;
-            font-size: inherit; /* Preluare dimensiune font de la părinte */
-            font-family: inherit; /* Preluare font de la părinte */
+            font-size: inherit;
+            font-family: inherit;
         }
 
         nav {
@@ -313,9 +312,7 @@
                     <a href="#"><i class="fas fa-users"></i> Utilizatori</a>
                     <div class="submenu">
                         <a href="/Admin/GetAllUsers"><i class="fas fa-eye"></i> Vezi utilizatori</a>
-                        <a href="#"><i class="fas fa-user-plus"></i> Adaugă utilizator</a>
-                        <a href="#"><i class="fas fa-user-edit"></i> Editează utilizator</a>
-                        <a href="#"><i class="fas fa-user-slash"></i> Blochează utilizator</a>
+                        <a href="/Admin/FindUser"><i class="fas fa-search"></i> Cauta Utilizator</a>
                     </div>
                 </div>
                 <div class="dropdown-submenu">

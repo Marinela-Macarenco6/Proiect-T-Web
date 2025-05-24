@@ -62,6 +62,11 @@ namespace SkillSwaps.Controllers
         [HttpPost]
         public ActionResult AddCourse(AddCourseData data)
         {
+            if (data == null)
+            {
+                return View();
+            }
+
             var courseData = new ArticleDataMain
             {
                 Title = data.Title,

@@ -192,7 +192,7 @@ namespace Business_Logic.Core
                 Password = passHashed,
                 RequestTime = DateTime.UtcNow.ToLocalTime(),
                 userRole = 0
-    };
+            };
 
             using (var db = new UserContext())
             {
@@ -216,7 +216,7 @@ namespace Business_Logic.Core
 
             using (var db = new SessionContext())
             {
-                 session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey);
+                session = db.Session.FirstOrDefault(s => s.Cookie == cookieKey);
 
                 if (session != null)
                 {
@@ -252,8 +252,8 @@ namespace Business_Logic.Core
 
             using (var userDb = new UserContext())
             {
-                 user = userDb.UserRegDatas
-                    .FirstOrDefault(u => u.Id == userResp.UserId);
+                user = userDb.UserRegDatas
+                   .FirstOrDefault(u => u.Id == userResp.UserId);
 
                 if (user == null)
                 {
@@ -307,8 +307,8 @@ namespace Business_Logic.Core
             using (var userDb = new UserContext())
             {
                 // Verificăm dacă există un user cu acel ID și cu parola corectă
-                 user = userDb.UserRegDatas
-                    .FirstOrDefault(u => u.Id == userResp.UserId && u.Password == passHashed);
+                user = userDb.UserRegDatas
+                   .FirstOrDefault(u => u.Id == userResp.UserId && u.Password == passHashed);
 
                 if (user == null)
                 {
@@ -486,13 +486,60 @@ namespace Business_Logic.Core
                 }
             }
         }
+        public bool EditUserAccAction(UserDataMain data)
+        {
+            using (var db = new UserContext())
+            {
+                var user = db.UserRegDatas.FirstOrDefault(u => u.Id == data.UserId);
+
+                if (user != null)
+                {
+                    user.FullName = data.FullName;
+                    user.UserName = data.UserName;
+                    user.Email = data.Email;
+                    user.userRole = data.UserRole;
+
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+
+                return false;
+            }
+        }
+        public List<UserDataMain> SearchUserAction(string userData)
+        {
+            if (string.IsNullOrWhiteSpace(userData))
+            {
+                return new List<UserDataMain>();
+            }
+
+            var lowerSearchTerm = userData.ToLower();
+
+            using (var db = new UserContext())
+            {
+                var users = db.UserRegDatas
+                    .Where(u => u.UserName.ToLower().Contains(lowerSearchTerm) ||
+                                u.Email.ToLower().Contains(lowerSearchTerm) ||
+                                u.Id.ToString().Contains(lowerSearchTerm))
+                    .Select(u => new UserDataMain
+                    {
+                        UserId = u.Id,
+                        UserName = u.UserName,
+                        Email = u.Email,
+                        FullName = u.FullName,
+                        RequestTime = u.RequestTime,
+                        UserRole = u.userRole
+                    })
+                    .ToList();
+
+                return users;
 
 
-
-
-
-
-
+            }
+                
+        }
     }
 }
 

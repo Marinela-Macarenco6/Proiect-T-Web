@@ -788,7 +788,6 @@
     <Content Include="Views\Courses\curs4.cshtml" />
     <Content Include="Views\Courses\curs5.cshtml" />
     <Content Include="Views\Courses\curs6.cshtml" />
-    <Content Include="Views\Account\View.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Blog\Categorie.cshtml" />
     <Content Include="Views\Blog\EvNotabil1.cshtml" />
@@ -799,6 +798,7 @@
     <Content Include="Views\Account\ChangeEmailAcc.cshtml" />
     <Content Include="Views\Admin\GetAllUsers.cshtml" />
     <Content Include="Views\Admin\GetOnlineUsers.cshtml" />
+    <Content Include="Views\Admin\FindUser.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config" />
   </ItemGroup>

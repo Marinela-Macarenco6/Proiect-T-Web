@@ -10,9 +10,9 @@ namespace Domain.Enums
     {
         User = 0,
         Teacher = 1,
-        Administrator = 10,
+        Organizer = 10,
         ServiceProvider = 100,
-        Organizer = 200,
+        Administrator = 1000,
         IsBanned  = -1
     }
 }

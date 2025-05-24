@@ -12,6 +12,9 @@ namespace Business_Logic.Interfaces
         List<UserDataMain> GetAllUser();
         List<UserDataMain> GetAllOnlineUser();
         bool BannUserAcc(UserDataMain userData);
+        bool EditUserAcc(UserDataMain userData);
+       // List<UserDataMain> GetAllBannedUser();
+        List<UserDataMain> SearchUser(string userData);
 
     }
 }
