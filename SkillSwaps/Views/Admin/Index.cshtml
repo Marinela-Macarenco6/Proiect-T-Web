@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkillSwaps - Panou Admin</title>
@@ -121,6 +121,7 @@
             padding: 0.5rem 1rem;
             display: flex;
             align-items: center;
+            color: white; /* Adaugă asta pentru a face textul alb, dacă folosești text în buton */
         }
 
         .hamburger-icon {
@@ -148,6 +149,7 @@
             transform: rotate(90deg);
         }
 
+        /* Acestea sunt regulile cheie pentru deschiderea la hover */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -160,22 +162,22 @@
             padding: 10px;
         }
 
-            .dropdown-content a {
-                color: #2c3e50;
-                padding: 10px 16px;
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-                .dropdown-content a:hover {
-                    background-color: #dcdcdc;
-                }
-
         .dropdown:hover .dropdown-content {
-            display: block;
+            display: block; /* Meniul principal se deschide la hover pe .dropdown */
         }
+
+        .dropdown-content a {
+            color: #2c3e50;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #dcdcdc;
+            }
 
         .dropdown-submenu {
             position: relative;
@@ -194,7 +196,7 @@
             }
 
             .dropdown-submenu:hover .submenu {
-                display: block;
+                display: block; /* Sub-meniul se deschide la hover pe .dropdown-submenu */
             }
 
             .dropdown-submenu > a::after {
@@ -264,6 +266,21 @@
                 color: #7f8c8d;
                 font-size: 0.9rem;
             }
+
+        /* Stiluri pentru notificarea de badge */
+        .notification-badge {
+            background-color: #e74c3c; /* Roșu */
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.8em;
+            margin-left: 5px;
+            vertical-align: super;
+            display: inline-block; 
+            min-width: 15px; 
+            text-align: center; 
+            line-height: 1; 
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -302,7 +319,13 @@
                 <div class="dropdown-submenu">
                     <a href="#"><i class="fas fa-book"></i> Cursuri</a>
                     <div class="submenu">
-                        <a href="#"><i class="fas fa-check-circle"></i> Aprobare cursuri</a>
+                        <a href="@Url.Action("GetPendingCourse", "Admin")">
+                            <i class="fas fa-check-circle"></i> Aprobare cursuri
+                            @if (ViewBag.PendingCoursesCount != null && ViewBag.PendingCoursesCount > 0)
+                            {
+                                <span class="notification-badge">@ViewBag.PendingCoursesCount</span>
+                            }
+                        </a>
                         <a href="#"><i class="fas fa-list-alt"></i> Gestionare cursuri</a>
                         <a href="#"><i class="fas fa-plus-circle"></i> Adaugă curs nou</a>
                         <a href="#"><i class="fas fa-tags"></i> Categorii cursuri</a>
@@ -335,6 +358,15 @@
         <div class="card">
             <h2>Bun venit, Admin!</h2>
             <p>Aici poți gestiona utilizatorii și setările aplicației tale.</p>
+            @* Afișarea mesajelor de succes/eroare *@
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div style="color: green; font-weight: bold; margin-bottom: 10px;">@TempData["SuccessMessage"]</div>
+            }
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div style="color: red; font-weight: bold; margin-bottom: 10px;">@TempData["ErrorMessage"]</div>
+            }
         </div>
 
         <div class="card">
@@ -361,8 +393,16 @@
                     <div class="stat-description">Numărul total de cursuri disponibile.</div>
                 </div>
                 <div class="stat-item">
-                    <h4>Cursuri în așteptare</h4>
-                    <div class="stat-value">8</div>
+                    <h4>
+                        @* Link direct către pagina de aprobare a cursurilor *@
+                        <a href="@Url.Action("GetPendingCourse", "Admin")" style="text-decoration: none; color: inherit;">
+                            Cursuri în așteptare
+                        </a>
+                    </h4>
+                    <div class="stat-value">
+                        @* Afișează numărul de cursuri în așteptare din ViewBag *@
+                        @ViewBag.PendingCoursesCount
+                    </div>
                     <div class="stat-description">Cursuri care necesită aprobare.</div>
                 </div>
                 <div class="stat-item">
@@ -434,7 +474,7 @@
             }
         });
 
-        // JavaScript pentru dropdown-ul de cont
+        // JavaScript pentru dropdown-ul de cont (acesta rămâne pe click)
         const accountToggle = document.getElementById('accountToggle');
         const accountOptions = document.getElementById('accountOptions');
 
@@ -453,6 +493,7 @@
         } else {
             console.error("Elementele accountToggle sau accountOptions nu au fost găsite în DOM.");
         }
+
     </script>
 
 </body>

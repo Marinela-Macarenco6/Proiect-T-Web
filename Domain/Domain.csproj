@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\UserDataMain.cs" />
+    <Compile Include="Article\AprovedArticleDataMain.cs" />
     <Compile Include="Article\ArticleDataMain.cs" />
     <Compile Include="Article\ADBTable.cs" />
     <Compile Include="Blog\EvenimentBlog.cs" />

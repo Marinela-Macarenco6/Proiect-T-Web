@@ -681,6 +681,7 @@
     <Compile Include="Models\Course\AddCourseData.cs" />
     <Compile Include="Models\Course\Cart.cs" />
     <Compile Include="Models\Course\CartItem.cs" />
+    <Compile Include="Models\Course\GetCourseData.cs" />
     <Compile Include="Models\Reg\RegData.cs" />
     <Compile Include="Models\User\ChangeEmail.cs" />
     <Compile Include="Models\User\ChangePswdData.cs" />
@@ -799,11 +800,13 @@
     <Content Include="Views\Admin\GetAllUsers.cshtml" />
     <Content Include="Views\Admin\GetOnlineUsers.cshtml" />
     <Content Include="Views\Admin\FindUser.cshtml" />
+    <Content Include="Views\Admin\GetPendingCourse.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\img\courses\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business Logic\Business Logic.csproj">

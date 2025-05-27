@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Web.Mvc
+@{
     Layout = null;
 }
 
@@ -48,7 +49,10 @@
             font-weight: bold;
         }
 
-        input[type="text"] {
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
             width: calc(100% - 22px);
             padding: 10px;
             border: 1px solid #ccc;
@@ -57,6 +61,7 @@
             margin-top: 5px;
         }
 
+        /* Stiluri generale pentru butoane, dar vom folosi specific clasele edit-btn și block-btn */
         button {
             padding: 8px 15px;
             border: none;
@@ -64,25 +69,26 @@
             cursor: pointer;
             font-size: 14px;
             margin-right: 0;
+            white-space: nowrap; /* Asigură că textul nu se rupe */
         }
 
-            button.primary {
+            button.primary { /* Păstrăm clasa primary pentru butonul de Caută */
                 background-color: #007bff;
                 color: white;
             }
 
         /* Clase CSS pentru stilizarea rolurilor */
-        .role-IsBanned { 
+        .role-IsBanned {
             color: red;
             font-weight: bold;
         }
 
-        .role-Administrator { 
+        .role-Administrator {
             color: purple;
             font-weight: bold;
         }
 
-        .role-default { 
+        .role-default {
             color: black;
         }
 
@@ -125,6 +131,144 @@
             background-color: #f8d7da;
             color: #721c24;
         }
+
+        /* Stiluri pentru Mesajele de Alertă */
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success-alert {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Stiluri pentru Modal (Pop-up) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+            .close-button:hover,
+            .close-button:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        /* Stil pentru mesajele de validare */
+        .validation-error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .modal-content .primary-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 44px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .modal-content .primary-btn:hover {
+                background-color: #0056b3;
+            }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            justify-content: flex-start;
+        }
+
+            .action-buttons button {
+                padding: 8px 12px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+
+        /* Stiluri MODIFICATE pentru butoanele de editare și blocare pentru a se potrivi cu culorile albastre din imagine */
+        .edit-btn {
+            background-color: #007bff; /* Albastru deschis */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+            .edit-btn:hover {
+                background-color: #0056b3; /* Albastru deschis mai închis la hover */
+            }
+
+        .block-btn {
+            background-color: #34495e; /* Albastru închis */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+            .block-btn:hover {
+                background-color: #2c3e50; /* Albastru închis mai închis la hover */
+            }
     </style>
 </head>
 <body>
@@ -156,11 +300,58 @@
                         <th>Acțiune</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    @* Rezultatele căutării vor fi inserate aici de JavaScript *@
+                </tbody>
             </table>
         </div>
     </div>
 
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editare Utilizator</h2>
+            <form id="editUserForm">
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" id="editUserId" name="UserId" />
+
+                <div class="form-group">
+                    <label for="editFullName">Nume complet:</label>
+                    <input type="text" id="editFullName" name="FullName" required minlength="5" />
+                    <span class="validation-error" id="fullNameError">Numele complet trebuie să aibă minim 5 caractere.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="editUserName">Username:</label>
+                    <input type="text" id="editUserName" name="UserName" required minlength="5" />
+                    <span class="validation-error" id="userNameError">Username-ul trebuie să aibă minim 5 caractere.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" name="Email" required minlength="5" />
+                    <span class="validation-error" id="emailError">Email-ul trebuie să aibă minim 5 caractere.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="editUserRole">Rol:</label>
+                    <select id="editUserRole" name="UserRole">
+                        <option value="User">User</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Organizer">Organizer</option>
+                        <option value="ServiceProvider">Service Provider</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="IsBanned">IsBanned</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="primary-btn">Salvează Modificările</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         // Funcție helper pentru a formata data dintr-un format Microsoft JSON
         function formatMicrosoftJsonDate(jsonDate) {
@@ -168,10 +359,106 @@
             if (timestampMatch && timestampMatch[1]) {
                 const timestamp = parseInt(timestampMatch[1], 10);
                 const date = new Date(timestamp);
-                return date.toLocaleString();
+                return date.toLocaleDateString('ro-RO', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
             }
             return 'N/A';
         }
+
+        $(document).ready(function () {
+            var modal = $('#editUserModal');
+            var closeButton = $('.close-button');
+            var editUserForm = $('#editUserForm');
+
+            window.openEditUserModal = function (userId, fullName, userName, email, userRole) {
+                $('#editUserId').val(userId);
+                $('#editFullName').val(fullName);
+                $('#editUserName').val(userName);
+                $('#editEmail').val(email);
+                $('#editUserRole').val(userRole);
+
+                $('.validation-error').hide();
+
+                modal.css({
+                    'display': 'flex',
+                    'justify-content': 'center',
+                    'align-items': 'center'
+                });
+            };
+
+            closeButton.on('click', function () {
+                modal.css('display', 'none');
+                $('.validation-error').hide();
+            });
+
+            $(window).on('click', function (event) {
+                if ($(event.target).is(modal)) {
+                    modal.css('display', 'none');
+                    $('.validation-error').hide();
+                }
+            });
+
+            editUserForm.on('submit', function (event) {
+                event.preventDefault();
+
+                $('.validation-error').hide();
+
+                var isValid = true;
+
+                var fullName = $('#editFullName').val().trim();
+                if (fullName.length < 5) {
+                    $('#fullNameError').show();
+                    isValid = false;
+                }
+
+                var userName = $('#editUserName').val().trim();
+                if (userName.length < 5) {
+                    $('#userNameError').show();
+                    isValid = false;
+                }
+
+                var email = $('#editEmail').val().trim();
+                if (email.length < 5) {
+                    $('#emailError').show();
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    return;
+                }
+
+                var formData = {
+                    UserId: $('#editUserId').val(),
+                    FullName: fullName,
+                    UserName: userName,
+                    Email: email,
+                    UserRole: $('#editUserRole').val()
+                };
+
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                if (token) {
+                    formData.__RequestVerificationToken = token;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("EditUser", "Admin")',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Utilizatorul a fost actualizat cu succes!');
+                            modal.css('display', 'none');
+                            searchUser(); // Reîmprospătează rezultatele căutării
+                        } else {
+                            alert('Eroare la actualizarea utilizatorului: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('A apărut o eroare la salvare: ' + error);
+                        console.error("AJAX Error:", xhr.responseText);
+                    }
+                });
+            });
+        });
 
         async function searchUser() {
             const term = document.getElementById("searchUserInput").value.trim();
@@ -194,7 +481,7 @@
                 const url = `/Admin/SearchUsers?searchTerm=${encodeURIComponent(term)}`;
 
                 const response = await fetch(url, {
-                    method: "GET" 
+                    method: "GET"
                 });
 
                 const result = await response.json();
@@ -228,17 +515,32 @@
                     const formattedRequestTime = formatMicrosoftJsonDate(user.RequestTime);
 
                     row.innerHTML = `
-                            <td>${user.UserId}</td>
-                            <td>${user.FullName}</td>
-                            <td>${user.UserName}</td>
-                            <td>${user.Email}</td>
-                            <td class="${roleClass}">${roleName}</td>
-                            <td>${formattedRequestTime}</td>
-                            <td>
-                                <button onclick="alert('Editează: ${user.UserName}')" class="primary">Editează</button>
-                            </td>
-                        `;
-
+                        <td>${user.UserId}</td>
+                        <td>${user.FullName}</td>
+                        <td>${user.UserName}</td>
+                        <td>${user.Email}</td>
+                        <td class="${roleClass}">${roleName}</td>
+                        <td>${formattedRequestTime}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button type="button" class="edit-btn"
+                                    onclick="openEditUserModal(
+                                        '${user.UserId}',
+                                        '${user.FullName}',
+                                        '${user.UserName}',
+                                        '${user.Email}',
+                                        '${user.UserRole}'
+                                    )">
+                                    Editează
+                                </button>
+                                <form method="post" action="@Url.Action("BanUser", "Admin")" style="display:inline;">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="UserId" value="${user.UserId}" />
+                                    <button type="submit" class="block-btn">Blocare</button>
+                                </form>
+                            </div>
+                        </td>
+                    `;
                     tbody.appendChild(row);
                 });
 

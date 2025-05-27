@@ -69,13 +69,9 @@
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IReg.cs" />
     <Compile Include="Interfaces\ISession.cs" />
-    <Compile Include="Migrations\202505141557491_InitialCreate.cs" />
-    <Compile Include="Migrations\202505141557491_InitialCreate.Designer.cs">
-      <DependentUpon>202505141557491_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202505212235233_AddUserRoleToUserRegDatas.cs" />
-    <Compile Include="Migrations\202505212235233_AddUserRoleToUserRegDatas.Designer.cs">
-      <DependentUpon>202505212235233_AddUserRoleToUserRegDatas.cs</DependentUpon>
+    <Compile Include="Migrations\202505241638348_InitialCreateNew.cs" />
+    <Compile Include="Migrations\202505241638348_InitialCreateNew.Designer.cs">
+      <DependentUpon>202505241638348_InitialCreateNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,16 +87,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202505141557491_InitialCreate.resx">
-      <DependentUpon>202505141557491_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202505212235233_AddUserRoleToUserRegDatas.resx">
-      <DependentUpon>202505212235233_AddUserRoleToUserRegDatas.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202505241638348_InitialCreateNew.resx">
+      <DependentUpon>202505241638348_InitialCreateNew.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

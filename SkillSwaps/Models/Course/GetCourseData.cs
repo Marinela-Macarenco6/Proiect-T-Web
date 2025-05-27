@@ -2,20 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Domain.Article
+namespace SkillSwaps.Models.Course
 {
-    public class ArticleDataMain
-    {
+	public class GetCourseData
+	{
         public string Title { get; set; }
         public string Teacher { get; set; }
         public EACategory Category { get; set; }
         public string Description { get; set; }
+        public int CourseId { get; set; }
         public DateTime PublicationDateTime { get; set; }
-        public int EnrolledUsers { get; set; }
-        public int Id { get; set; }
+        public string ImageUrl { get; set; }
 
     }
 }

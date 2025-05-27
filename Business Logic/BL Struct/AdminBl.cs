@@ -1,6 +1,7 @@
 ﻿using Business_Logic.Core;
 using Business_Logic.Interfaces;
 using Domain.Admin;
+using Domain.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,16 @@ namespace Business_Logic.BL_Struct
         public List<UserDataMain> SearchUser(string userData)
         {
             return SearchUserAction(userData);
+        }
+
+        public List<ArticleDataMain> GetPendingCourses()
+        {
+            return GetPendingCoursesAction();
+        }
+
+        public bool RejectCoursePublication(ArticleDataMain articleData)
+        {
+            return RejectCoursePublicationAction(articleData);
         }
 
 

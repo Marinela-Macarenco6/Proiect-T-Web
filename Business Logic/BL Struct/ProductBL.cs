@@ -21,5 +21,10 @@ namespace Business_Logic.BL_Struct
         {
             return AddCourseAction(courseData);
         }
+
+        public int GetPandingCoursesCount()
+        {
+            return GetPandingCoursescountAction();
+        }
     }
 }

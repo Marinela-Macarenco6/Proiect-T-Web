@@ -73,7 +73,6 @@ namespace SkillSwaps.Controllers
                 Teacher = data.Teacher,
                 Category = data.Category,
                 Description = data.Description,
-                ArticleImage = data.ArticleImage,
                 PublicationDateTime = DateTime.UtcNow,
                 EnrolledUsers = 0,
             };

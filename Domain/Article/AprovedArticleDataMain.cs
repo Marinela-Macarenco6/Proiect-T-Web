@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Article
 {
-    public class ArticleDataMain
+    public class AprovedArticleDataMain
     {
         public string Title { get; set; }
         public string Teacher { get; set; }
@@ -16,6 +16,9 @@ namespace Domain.Article
         public DateTime PublicationDateTime { get; set; }
         public int EnrolledUsers { get; set; }
         public int Id { get; set; }
+        public string ImageUrl { get; set; }
 
+        //public int TeacherId { get; set; }
+        //public int TeacherPhone { get; set; }
     }
 }

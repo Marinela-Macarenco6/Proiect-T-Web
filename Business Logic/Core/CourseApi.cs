@@ -25,10 +25,8 @@ namespace Business_Logic.Core
                 Teacher = courseData.Teacher,
                 Category = courseData.Category,
                 Description = courseData.Description,
-                ArticleImage = courseData.ArticleImage,
                 PublicationDateTime = DateTime.UtcNow,
                 EnrolledUsers = 0,
-                ArticleId = 1,
             };
             
             using (var db = new ArticleContext())
@@ -38,6 +36,14 @@ namespace Business_Logic.Core
             }
 
             return true;
+        }
+
+        public int GetPandingCoursescountAction()
+        {
+            using (var db = new ArticleContext())
+            {
+                return db.Articles.Count();
+            }
         }
 
 

@@ -7,13 +7,13 @@ namespace Business_Logic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class AddUserRoleToUserRegDatas : IMigrationMetadata
+    public sealed partial class InitialCreateNew : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUserRoleToUserRegDatas));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreateNew));
         
         string IMigrationMetadata.Id
         {
-            get { return "202505212235233_AddUserRoleToUserRegDatas"; }
+            get { return "202505241638348_InitialCreateNew"; }
         }
         
         string IMigrationMetadata.Source

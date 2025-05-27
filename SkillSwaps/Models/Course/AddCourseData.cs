@@ -12,7 +12,6 @@ namespace SkillSwaps.Models.Course
         public string Teacher { get; set; }
         public EACategory Category { get; set; }
         public string Description { get; set; }
-        public string ArticleImage { get; set; }
 
     }
 

@@ -1,4 +1,5 @@
 ﻿using Domain.Admin;
+using Domain.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace Business_Logic.Interfaces
         bool EditUserAcc(UserDataMain userData);
        // List<UserDataMain> GetAllBannedUser();
         List<UserDataMain> SearchUser(string userData);
+        List<ArticleDataMain> GetPendingCourses();
+        bool RejectCoursePublication(ArticleDataMain articleData);
 
     }
 }

@@ -1,12 +1,15 @@
 ﻿using Business_Logic;
 using Business_Logic.Interfaces;
 using Domain.Admin;
+using Domain.Article;
 using Domain.Enums;
 using SkillSwaps.LogicHelper.Atributes;
 using SkillSwaps.Models;
+using SkillSwaps.Models.Course;
 using SkillSwaps.Models.User;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,18 +22,21 @@ namespace SkillSwaps.Controllers
 
         private readonly ISession _session;
         private readonly IAdmin _admin;
+        private readonly IProduct _product;
 
         public AdminController()
         {
             var bl = new BusinessLogic();
             _session = bl.GetSessionBL();
             _admin = bl.GetAdminBl();
+            _product = bl.GetProductBl();
         }
 
         // GET: Admin
         [IsAdmin]
         public ActionResult Index()
         {
+            ViewBag.PendingCoursesCount = _product.GetPandingCoursesCount();
             return View();
         }
 
@@ -179,19 +185,18 @@ namespace SkillSwaps.Controllers
 
         // SEARCH USER
         [IsAdmin]
-        [HttpGet]
         public JsonResult SearchUsers(string searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                return Json(new { success = false, message = "Termenul de căutare nu poate fi gol." }, JsonRequestBehavior.AllowGet); 
+                return Json(new { success = false, message = "Termenul de căutare nu poate fi gol." }, JsonRequestBehavior.AllowGet);
             }
 
             var users = _admin.SearchUser(searchTerm);
 
             if (users == null || !users.Any())
             {
-                return Json(new { success = true, users = new object[0], message = "Nu s-au găsit utilizatori." }, JsonRequestBehavior.AllowGet); 
+                return Json(new { success = true, users = new object[0], message = "Nu s-au găsit utilizatori." }, JsonRequestBehavior.AllowGet);
             }
 
             var mappedUsers = users.Select(u => new UserInfo
@@ -207,7 +212,140 @@ namespace SkillSwaps.Controllers
             return Json(new { success = true, users = mappedUsers }, JsonRequestBehavior.AllowGet);
         }
 
+        // GET PENDING COURSES
+        [IsAdmin]
+        public ActionResult GetPendingCourse()
+        {
+            var courses = _admin.GetPendingCourses();
 
+            var viewModel = courses.Select(c => new GetCourseData
+            {
+                Category = c.Category,
+                Description = c.Description,
+                Teacher = c.Teacher,
+                Title = c.Title,
+                CourseId = c.Id,
+                PublicationDateTime = c.PublicationDateTime
+            }).ToList();
+
+            if (viewModel == null || !viewModel.Any())
+            {
+                TempData["ErrorMessage"] = "Nu există cursuri în așteptare.";
+                return RedirectToAction("Index");
+            }
+
+            return View(viewModel);
+        }
+
+        [IsAdmin]
+        [HttpPost]
+        public ActionResult RejectCourse(GetCourseData data)
+        {
+            var courseData = new ArticleDataMain
+            {
+                Id = data.CourseId,
+            };
+
+            bool rejected = _admin.RejectCoursePublication(courseData);
+
+            if (rejected)
+            {
+                TempData["SuccessMessage"] = "Cursul a fost respins cu succes.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "A apărut o eroare la respingerea cursului";
+            }
+
+            return RedirectToAction("GetPendingCourse");
+        }
+
+        [IsAdmin]
+        [HttpPost]
+        public ActionResult ApproveCourse(GetCourseData data, HttpPostedFileBase image)
+        {
+            if (data == null)
+            {
+                return Json(new { success = false, message = "Datele cursului primite sunt invalide sau incomplete." });
+            }
+
+            string imageUrl = null; // Inițializăm calea imaginii cu null
+
+            try
+            {
+                // Procesarea și validarea imaginii încărcate
+                if (image != null && image.ContentLength > 0)
+                {
+                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                    var fileExtension = Path.GetExtension(image.FileName).ToLower();
+
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        return Json(new { success = false, message = "Tipul fișierului nu este permis. Doar JPG, JPEG, PNG, GIF." });
+                    }
+
+                    // Limită dimensiunea fișierului la 2MB
+                    if (image.ContentLength > (2 * 1024 * 1024))
+                    {
+                        return Json(new { success = false, message = "Dimensiunea fișierului depășește limita de 2MB." });
+                    }
+
+                    // Generare nume fișier unic și cale de salvare
+                    var fileName = Path.GetFileName(image.FileName);
+                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + fileName;
+                    var uploadPath = Server.MapPath("~/Content/assets/img/courses");
+                    var fullPath = Path.Combine(uploadPath, uniqueFileName);
+
+                    // Asigură-te că directorul de upload există
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    // Salvează imaginea pe server
+                    image.SaveAs(fullPath);
+                    imageUrl = Url.Content("~/Content/assets/img/courses/" + uniqueFileName); // Setează URL-ul public
+                }
+                else
+                {
+                    // Validare: imaginea este obligatorie pentru aprobare
+                    return Json(new { success = false, message = "O imagine este obligatorie pentru aprobarea cursului." });
+                }
+
+                // Asigură-te că modelul are URL-ul imaginii
+                data.ImageUrl = imageUrl;
+
+                var courseDataForBl = new AprovedArticleDataMain 
+                {
+                    Id = data.CourseId,
+                    Title = data.Title,
+                    Teacher = data.Teacher,
+                    Category = (EACategory)Enum.Parse(typeof(EACategory), data.Category.ToString()),
+                    Description = data.Description,
+                    ImageUrl = data.ImageUrl
+                };
+
+                bool isUpdatedAndApproved = true; 
+
+                if (isUpdatedAndApproved)
+                {
+                    TempData["SuccessMessage"] = "Cursul a fost actualizat și aprobat cu succes!";
+                    return Json(new { success = true, message = "Cursul a fost editat și aprobat." });
+                }
+                else
+                {
+                    // Acest mesaj ar trebui să vină de la BL, dacă nu a fost posibilă actualizarea
+                    return Json(new { success = false, message = "A apărut o eroare la actualizarea cursului în baza de date. Poate nu s-au făcut modificări." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Loghează excepția (folosește un logger real în producție)
+                System.Diagnostics.Debug.WriteLine($"Eroare în EditCourse: {ex.Message} StackTrace: {ex.StackTrace}");
+
+                return Json(new { success = false, message = "A apărut o eroare neașteptată: " + ex.Message });
+            }
+        }
 
     }
 

@@ -36,19 +36,11 @@ namespace Domain.Article
         [StringLength(200, MinimumLength = 10, ErrorMessage = "Description cant be shorter than 10 charatcters and longer than 200 characters")]
         public string Description { get; set; }
 
-        [Required]
-        [Display(Name = "article_image")]
-        [StringLength(200, MinimumLength = 10, ErrorMessage = "The image URL must be between 10 and 200 characters.")]
-        public string ArticleImage { get; set; }
-
         [Display(Name = "publication_dt")]
         public DateTime PublicationDateTime { get; set; }
 
         [Display(Name = "enrolled_users")]
         public int EnrolledUsers { get; set; }
-
-        [Display(Name = "article_id")]
-        public int ArticleId { get; set; }
 
 
     }

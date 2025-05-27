@@ -1,5 +1,7 @@
-﻿using Business_Logic.DbDataContext.Seed;
+﻿using Business_Logic.DbDataContext;
+using Business_Logic.DbDataContext.Seed;
 using Domain.Admin;
+using Domain.Article;
 using Domain.Enums;
 using Domain.User;
 using Domain.User.EditAcc;
@@ -538,9 +540,44 @@ namespace Business_Logic.Core
 
 
             }
-                
+
         }
-    }
+        public List<ArticleDataMain> GetPendingCoursesAction()
+        {
+            using (var db = new ArticleContext())
+            {
+                return db.Articles
+                    .Select(a => new ArticleDataMain
+                    {
+                        Id = a.Id,
+                        Title = a.Title,
+                        Teacher = a.Teacher,
+                        Category = a.Category,
+                        Description = a.Description,
+                        PublicationDateTime = a.PublicationDateTime,
+                        EnrolledUsers = a.EnrolledUsers
+                    })
+                    .ToList();
+            }
+        }
+        public bool RejectCoursePublicationAction(ArticleDataMain articleData)
+        {
+            using (var db = new ArticleContext())
+            {
+                var article = db.Articles.FirstOrDefault(a => a.Id == articleData.Id);
+                if (article != null)
+                {
+                    db.Articles.Remove(article);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }  
 }
 
 

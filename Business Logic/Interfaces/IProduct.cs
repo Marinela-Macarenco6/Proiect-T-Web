@@ -12,5 +12,6 @@ namespace Business_Logic.Interfaces
     {
         List<ArticleDataMain> GetAllArticleFor();
         bool AddCourse(ArticleDataMain courseData);
+        int GetPandingCoursesCount();
     }
 }
