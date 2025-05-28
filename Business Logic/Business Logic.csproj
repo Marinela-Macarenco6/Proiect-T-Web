@@ -58,14 +58,15 @@
     <Compile Include="BL Struct\RegBL.cs" />
     <Compile Include="BL Struct\SessionBL.cs" />
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="Core\BlogApi.cs" />
     <Compile Include="Core\CourseApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DbDataContext\CommentsContext.cs" />
     <Compile Include="DbDataContext\ArticleContext.cs" />
     <Compile Include="DbDataContext\Seed\SessionContext.cs" />
     <Compile Include="DbDataContext\Seed\UserContext.cs" />
-    <Compile Include="Interfaces\IBlogLogic.cs" />
     <Compile Include="Interfaces\IAdmin.cs" />
+    <Compile Include="Interfaces\IBlog.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\IReg.cs" />
     <Compile Include="Interfaces\ISession.cs" />

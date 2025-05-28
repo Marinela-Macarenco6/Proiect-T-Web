@@ -239,29 +239,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="commentsContainer">
+                            <!-- Comentariile existente vor fi aici -->
+                        </div>
                         <div class="comment-form">
                             <h4>Leave a Reply</h4>
                             <form class="form-contact comment_form" action="#" id="commentForm">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                                      placeholder="Write Comment"></textarea>
+                                            <textarea class="form-control w-100" name="Content" id="Content" cols="30" rows="9"
+                                                      placeholder="Write Comment" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                            <input class="form-control" name="UserName" id="UserName" type="text" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input class="form-control" name="website" id="website" type="text" placeholder="Website">
+                                            <input class="form-control" name="Email" id="Email" type="email" placeholder="Email" required>
                                         </div>
                                     </div>
                                 </div>
@@ -270,6 +268,8 @@
                                 </div>
                             </form>
                         </div>
+
+
                     </div>
                     <!-- Sidebar -->
                     <div class="col-lg-4">
@@ -444,6 +444,40 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $('#commentForm').on('submit', function (e) {
+        e.preventDefault();
+
+        var commentData = {
+            Content: $('#Content').val(),
+            UserName: $('#UserName').val(),
+            Email: $('#Email').val()
+        };
+
+        $.ajax({
+            url: '@Url.Action("PostBlogComment", "Blog")',
+            type: 'POST',
+            data: commentData,
+            success: function (response) {
+                // Adaugă comentariul în container
+                $('#commentsContainer').append(`
+                    <div class="comment-item">
+                        <h5>${commentData.UserName}</h5>
+                        <p>${commentData.Content}</p>
+                    </div>
+                `);
+
+                // Resetează formularul
+                $('#commentForm')[0].reset();
+            },
+            error: function () {
+                alert('Eroare la trimiterea comentariului.');
+            }
+        });
+    });
+    </script>
+
 
     @Scripts.Render("~/Scripts/js")
 </body>

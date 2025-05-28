@@ -26,5 +26,9 @@ namespace Business_Logic
         {
             return new AdminBl();
         }
+        public IBlog GetBlogBl()
+        {
+            return new BlogBL();
+        }
     }
 }

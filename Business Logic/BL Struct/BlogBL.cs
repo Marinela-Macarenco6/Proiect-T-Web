@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Business_Logic.Interfaces;
 using Domain.Blog;
+using Business_Logic.Core;
+using SkillSwaps.Core;
+using SkillSwaps.Domain.Comments;
 
 namespace Business_Logic.BL_Struct
 {
-    public class BlogBL : IBlogLogic
+    public class BlogBL : IBlog
     {
         public List<EvenimentBlog> GetEvenimenteFiltrate(string searchQuery)
         {
@@ -149,6 +152,10 @@ namespace Business_Logic.BL_Struct
                 }
 
             };
+        }
+        public bool SaveComment(CTable data)
+        {
+            return new BlogApi().PostBlogCommentAction(data);
         }
     }
 }
