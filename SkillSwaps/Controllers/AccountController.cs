@@ -17,13 +17,11 @@ namespace SkillSwaps.Controllers
     public class AccountController : BaseController
     {
         private readonly IReg _change;
-       private readonly ISession _session;
 
         public AccountController()
         {
             var bl = new BusinessLogic();
             _change = bl.GetRegBL();
-            _session = bl.GetSessionBL();
         }
 
 

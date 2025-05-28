@@ -132,47 +132,35 @@ namespace SkillSwaps.Controllers
         [HttpPost]
         public ActionResult EditUser(UserInfo data)
         {
-            // Verifică dacă datele primite sunt nule
             if (data == null)
             {
-                // Returnează un răspuns JSON cu succes: false și un mesaj de eroare
                 return Json(new { success = false, message = "Datele primite sunt invalide." });
             }
 
             try
             {
-                // Crează un obiect UserDataMain din datele primite
                 var userData = new UserDataMain
                 {
                     UserId = data.UserId,
                     FullName = data.FullName,
                     UserName = data.UserName,
                     Email = data.Email,
-                    // Asigură-te că UserRole poate fi parsat corect în EURole
                     UserRole = (EURole)Enum.Parse(typeof(EURole), data.UserRole)
                 };
 
-                // Apelez metoda de editare a utilizatorului din repository
                 bool isChanged = _admin.EditUserAcc(userData);
 
                 if (isChanged)
                 {
-                    // Dacă editarea a avut succes, returnează un JSON cu succes: true
                     return Json(new { success = true, message = "Utilizatorul a fost editat cu succes." });
                 }
                 else
                 {
-                    // Dacă editarea a eșuat (ex: nicio modificare, eroare internă în _admin.EditUserAcc), returnează succes: false
                     return Json(new { success = false, message = "A apărut o eroare la editarea utilizatorului. Poate nu s-au făcut modificări sau a intervenit o problemă internă." });
                 }
             }
             catch (Exception ex)
             {
-                // Prinde orice excepție apărută în timpul procesării (ex: eroare la Enum.Parse, eroare în baza de date)
-                // Este recomandat să loghezi această excepție într-un sistem de logare real.
-                // Console.WriteLine(ex.Message); // Doar pentru depanare rapidă în dezvoltare
-
-                // Returnează un răspuns JSON cu succes: false și mesajul de eroare al excepției
                 return Json(new { success = false, message = "A apărut o eroare neașteptată: " + ex.Message });
             }
         }
@@ -269,11 +257,10 @@ namespace SkillSwaps.Controllers
                 return Json(new { success = false, message = "Datele cursului primite sunt invalide sau incomplete." });
             }
 
-            string imageUrl = null; // Inițializăm calea imaginii cu null
+            string imageUrl = null;
 
             try
             {
-                // Procesarea și validarea imaginii încărcate
                 if (image != null && image.ContentLength > 0)
                 {
                     var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
@@ -284,35 +271,29 @@ namespace SkillSwaps.Controllers
                         return Json(new { success = false, message = "Tipul fișierului nu este permis. Doar JPG, JPEG, PNG, GIF." });
                     }
 
-                    // Limită dimensiunea fișierului la 2MB
                     if (image.ContentLength > (2 * 1024 * 1024))
                     {
                         return Json(new { success = false, message = "Dimensiunea fișierului depășește limita de 2MB." });
                     }
 
-                    // Generare nume fișier unic și cale de salvare
                     var fileName = Path.GetFileName(image.FileName);
                     var uniqueFileName = Guid.NewGuid().ToString() + "_" + fileName;
                     var uploadPath = Server.MapPath("~/Content/assets/img/courses");
                     var fullPath = Path.Combine(uploadPath, uniqueFileName);
 
-                    // Asigură-te că directorul de upload există
                     if (!Directory.Exists(uploadPath))
                     {
                         Directory.CreateDirectory(uploadPath);
                     }
 
-                    // Salvează imaginea pe server
                     image.SaveAs(fullPath);
-                    imageUrl = Url.Content("~/Content/assets/img/courses/" + uniqueFileName); // Setează URL-ul public
+                    imageUrl = Url.Content("~/Content/assets/img/courses/" + uniqueFileName); 
                 }
                 else
                 {
-                    // Validare: imaginea este obligatorie pentru aprobare
                     return Json(new { success = false, message = "O imagine este obligatorie pentru aprobarea cursului." });
                 }
 
-                // Asigură-te că modelul are URL-ul imaginii
                 data.ImageUrl = imageUrl;
 
                 var courseDataForBl = new AprovedArticleDataMain 
@@ -334,13 +315,11 @@ namespace SkillSwaps.Controllers
                 }
                 else
                 {
-                    // Acest mesaj ar trebui să vină de la BL, dacă nu a fost posibilă actualizarea
                     return Json(new { success = false, message = "A apărut o eroare la actualizarea cursului în baza de date. Poate nu s-au făcut modificări." });
                 }
             }
             catch (Exception ex)
             {
-                // Loghează excepția (folosește un logger real în producție)
                 System.Diagnostics.Debug.WriteLine($"Eroare în EditCourse: {ex.Message} StackTrace: {ex.StackTrace}");
 
                 return Json(new { success = false, message = "A apărut o eroare neașteptată: " + ex.Message });

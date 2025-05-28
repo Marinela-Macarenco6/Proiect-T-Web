@@ -789,17 +789,17 @@
     <Content Include="Views\Courses\curs5.cshtml" />
     <Content Include="Views\Courses\curs6.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Blog\Categorie.cshtml" />
     <Content Include="Views\Blog\EvNotabil1.cshtml" />
     <Content Include="Views\Blog\EvNotabil2.cshtml" />
     <Content Include="Views\Blog\EvNotabil3.cshtml" />
     <Content Include="Views\Blog\EvNotabil4.cshtml" />
-    <Content Include="Views\Blog\SearchResults.cshtml" />
     <Content Include="Views\Account\ChangeEmailAcc.cshtml" />
     <Content Include="Views\Admin\GetAllUsers.cshtml" />
     <Content Include="Views\Admin\GetOnlineUsers.cshtml" />
     <Content Include="Views\Admin\FindUser.cshtml" />
     <Content Include="Views\Admin\GetPendingCourse.cshtml" />
+    <Content Include="Views\Blog\Evpag2.cshtml" />
+    <Content Include="Views\Blog\Evpag3.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config" />
   </ItemGroup>

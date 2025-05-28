@@ -1,10 +1,11 @@
 ﻿@{
     Layout = null;
-    ViewBag.Title = "Recunoaștere Tekwill în fiecare școală";
+    ViewBag.Title = "Evenimente Pagina 3";
 }
 @using System.Web.Optimization
+
 <!doctype html>
-<html class="no-js" lang="ro">
+<html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,21 +19,14 @@
     @Styles.Render("~/Content/assets/scss")
     @Styles.Render("~/Content/assets/css")
 </head>
+
 <body>
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="~/Content/assets/img/logo/loder.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="preloader-active">…</div>
 
     @Html.Partial("_Header")
 
 <main>
+    <!-- Slider -->
     <section class="slider-area slider-area2">
         <div class="slider-active">
             <div class="single-slider slider-height2">
@@ -40,11 +34,11 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1>@ViewBag.Title</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Evenimente și Workshopuri</h1>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/">Acasă</a></li>
-                                        <li class="breadcrumb-item"><a href="/">Recunoaștere Tekwill în fiecare școală</a></li>
+                                        <li class="breadcrumb-item"><a href="~/">Acasă</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Evenimente</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -55,65 +49,107 @@
         </div>
     </section>
 
-    <section class="blog_area single-post-area section-padding">
+    <section class="blog_area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 posts-list">
-                    <div class="single-post">
-                        <div class="feature-img">
-                            <img class="img-fluid w-100" style="max-height: 500px; object-fit: cover;" src="~/Content/assets/img/blog/tek.jpeg" alt="Recunoaștere Tekwill">
-                        </div>
-                        <div class="blog_details">
-                            <h2 style="color: #2d2d2d;">Tekwill – Un model educațional recunoscut internațional</h2>
-                            <p class="excert">5 Februarie, 2025</p>
-                            <p>
-                                Într-un context global în care educația digitală devine o prioritate, proiectul „<strong>Tekwill în fiecare școală</strong>” a fost premiat la nivel internațional pentru inovație și impact social. Platforma a devenit un pilon al transformării digitale în educația din Republica Moldova.
-                            </p>
-                            <p>
-                                Inițiativa oferă acces gratuit la cursuri de programare, design grafic, dezvoltare personală și competențe digitale, contribuind la reducerea decalajului digital și creșterea șanselor de angajare ale tinerilor.
-                            </p>
-                            <div class="quote-wrapper">
-                                <div class="quotes">
-                                    „Educația digitală transformă viitorul elevilor din Republica Moldova.”
-                                </div>
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+
+                        <!-- Ev11 -->
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/Content/assets/img/blog/Startup-World-Cup-Moldova-.jpg" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>05</h3>
+                                    <p>Iulie</p>
+                                </a>
                             </div>
-                            <p>
-                                Statisticile arată că peste 200.000 de elevi au beneficiat deja de resursele proiectului, iar peste 2.000 de profesori au fost instruiți pentru a integra metode interactive în procesul educațional. Platforma Tekwill a devenit un model replicabil pentru alte țări în curs de dezvoltare.
-                            </p>
-                            <p>Recunoașterea obținută confirmă valoarea unui sistem educațional modern, incluziv și orientat spre viitor.</p>
-                            <p>Prin parteneriate solide cu instituțiile de învățământ și cu sectorul privat, Tekwill a reușit să aducă tehnologia mai aproape de tineri. Proiectul este susținut de USAID, Suedia și implementat de ATIC, contribuind la dezvoltarea unei societăți bazate pe cunoaștere.</p>
-                            <p>Totodată, Tekwill promovează incluziunea de gen, oferind resurse și oportunități egale pentru fete și băieți, încurajând participarea activă a acestora în domeniile STEM.</p>
-                        </div>
-                    </div>
-                    <div class="comment-form">
-                        <h4>Adaugă un comentariu</h4>
-                        <form class="form-contact comment_form" action="#" id="commentForm">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Scrie un comentariu..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control" name="name" id="name" type="text" placeholder="Nume">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input class="form-control" name="website" id="website" type="text" placeholder="Website (opțional)">
-                                    </div>
-                                </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="~/Blog/Ev11">
+                                    <h2 class="blog-head">Startup World Cup Moldova</h2>
+                                </a>
+                                <p>Competiție globală de startup-uri, cu faze locale și mentorship intensiv.</p>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Trimite comentariul</button>
+                        </article>
+
+                        <!-- Ev12 -->
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/Content/assets/img/blog/Startup-Village.jpg" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>12</h3>
+                                    <p>Iulie</p>
+                                </a>
                             </div>
-                        </form>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="~/Blog/Ev12">
+                                    <h2 class="blog-head">Startup Village</h2>
+                                </a>
+                                <p>Festival tech cu hackathoane și workshopuri pentru antreprenori.</p>
+                            </div>
+                        </article>
+
+                        <!-- Ev13 -->
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/Content/assets/img/blog/DeepTech-Gigahack.jpg" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>19</h3>
+                                    <p>Iulie</p>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="~/Blog/Ev13">
+                                    <h2 class="blog-head">DeepTech Gigahack</h2>
+                                </a>
+                                <p>Maraton de dezvoltare soluții deep tech: AI, IoT și robotică.</p>
+                            </div>
+                        </article>
+
+                        <!-- Ev14 -->
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/Content/assets/img/blog/Moldova-DevCon-2025.jpg" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>26</h3>
+                                    <p>Iulie</p>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="~/Blog/Ev14">
+                                    <h2 class="blog-head">Moldova DevCon 2025</h2>
+                                </a>
+                                <p>Conferință pentru dezvoltatori, cu sesiuni pe .NET, JavaScript și DevOps.</p>
+                            </div>
+                        </article>
+
+                        <!-- Ev15 -->
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/Content/assets/img/blog/Moldova-Business-Forum-III-2025.jpg" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>02</h3>
+                                    <p>August</p>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="~/Blog/Ev15">
+                                    <h2 class="blog-head">Moldova Business Forum III 2025</h2>
+                                </a>
+                                <p>Reuniune anuală de afaceri cu speakeri internaționali și sesiuni de networking.</p>
+                            </div>
+                        </article>
+
+                        <!-- Paginare -->
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="~/Blog/Evpag2" class="page-link" aria-label="Previous"><i class="ti-angle-left"></i></a>
+                                </li>
+                                <li class="page-item"><a href="~/Blog/Evpag2" class="page-link">2</a></li>
+                            </ul>
+                        </nav>
+
                     </div>
                 </div>
 
@@ -215,15 +251,36 @@
 </main>
 
     @Html.Partial("_Footer")
-
     <div id="back-top">
         <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
     </div>
 
+    <!-- JS Scripts -->
     <script src="~/Content/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="~/Content/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/assets/js/popper.min.js"></script>
     <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Content/assets/js/slick.min.js"></script>
+    <script src="~/Content/assets/js/wow.min.js"></script>
+    <script src="~/Content/assets/js/animated.headline.js"></script>
+    <script src="~/Content/assets/js/jquery.magnific-popup.js"></script>
+    <script src="~/Content/assets/js/gijgo.min.js"></script>
+    <script src="~/Content/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/assets/js/jquery.sticky.js"></script>
+    <script src="~/Content/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/assets/js/waypoints.min.js"></script>
+    <script src="~/Content/assets/js/jquery.countdown.min.js"></script>
+    <script src="~/Content/assets/js/hover-direction-snake.min.js"></script>
+    <script src="~/Content/assets/js/contact.js"></script>
+    <script src="~/Content/assets/js/jquery.form.js"></script>
+    <script src="~/Content/assets/js/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/js/mail-script.js"></script>
+    <script src="~/Content/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Content/assets/js/plugins.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
+
     @Scripts.Render("~/Scripts/js")
 </body>
 </html>

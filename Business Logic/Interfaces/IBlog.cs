@@ -1,5 +1,4 @@
-﻿using Domain.Blog;
-using SkillSwaps.Domain.Comments;
+﻿using SkillSwaps.Domain.Comments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +9,6 @@ namespace Business_Logic.Interfaces
 {
     public interface IBlog
     {
-        List<EvenimentBlog> GetEvenimenteFiltrate(string searchQuery);
-        List<EvenimentBlog> GetToateEvenimentele();
         bool SaveComment(CTable data);
     }
 }
