@@ -10,12 +10,6 @@ namespace Business_Logic.Core
 {
     public class CourseApi
     {
-
-        public List<ArticleDataMain> GetAllArticleForAction()
-        {
-            return new List<ArticleDataMain>();
-        }
-
         internal bool AddCourseAction(ArticleDataMain courseData)
         {
 

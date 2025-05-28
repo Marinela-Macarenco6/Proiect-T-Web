@@ -10,7 +10,6 @@ namespace Business_Logic.Interfaces
 {
     public interface IProduct
     {
-        List<ArticleDataMain> GetAllArticleFor();
         bool AddCourse(ArticleDataMain courseData);
         int GetPandingCoursesCount();
     }
