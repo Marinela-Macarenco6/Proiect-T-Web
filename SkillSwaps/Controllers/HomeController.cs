@@ -12,10 +12,11 @@ namespace SkillSwaps.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController() 
+        public HomeController()
         {
             var bl = new BusinessLogic();
         }
+
         // GET: Home
         public ActionResult Index()
         {
@@ -25,6 +26,24 @@ namespace SkillSwaps.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            return View();
+        }
+
+        // GET: Home/About
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        // GET: Home/Contact
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        // GET: Home/Error
+        public ActionResult Error()
+        {
             return View();
         }
     }
